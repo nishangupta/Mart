@@ -1,4 +1,4 @@
-{{-- <!-- Topbar -->
+<!-- Topbar -->
 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
   <!-- Sidebar Toggle (Topbar) -->
@@ -7,7 +7,7 @@
   </button>
   
   <!-- Topbar Search -->
-  <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" action="{{route('home.search')}}">
+  <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" action="route('home.search')}}">
     <div class="input-group">
       <input name="q" type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
       <div class="input-group-append">
@@ -47,16 +47,16 @@
       <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <i class="fas fa-bell fa-fw"></i>
         <!-- Counter - Alerts -->
-      <span class="badge badge-danger badge-counter">{{$notifications->count()}}+</span>
+      <span class="badge badge-danger badge-counter">$notifications->count()}}+</span>
       </a>
       <!-- Dropdown - Alerts -->
       <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
         <h6 class="dropdown-header">
           Alerts Center
         </h6>
-        @if($notifications)
+        {{-- @if($notifications)
           @foreach($notifications as $notification)
-            <a class="dropdown-item d-flex align-items-center" href="{{route('customer.pendingRequest')}}">
+            <a class="dropdown-item d-flex align-items-center" href="route('customer.pendingRequest')}}">
               <div class="mr-3">
                 <div class="icon-circle bg-primary">
                   <i class="fas fa-file-alt text-white"></i>
@@ -70,14 +70,14 @@
           @endforeach
         @else
           <div class="small text-gray-500">No notifications</div>
-        @endif
-        <a class="dropdown-item text-center small text-gray-500" href="{{route('customer.pendingRequest')}}">Show All Requests</a>
+        @endif --}}
+        <a class="dropdown-item text-center small text-gray-500" href="route('customer.pendingRequest')}}">Show All Requests</a>
       </div>
     </li>
   
     <!-- Nav Item - Messages -->
     <li class="nav-item dropdown no-arrow mx-1">
-      <a class="nav-link" href="{{route('chat.index')}}" role="button" >
+      <a class="nav-link" href="route('chat.index')}}" role="button" >
         <i class="fas fa-envelope fa-fw"></i>
         <!-- Counter - Messages -->
         <span class="badge badge-danger badge-counter">+</span>
@@ -103,7 +103,7 @@
           Dashboard
         </a>
         @endrole
-        <a class="dropdown-item" href="{{route('account.profile')}}">
+        <a class="dropdown-item" href="route('account.profile')}}">
           <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
           Profile
         </a>
@@ -116,10 +116,10 @@
     </li>
     @endauth
     @guest
-    <a href="{{route('login')}}" class="btn btn-primary">Login</a>
+    <a href="route('login')}}" class="btn btn-primary">Login</a>
     @endguest
   
   </ul>
   
   </nav>
-  <!-- End of Topbar --> --}}
+  <!-- End of Topbar --> 

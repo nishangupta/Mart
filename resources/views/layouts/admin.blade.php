@@ -15,6 +15,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">    
     <link href="{{ asset('css/admin.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('css/lib/dataTables.bootstrap4.min.css')}}">
+    <style>
+        .content-container{
+            min-height:80vh;
+        }
+    </style>
     @stack('css')
     
 </head>
@@ -29,7 +34,9 @@
                 <div id="content">
                     @include('inc.admin.topbar')
 
-                    @yield('content')
+                    <div class="content-container">
+                        @yield('content')
+                    </div>
 
                     @include('inc.admin.footer')
                 </div>
