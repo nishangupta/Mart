@@ -1,0 +1,34 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class HomeController extends Controller
+{
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    public function index()
+    {
+        $userRole = auth()->user()->getRoleNames()->first();
+        switch ($userRole) {
+            case 'admin':
+                return redirect(route('admin.dashboard'));
+                break;
+
+            case 'seller':
+                return redirect(route('seller.dashboard'));
+                break;
+
+            case 'shipper':
+                return redirect(route('shipper.dashboard'));
+                break;
+
+            default:
+                return redirect(route('user.index'));
+                break;
+        }
+    }
+}
