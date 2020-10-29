@@ -2,8 +2,9 @@
 
 @section('content')
 <div class="container-fluid">
-  <form action="{{route('product.store')}}" method="POST" id="submitProductForm">
+  <form action="{{route('product.update',['product'=>$product])}}" method="POST" id="submitProductForm">
     @csrf
+    @method('PUT')
     <div class="row">
       <div class="col-sm-12 col-md-10 mx-auto mb-4">
         @if($errors->any())
@@ -17,7 +18,7 @@
           <div class="card-body">
             <div class="form-group">
               <label class="small" for="">Product title</label>
-              <input type="title" placeholder="Product title" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ old('title') }}" required autofocus>
+              <input type="title" placeholder="Product title" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ old('title')?? $product->title }}" required autofocus>
               @error('title')
                   <span class="invalid-feedback" role="alert">
                       <strong>{{ $message }}</strong>
@@ -25,10 +26,11 @@
               @enderror
             </div>
             <div class="form-group">
+              <div class="alert alert-primary">Existing SubCategory Name: {{$product->subCategory}}</div>
               <div class="row">
                 <div class="col-sm-12 col-md-6">
                   <label class="small" for="">Choose a category</label>
-                  <select class="form-control" id="categorySelector" required>
+                  <select class="form-control" id="categorySelector" >
                     <option value="" selected disabled>Choose a category</option>
                     @foreach ($categories as $category)
                     <option value="{{$category->id}}">{{$category->category_name}}</option>
@@ -49,7 +51,7 @@
           <div class="card-header">Detailed Description</div>
           <div class="card-body">
             <div class="form-group">
-              <input type="hidden" id="description" name="description" value="{{old('description')}}">
+              <input type="hidden" id="description" name="description" value="{{old('description')?? $product->description}}">
               <div id="quillEditor" style="height:200px"></div>
             </div>
           </div>
@@ -74,20 +76,20 @@
                   <tr>
                     <td>
                       <div class="custom-control custom-switch">
-                        <input type="checkbox" class="custom-control-input" name="live" id="productAvailability" checked>
+                        <input type="checkbox" class="custom-control-input" name="live" id="productAvailability" {{$product->live?'checked':''}}>
                         <label class="custom-control-label" for="productAvailability">Live</label>
                       </div>
                     </td>
-                    <td><input type="number" class="form-control" name="price" value="{{ old('price') }}"></td>
-                    <td><input type="number" class="form-control" name="sale_price" value="{{ old('sale_price') }}"></td>
+                    <td><input type="number" class="form-control" name="price" value="{{ $product->price??old('price') }}"></td>
+                    <td><input type="number" class="form-control" name="sale_price" value="{{ $product->sale_price??old('sale_price') }}"></td>
                     <td>
                       <div class="custom-control custom-switch">
-                        <input type="checkbox" class="custom-control-input" name="onSale" id="saleAvailability" >
+                        <input type="checkbox" class="custom-control-input" name="onSale" id="saleAvailability" {{$product->onSale?'checked':''}} >
                         <label class="custom-control-label" for="saleAvailability">onSale</label>
                       </div>
                     </td>
                     <td>
-                      <input type="number" class="form-control" name="stock" value="{{ old('stock') }}">
+                      <input type="number" class="form-control" name="stock" value="{{ $product->stock??old('stock') }}">
                     </td>
                   </tr>
                 </tbody>
@@ -96,7 +98,7 @@
 
             <div class="form-group">
               <label class="small" for="">Color</label>
-              <input type="text" placeholder="-" list="colorScheme" class="form-control @error('color') is-invalid @enderror" name="color" value="{{ old('color') }}">
+              <input type="text" placeholder="-" list="colorScheme" class="form-control @error('color') is-invalid @enderror" name="color" value="{{ $product->color??old('color') }}">
               <datalist id="colorScheme">
                 <option value="Multicolor">
                 <option value="Red">
@@ -116,7 +118,7 @@
 
             <div class="form-group">
               <label class="small" for="">Size</label>
-              <input type="text" placeholder="-" list="sizeScheme" class="form-control @error('size') is-invalid @enderror" name="size" value="{{ old('size') }}">
+              <input type="text" placeholder="-" list="sizeScheme" class="form-control @error('size') is-invalid @enderror" name="size" value="{{ $product->size??old('size') }}">
               <datalist id="sizeScheme">
                 <option value="One size">
                 <option value="S">
@@ -143,7 +145,7 @@
           <div class="card-body">
             <div class="form-group">
               <label class="small" for="">Warranty</label>
-              <input type="text" placeholder="-" list="warrantyScheme" class="form-control @error('warranty') is-invalid @enderror" name="warranty" value="{{ old('warranty') }}">
+              <input type="text" placeholder="-" list="warrantyScheme" class="form-control @error('warranty') is-invalid @enderror" name="warranty" value="{{ $product->warranty??old('warranty') }}">
               <datalist id="warrantyScheme">
                 <option value="No warranty">
                 <option value="3 months">
