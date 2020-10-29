@@ -1,0 +1,22 @@
+//Css represents to the admin layouts only
+
+// Import Custom Admin Variables (Overrides Default Bootstrap Variables)
+@import "./admin/variables";
+
+// Import Bootstrap
+@import "~bootstrap/scss/bootstrap";
+
+// Import Custom Admin Mixins and Components
+@import "./admin/mixins";
+@import "./admin/global";
+@import "./admin/utilities";
+
+// Custom Components
+@import "./admin/dropdowns";
+@import "./admin/navs";
+@import "./admin/buttons";
+@import "./admin/cards";
+@import "./admin/charts";
+@import "./admin/login";
+@import "./admin/error";
+@import "./admin/footer";
