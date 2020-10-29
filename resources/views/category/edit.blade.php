@@ -35,10 +35,10 @@
         </div>
       </form>
      
-      <form action="{{route('category.destroy',['id'=>1])}}" method="POST" class="mt-5">
+      <form action="{{route('category.destroy',['id'=>$category])}}" id="deleteCategoryForm" method="POST" class="mt-5">
         @csrf
         @method('delete')
-        <button type="submit" class="btn btn-danger">Delete Category</button>
+        <button id="deleteCategoryBtn" class="btn btn-danger">Delete Category</button>
       </form>
     </div>
 
@@ -54,9 +54,22 @@
         </ul>
       </ul>
 
-     
     </div>
 
   </div>
 </div>
 @endsection
+
+@push('js')
+<script>
+$(document).ready(function(){
+  $('#deleteCategoryBtn').click(function(e){
+    e.preventDefault();
+    if(confirm('Are you sure you want to delete the category?')){
+      $('#deleteCategoryForm').submit();
+    }
+  });
+});
+
+</script>    
+@endpush
