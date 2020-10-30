@@ -10,7 +10,7 @@
       <div class="col-sm-12 col-md-6">
         <div class="card shadow">
           <div class="card-header">
-            <p class="h5"><span class="text-primary">{{$product->title}} ($ {{$product->price}})</span></p>
+            <p class="h5"><span class="text-primary">{{$product->title}} (${{$product->price}})</span></p>
           </div>
           <div class="card-body">
 
@@ -25,19 +25,9 @@
             <p class="h5"><span class="text-primary"> Product Images</span></p>
           </div>
           <div class="card-body">
-    
-            <div class="row">
-              <div class="col-sm-6 col-md-4 mb-2">
-                <a href="{{asset('images/CA3cCllkTtMHC40j.jpg')}}" target="_blank">
-                  <img src="{{asset('images/CA3cCllkTtMHC40j.jpg')}}" class="img-fluid" alt="">
-                </a>
-                <form action="{{route('productImage.destroy',['id'=>1])}}" method="POST">
-                  @csrf
-                  @method('delete')
-                  <button class="btn btn-outline-danger mt-1 btn-rounded">delete</button>
-                </form>
-              </div>
-         
+
+              <product-images product-id={{$product->id}}></product-images>
+
             </div>
           </div>
         </div>

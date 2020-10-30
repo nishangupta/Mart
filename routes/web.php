@@ -29,6 +29,8 @@ Route::get('/admin/login', [AdminController::class, 'loginView'])->name('admin.l
 
 //products
 Route::resource('/product', ProductController::class);
+
+Route::get('/product/get/image/{id}', [ProductImageController::class, 'index'])->name('productImage.index');
 Route::get('/product/{id}/image', [ProductImageController::class, 'show'])->name('productImage.show');
 Route::delete('/product/{id}/image', [ProductImageController::class, 'destroy'])->name('productImage.destroy');
 

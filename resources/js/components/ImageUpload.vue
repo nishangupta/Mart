@@ -1,7 +1,7 @@
 <template>
   <div class="container uploader">
     <div class="row justify-content-center mb-3" ref="imageUpload">
-      <div class="col-12 bg-dark text-white rounded py-3 my-2 text-center">
+      <div class="col-12 bg-primary text-white rounded py-3 my-2 text-center">
         DROP IMAGES HERE
       </div>
     </div>
@@ -26,6 +26,7 @@ export default {
   mounted() {
     this.dropzone = new Dropzone(this.$refs.imageUpload, {
       url: "/api/product/images/" + this.productId,
+      method: "POST",
     });
   },
 };

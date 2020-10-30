@@ -123,7 +123,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     this.dropzone = new dropzone__WEBPACK_IMPORTED_MODULE_0___default.a(this.$refs.imageUpload, {
-      url: "/api/product/images/" + this.productId
+      url: "/api/product/images/" + this.productId,
+      method: "POST"
     });
   }
 });
@@ -4787,7 +4788,7 @@ var render = function() {
           "div",
           {
             staticClass:
-              "col-12 bg-dark text-white rounded py-3 my-2 text-center"
+              "col-12 bg-primary text-white rounded py-3 my-2 text-center"
           },
           [_vm._v("\n      DROP IMAGES HERE\n    ")]
         )
@@ -17040,6 +17041,7 @@ __webpack_require__(/*! ./admin-utils */ "./resources/js/admin-utils.js"); //adm
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 Vue.component("image-upload", __webpack_require__(/*! ./components/ImageUpload */ "./resources/js/components/ImageUpload.vue")["default"]);
+Vue.component("product-images", __webpack_require__(/*! ./components/ProductImages */ "./resources/js/components/ProductImages.vue")["default"]);
 var app = new Vue({
   el: "#app"
 });
@@ -17130,6 +17132,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ImageUpload_vue_vue_type_template_id_e0921fbe_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
+
+/***/ }),
+
+/***/ "./resources/js/components/ProductImages.vue":
+/*!***************************************************!*\
+  !*** ./resources/js/components/ProductImages.vue ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, exports) {
+
+throw new Error("Module build failed (from ./node_modules/vue-loader/lib/index.js):\nError: ENOENT: no such file or directory, open 'D:\\laravel-important\\Mart\\resources\\js\\components\\ProductImages.vue'");
 
 /***/ }),
 
