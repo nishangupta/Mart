@@ -53,7 +53,7 @@
     <div id="ordersCollapse" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
       <div class="bg-white py-2 collapse-inner rounded">
         <h6 class="collapse-header">Order information:</h6>
-        <a class="collapse-item" href="route('order.index')}}">Manage Orders</a>
+        <a class="collapse-item" href="{{route('order.index')}}">Manage Orders</a>
         <a class="collapse-item" href="route('reviews.index')}}">Manage reviews</a>
       </div>
     </div>

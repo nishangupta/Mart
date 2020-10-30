@@ -2,15 +2,11 @@
 
 @section('content')
 <div class="container-fluid">
-  
-  <div class="row mb-4">
-      <h1 class="h3 mb-0 text-gray-800">Product Management</h1>
-  </div>
   <a href="{{route('product.create')}}" class="btn btn-primary mb-4">Add a Product</a>
 
   <div class="card shadow mb-4">
     <div class="card-header py-3">
-      <h6 class="m-0 font-weight-bold text-primary">Product Datatable</h6>
+      <h6 class="m-0 font-weight-bold text-primary">Product Management</h6>
     </div>
     <div class="card-body">
       <div class="table-responsive">

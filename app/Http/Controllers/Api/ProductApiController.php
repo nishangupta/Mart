@@ -13,12 +13,6 @@ class ProductApiController extends Controller
   {
     $products = Product::latest();
     return DataTables::of($products)
-
-      ->addColumn('select', function ($row) {
-        $item = '<input type="checkbox" name="ids[]" class="selectbox" value="' . $row->id . '">
-        ';
-        return $item;
-      })
       ->addColumn('onSale', function ($row) {
         $val = $row->onSale ? 'onSale' : 'Toggle sale';
         $class = $row->onSale ? 'btn-danger' : 'btn-outline-danger';
@@ -37,7 +31,7 @@ class ProductApiController extends Controller
                 <a class="btn btn-primary btn-sm float-left w-50 " href="/product/' . $row->id . '/edit"><i class="fas fa-pen-square"></i> Edit</a>';
         return $btns;
       })
-      ->rawColumns(['select', 'actions', 'live', 'onSale'])
+      ->rawColumns(['actions', 'live', 'onSale'])
       ->make(true);
   }
 

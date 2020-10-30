@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\OrderApiController;
 use App\Http\Controllers\Api\ProductApiController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -24,6 +25,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('/product/all', [ProductApiController::class, 'all'])->name('product.all');
 Route::get('/product/onsale/invert/{id}', [ProductApiController::class, 'onSaleInvert'])->name('product.onSaleInvert');
 Route::get('/product/live/invert/{id}', [ProductApiController::class, 'liveInvert'])->name('product.liveInvert');
+
+//products
+Route::get('/order/all', [OrderApiController::class, 'all'])->name('order.all');
+
 
 //image uploading
 Route::post('/product/images/{id}', [ProductImageController::class, 'store'])->name('store');
