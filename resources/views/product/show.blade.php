@@ -25,10 +25,9 @@
             <p class="h5"><span class="text-primary"> Product Images</span></p>
           </div>
           <div class="card-body">
-
+            
               <product-images product-id={{$product->id}}></product-images>
-
-            </div>
+              
           </div>
         </div>
       </div>
