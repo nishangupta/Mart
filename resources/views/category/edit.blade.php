@@ -25,7 +25,7 @@
               <input type="text" name="category" value="{{$category->category_name}}" class="form-control" required autofocus>  
             </div>
             <div class="form-group">
-              <label for="">Sub Category name</label>
+              <label for="">Add Sub Category name</label>
               <input type="text"  value="{{old('sub_category')}}" name="sub_category" class="form-control">
             </div>
             <div class="d-flex justify-content-between">
