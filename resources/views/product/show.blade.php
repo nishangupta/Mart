@@ -2,8 +2,16 @@
 
 @section('content')
 <div class="container-fluid" >
-  <h1 class="h5 mb-0 text-gray-800">Product Image Management</h1>
-  <p>Drop images to this dropzone. Multiple images supported.</p>
+  <div class="d-flex align-items-center justify-content-between">
+    <div class="div">
+      <h1 class="h5 mb-0 text-gray-800">Product Image Management</h1>
+      <p>Drop images to this dropzone. Multiple images supported.</p>
+    </div>
+    <div>
+      <a href="{{route('product.index')}}" class="btn btn-outline-primary">Go Back</a>
+    </div>
+  </div>
+
   
   <div class="container-fluid mt-5 px-0">
     <div class="row">

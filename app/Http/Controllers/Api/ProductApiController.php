@@ -15,14 +15,14 @@ class ProductApiController extends Controller
     return DataTables::of($products)
       ->addColumn('onSale', function ($row) {
         $val = $row->onSale ? 'onSale' : 'Toggle sale';
-        $class = $row->onSale ? 'btn-primary' : 'btn-outline-primary';
+        $class = $row->onSale ? 'btn-danger' : 'btn-outline-danger';
         $item = '<a href="/api/product/onsale/invert/' . $row->id . '" class="btn btn-sm ' . $class . '">' . $val . '</a>
         ';
         return $item;
       })
       ->addColumn('live', function ($row) {
         $val = $row->live ? 'live now' : 'Toggle Live';
-        $class = $row->live ? 'btn-primary' : 'btn-outline-primary';
+        $class = $row->live ? 'btn-success' : 'btn-outline-success';
         $item = '<a href="/api/product/live/invert/' . $row->id . '" class="btn btn-sm ' . $class . '">' . $val . '</a>';
         return $item;
       })
