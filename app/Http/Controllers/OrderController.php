@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use Carbon\Carbon;
+use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -23,5 +24,15 @@ class OrderController extends Controller
         $order->save();
 
         dd($order->date);
+    }
+    public function destroy(Request $request)
+    {
+        $ids = $request->get('ids');
+        $orders = Order::whereIn('id', $ids)->get(['id', 'status']);
+        foreach ($orders as $order) {
+            $order->delete();
+        }
+        Alert::toast('Order removed from the database!', 'success');
+        return redirect(route('shipCancelled.index'));
     }
 }

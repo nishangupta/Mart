@@ -15,10 +15,9 @@
             <label for="">Select all</label>
             <input type="checkbox" class="selectall">
           </div>
-          <button id="showSelected" class="btn btn-sm btn-primary">Returned</button>
+          <button class="btn btn-sm btn-info">Clean up older than 3 months</button>
       </div>
-      <form action="{{route('returned.store')}}" method="POST" id="selectorForm">
-        @csrf
+     
         <div class="table-responsive">
           <table class="table table-hover table-bordered small" id="dataTable" width="100%" cellspacing="0">
             <thead>
@@ -36,7 +35,6 @@
             <tbody></tbody>
           </table>
         </div>
-      </form>
     </div>
   </div>
 
@@ -76,15 +74,7 @@ $(document).ready(function(){
 		}
 	})
 
-  //submit selected
-  $('#showSelected').click(function(){
-    if($('.selectbox:checked').length < 1){
-      alert('Please select atleast one of the row!');
-      return;
-    }else{
-      $('#selectorForm').submit();
-    }
-  })
+
 
 });
 

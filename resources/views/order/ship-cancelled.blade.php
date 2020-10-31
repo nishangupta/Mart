@@ -18,8 +18,9 @@
           <button id="showSelected" class="btn btn-sm btn-danger">Delete</button>
           <button class="btn btn-sm btn-info">Clean up older than 30 days</button>
       </div>
-      <form action="{{route('shipCancelled.store')}}" method="POST" id="selectorForm">
+      <form action="{{route('order.destroy',['order'=>'true'])}}" method="POST" id="selectorForm">
         @csrf
+        @method('delete')
         <div class="table-responsive">
           <table class="table table-hover table-bordered small" id="dataTable" width="100%" cellspacing="0">
             <thead>

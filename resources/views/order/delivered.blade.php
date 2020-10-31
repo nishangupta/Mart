@@ -16,6 +16,7 @@
             <input type="checkbox" class="selectall">
           </div>
           <button id="showSelected" class="btn btn-sm btn-primary">Returned</button>
+          <button class="btn btn-sm btn-info">Clean up older than 3 months</button>
       </div>
       <form action="{{route('returned.store')}}" method="POST" id="selectorForm">
         @csrf

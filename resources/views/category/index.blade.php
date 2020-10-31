@@ -7,7 +7,7 @@
     <div class="col-sm-12 col-md-6">
       <h1 class="h3 mb-0 text-gray-800">Category Management</h1>
       <p class="mb-4 d-block">List of all the Categories and Sub-categories.</p>
-      <a href="{{route('category.create')}}" class="btn btn-primary mb-4">Add a category</a>
+      <a href="{{route('category.create')}}" class="btn btn-sm btn-primary mb-4">Add a category</a>
     </div>
 
   </div>

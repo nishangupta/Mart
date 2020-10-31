@@ -17,6 +17,10 @@
           </div>
           <button id="showSelected" class="btn btn-sm btn-primary">Shipped</button>
           <button id="printInvoiceBtn" printinvoicevalue="4" title="print invoice" class=" btn btn-sm btn-success">Print invoice</button>
+          <form class="d-none" action="{{route('shipCancelled.store')}}" id="cancelOrderForm" method="POST">
+            @csrf <input id="cancelOrderInput" type="hidden" name="id" value="">
+          </form>
+          <button type="button" id="cancelSelected" class="btn btn-sm btn-danger float-right">Cancel Order</button>
       </div>
       <form action="{{route('shipped.store')}}" method="POST" id="selectorForm">
         @csrf
@@ -123,6 +127,22 @@ $(document).ready(function(){
       })
     }
   });   
+
+  //cancel orders
+  $('#cancelSelected').click(function(){
+    if($('.selectbox:checked').length !== 1){
+      alert('Please select exactly one row to print invoice!');
+      return;
+    }else{
+      let orderId = $('.selectbox:checked')[0].value;
+      $('#cancelSelected').prop('disabled',true);
+
+      $('#cancelOrderInput').val(orderId);
+      $('#cancelOrderForm').submit();
+    }
+  });   
+
+
 });
 
 </script>
