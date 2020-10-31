@@ -12,7 +12,6 @@ class ReturnedApiController extends Controller
   {
     $orders = Order::where('status', 'RETURNED')->latest()->get();
     return DataTables::of($orders)
-      ->setRowId('id')
       ->addColumn('select', function ($row) {
         $item = '<input type="checkbox" name="ids[]" class="selectbox" value="' . $row->id . '">
         ';

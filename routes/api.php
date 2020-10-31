@@ -1,14 +1,15 @@
 <?php
 
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\DeliveredApiController;
 use App\Http\Controllers\Api\OrderApiController;
 use App\Http\Controllers\Api\ProductApiController;
 use App\Http\Controllers\Api\ReadyToShipApiController;
 use App\Http\Controllers\Api\ReturnedApiController;
 use App\Http\Controllers\Api\ShipCancelledApiController;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\ShippedApiController;
+use App\Http\Controllers\Api\UserManagementApiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,6 +48,9 @@ Route::get('/returned/all', [ReturnedApiController::class, 'all'])->name('return
 
 //cancelled api
 Route::get('/ship/cancelled/all', [ShipCancelledApiController::class, 'all'])->name('shipCancelled.all');
+
+//usermangement api
+Route::get('/user-management/all', [UserManagementApiController::class, 'all'])->name('userManagement.all');
 
 //image uploading
 Route::post('/product/images/{id}', [ProductImageController::class, 'store'])->name('store');

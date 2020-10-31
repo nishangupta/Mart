@@ -104,7 +104,7 @@
       <div class="bg-white py-2 collapse-inner rounded">
         <h6 class="collapse-header">Accounts information:</h6>
         <a class="collapse-item" href="{{route('admin.profile')}}">Profile</a>
-        <a class="collapse-item" href="route('usermanagement.index')}}">User Management</a>
+        <a class="collapse-item" href="{{route('userManagement.index')}}">User Management</a>
       </div>
     </div>
   </li>

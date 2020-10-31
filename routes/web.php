@@ -14,6 +14,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ShipCancelledController;
 use App\Http\Controllers\DeliveredController;
 use App\Http\Controllers\ReturnedController;
+use App\Http\Controllers\UserManagementController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -34,6 +35,11 @@ Route::put('/account/changePassword', [AccountController::class, 'changePassword
 Route::get('/admin', [AdminController::class, 'dashboard'])->name('admin.dashboard');
 Route::get('/admin/profile', [AdminController::class, 'profile'])->name('admin.profile');
 Route::get('/admin/login', [AdminController::class, 'loginView'])->name('admin.loginView');
+
+//User Management 
+Route::get('/user-management', [UserManagementController::class, 'index'])->name('userManagement.index');
+Route::post('/user-management', [UserManagementController::class, 'store'])->name('userManagement.store');
+Route::get('/user-management/{id}/destroy', [UserManagementController::class, 'destroy'])->name('userManagement.destroy');
 
 //products
 Route::resource('/product', ProductController::class);
