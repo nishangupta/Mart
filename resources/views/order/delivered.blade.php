@@ -6,7 +6,7 @@
   
   <div class="card shadow mb-4">
     <div class="card-header py-3">
-      <h6 class="m-0 font-weight-bold text-primary">Ready to ship products</h6>
+      <h6 class="m-0 font-weight-bold text-primary">Delivered Products</h6>
     </div>
     <div class="card-body">
 
@@ -15,10 +15,9 @@
             <label for="">Select all</label>
             <input type="checkbox" class="selectall">
           </div>
-          <button id="showSelected" class="btn btn-sm btn-primary">Shipped</button>
-          <button id="printInvoiceBtn" printinvoicevalue="4" title="print invoice" class=" btn btn-sm btn-success">Print invoice</button>
+          <button id="showSelected" class="btn btn-sm btn-primary">Returned</button>
       </div>
-      <form action="{{route('shipped.store')}}" method="POST" id="selectorForm">
+      <form action="{{route('returned.store')}}" method="POST" id="selectorForm">
         @csrf
         <div class="table-responsive">
           <table class="table table-hover table-bordered small" id="dataTable" width="100%" cellspacing="0">
@@ -50,7 +49,7 @@ $(document).ready(function(){
   $('#dataTable').dataTable({
   processing:true,
   serverSide:true,
-  ajax:"{{route('readyToShip.all')}}",
+  ajax:"{{route('delivered.all')}}",
     columns:[
       {data:'select',orderable:false,searchable:false},
       {data:'order_number'},
@@ -87,42 +86,6 @@ $(document).ready(function(){
     }
   })
 
-  //window print jquery extension
-  $.fn.extend({
-    print: function(data) {
-        var frameName = 'printIframe';
-        var doc = window.frames[frameName];
-        if (!doc) {
-            $('<iframe>').hide().attr('name', frameName).appendTo(document.body);
-            doc = window.frames[frameName];
-        }
-        doc.document.body.innerHTML = data;
-        doc.window.print();
-        return this;
-    }
-  });
-
-  //print invoice
-  $('#printInvoiceBtn').click(function(){
-    if($('.selectbox:checked').length !== 1){
-      alert('Please select exactly one row to print invoice!');
-      return;
-    }else{
-      let orderId = $('.selectbox:checked')[0].value;
-      $('#printInvoiceBtn').prop('disabled',true);
-      axios.get(`invoice/${orderId}`)
-      .then(res=>res.data)
-      .then(data=>{
-        //print method defined above
-        $('#invoice').print(data);
-        $('#printInvoiceBtn').prop('disabled',false);
-      })
-      .catch(e=>{
-        console.log(e)
-        $('#printInvoiceBtn').prop('disabled',false);
-      })
-    }
-  });   
 });
 
 </script>

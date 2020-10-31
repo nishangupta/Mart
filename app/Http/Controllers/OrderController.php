@@ -17,7 +17,6 @@ class OrderController extends Controller
         $order = new Order();
 
         $order->order_number = rand(200, 299) . '' . Carbon::now()->timestamp;
-        $order->date = Carbon::now();
         $order->quantity = 1;
         $order->product_id = 1;
         $order->price = 2000;

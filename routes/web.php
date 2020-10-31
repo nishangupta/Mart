@@ -4,12 +4,16 @@ use App\Http\Controllers\AccountController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductImageController;
 use App\Http\Controllers\ReadyToShipController;
 use App\Http\Controllers\ShippedController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ShipCancelledController;
+use App\Http\Controllers\DeliveredController;
+use App\Http\Controllers\ReturnedController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -49,6 +53,18 @@ Route::post('/ready-to-ship', [ReadyToShipController::class, 'store'])->name('re
 Route::get('/shipped', [ShippedController::class, 'index'])->name('shipped.index');
 Route::post('/shipped', [ShippedController::class, 'store'])->name('shipped.store');
 
+//Delivered 
+Route::get('/delivered', [DeliveredController::class, 'index'])->name('delivered.index');
+Route::post('/delivered', [DeliveredController::class, 'store'])->name('delivered.store');
+
+//cancelled 
+Route::get('/returned', [ReturnedController::class, 'index'])->name('returned.index');
+Route::post('/returned', [ReturnedController::class, 'store'])->name('returned.store');
+
+//cancelled 
+Route::get('/ship/cancelled', [ShipCancelledController::class, 'index'])->name('shipCancelled.index');
+Route::post('/ship/cancelled', [ShipCancelledController::class, 'store'])->name('shipCancelled.store');
+
 //category
 Route::get('/category', [CategoryController::class, 'index'])->name('category.index');
 Route::get('/category/create', [CategoryController::class, 'create'])->name('category.create');
@@ -57,3 +73,9 @@ Route::get('/category/{id}/edit', [CategoryController::class, 'edit'])->name('ca
 Route::put('/category/{id}', [CategoryController::class, 'update'])->name('category.update');
 Route::delete('/category/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
 Route::get('/category/removeSubCategory/{subCategory}', [CategoryController::class, 'removeSubCategory'])->name('category.removeSubCategory');
+
+
+// Route::get('/invoice', function () {
+//     return view('order.invoice');
+// });
+Route::get('/invoice/{order}', [InvoiceController::class, 'index'])->name('invoice.index');

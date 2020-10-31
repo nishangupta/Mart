@@ -11,6 +11,11 @@ class Product extends Model
 
     protected $guarded = [];
 
+    public function productImage()
+    {
+        return $this->hasMany('App\Models\ProductImage');
+    }
+
     public function path()
     {
         // return url("/real-estate/{$this->id}-" . Str::slug($this->name));

@@ -11,7 +11,7 @@ class ProductApiController extends Controller
 {
   public function all()
   {
-    $products = Product::latest();
+    $products = Product::latest()->get();
     return DataTables::of($products)
       ->addColumn('onSale', function ($row) {
         $val = $row->onSale ? 'onSale' : 'Toggle sale';

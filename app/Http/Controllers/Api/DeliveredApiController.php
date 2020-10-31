@@ -2,16 +2,15 @@
 
 namespace App\Http\Controllers\Api;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use Yajra\DataTables\DataTables;
 
-class OrderApiController extends Controller
+class DeliveredApiController extends Controller
 {
   public function all()
   {
-    $orders = Order::where('status', 'PENDING')->latest()->get();
+    $orders = Order::where('status', 'DELIVERED')->latest()->get();
     return DataTables::of($orders)
       ->setRowId('id')
       ->addColumn('select', function ($row) {
@@ -26,7 +25,14 @@ class OrderApiController extends Controller
         $item = '<a href="order/' . $row->id . '" class="">' . $row->order_number . '</a>';
         return $item;
       })
-      ->rawColumns(['select', 'order_number'])
+      ->addColumn('printed', function ($row) {
+        $val = $row->printed ? 'Printed' : 'Not printed';
+        $class = $row->printed ? 'text-primary' : 'text-danger';
+        $item = '<a href="javascript:void(0)" title="print invoice" class="' . $class . '">' . $val . '</a>';
+        return $item;
+      })
+
+      ->rawColumns(['select', 'order_number', 'printed'])
       ->make(true);
   }
 }

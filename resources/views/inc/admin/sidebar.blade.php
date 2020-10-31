@@ -54,6 +54,11 @@
       <div class="bg-white py-2 collapse-inner rounded">
         <h6 class="collapse-header">Order information:</h6>
         <a class="collapse-item" href="{{route('order.index')}}">Manage Orders</a>
+        <a class="collapse-item" href="{{route('readyToShip.index')}}">Ready to ship</a>
+        <a class="collapse-item" href="{{route('shipped.index')}}">Shipped Orders</a>
+        <a class="collapse-item" href="{{route('delivered.index')}}">Delivered</a>
+        <a class="collapse-item" href="{{route('shipCancelled.index')}}">Cancelled</a>
+        <a class="collapse-item" href="{{route('returned.index')}}">Returned</a>
         <a class="collapse-item" href="route('reviews.index')}}">Manage reviews</a>
       </div>
     </div>
