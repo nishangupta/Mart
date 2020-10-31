@@ -28,10 +28,11 @@ Route::get('/user', [UserController::class, 'index'])->name('user.index');
 
 //accounts
 Route::get('/logout', [AccountController::class, 'logout'])->name('account.logout');
-Route::get('/change', [AccountController::class, 'logout'])->name('account.logout');
+Route::put('/account/changePassword', [AccountController::class, 'changePassword'])->name('account.changePassword');
 
 //admin
 Route::get('/admin', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+Route::get('/admin/profile', [AdminController::class, 'profile'])->name('admin.profile');
 Route::get('/admin/login', [AdminController::class, 'loginView'])->name('admin.loginView');
 
 //products
