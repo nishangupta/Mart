@@ -1,14 +1,14 @@
-<section class="top-banner bg-light my-0 py-0">
+<section class="top-banner bg-light my-0 py-2">
   <div class="container-fluid">
-      <ul class="top-banner-list">
+      <ul class="top-banner-list small">
         <li>
           <a href="">Call us:+4222022</a>
         </li>
         <li>
-          <a href="">Sign up</a>
+          <a href="{{route('register')}}">Sign up</a>
         </li>
         <li>
-          <a href="">Login</a>
+          <a href="{{route('login')}}">Login</a>
         </li>
         <li class="active">
           <a href="">Track my order</a>
@@ -21,9 +21,11 @@
   <section class="header-main border-bottom">
       <div class="container">
           <div class="row align-items-center">
-              <div class="col-lg-3 col-sm-6 col-md-3 col-5"> <a href="#" class="brand-wrap" data-abc="true">
+              <div class="col-lg-3 col-sm-6 col-md-3 col-5"> 
+                <a href="{{route('shop.index')}}" class="brand-wrap" data-abc="true">
                       {{-- <img class="logo" width="50px" src="{{asset('logo.png')}}">  --}}
-                      <span class="logo">Mart</span> </a> </div>
+                      <span class="logo">Mart</span> 
+                </a> </div>
               <div class="col-lg-6 col-sm-8 col-md-6  col-xl-5  d-none d-md-block">
                   <form action="#" class="search-wrap">
                       <div class="input-group w-100"> <input type="text" class="form-control search-form" style="width:55%;" placeholder="Search">
@@ -33,7 +35,8 @@
               </div>
               <div class="col-lg-3 col-sm-6 col-md-3 col-xl-4 col-7">
                   <div class="d-flex justify-content-end">
-                      <a class="nav-link nav-user-img text-white" href="#"> LOGIN</a>
+                    <a class="nav-link nav-user-img text-white" href="#"> <i class="fas fa-shopping-cart"></i></a>
+                    <a class="nav-link nav-user-img text-white" href="{{route('login')}}"> LOGIN</a>
                   </div>
               </div>
           </div>

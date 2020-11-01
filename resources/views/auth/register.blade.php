@@ -58,15 +58,15 @@
                     <label class="form-check-label" for="receiveOffers">I want to receive exclusive offers and promotions from Mart.</label>
                 </div>
 
-                <button type="submit" class="btn btn-primary btn-block">SIGN UP</button>
-                <div class="">
-                  <span>By clicking “SIGN UP”, I agree to Mart's  
+                <button type="submit" class="btn btn-orange btn-block">SIGN UP</button>
+                <div class="mb-3">
+                  <small>By clicking “SIGN UP”, I agree to Mart's  
                       <a href="#" target="_blank">Terms of Use</a> and <a href="#" target="_blank" >Privacy Policy</a>
-                  </span>
+                  </small>
                 </div>
                 <div class="mod-third-party-login-bd">
-                    <a href="#loginUsingFacebook" class="btn btn-primary btn-facebook">Facebook</a>
-                    <a href="#loginUsingGoogle" class="btn btn-primary btn-google">Google</a>
+                    <a href="#loginUsingFacebook" class="btn btn-block btn-facebook">Facebook</a>
+                    <a href="#loginUsingGoogle" class="btn btn-block btn-google">Google</a>
                 </div>
              </div>
           </div>

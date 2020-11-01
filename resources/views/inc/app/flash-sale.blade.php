@@ -1,5 +1,18 @@
 <section class="just-for-you-section container h-100 my-4">
-  <h3>Just For You</h3>
+  <h3>Flash sale</h3>
+  <div class="bg-white p-2">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="d-block pt-3">
+          <p class="d-block">Ending in <button class="btn btn-danger ml-3 btn-sm">01 hours</button> </p>
+        </div>  
+
+        <div>
+          <a href="search" class="btn btn-danger">Shop more</a> 
+        </div>
+
+    </div>
+ 
+  </div>
   <div class="row h-100">
     <div class="col-6 col-sm-4 col-md-2 p-2">
       <div class="card shadow-hover h-100" >
@@ -50,10 +63,4 @@
 
   </div>
 
-  <div class="d-flex justify-content-center mt-5">
-    <div class="text-center">
-      <h2>Didn't Find Your Match</h2>
-      <a href="search" class="btn btn-orange">Search for It</a>
-    </div>
-  </div>
 </section>

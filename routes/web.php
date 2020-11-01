@@ -18,7 +18,11 @@ use App\Http\Controllers\ShopController;
 use App\Http\Controllers\UserManagementController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [ShopController::class, 'index']);
+Route::get('/', [ShopController::class, 'index'])->name('shop.index');
+Route::get('/shop', function () {
+  return redirect(route('shop.index'));
+});
+Route::get('/shop/{id}', [ShopController::class, 'show'])->name('shop.show');
 
 //app
 Route::get('/home', [HomeController::class, 'index'])->name('home.index');

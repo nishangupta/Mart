@@ -9,17 +9,10 @@
 //defaults
 @import "./shop/default";
 
-//topbar
+//components
 @import "./shop/navigation-bar";
-//main-banner
 @import "./shop/main-banner";
 
-// //main navbar
-// @import "./inc/navbar";
-
-// //pages
-// @import "./pages/home";
-// @import "./pages/auth";
-
-// //layouts
-// @import "./inc/account-layout";
+//utils
+@import "./shop/error";
+@import "./shop/text";

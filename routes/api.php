@@ -10,6 +10,7 @@ use App\Http\Controllers\Api\ReturnedApiController;
 use App\Http\Controllers\Api\ShipCancelledApiController;
 use App\Http\Controllers\Api\ShippedApiController;
 use App\Http\Controllers\Api\UserManagementApiController;
+use App\Http\Controllers\ProductImageController;
 
 /*
 |--------------------------------------------------------------------------

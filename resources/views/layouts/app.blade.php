@@ -7,7 +7,8 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name') }}</title>
+    {{-- <title>{{ config('app.name')}}</title> --}}
+    <title>Buy @yield('page-title')</title>
 
     <link rel="shortcut icon" type="image/png" href="{{asset('logo.png')}}" />
     <!-- Fonts -->
@@ -22,7 +23,6 @@
 
     <div id="app">
         @include('inc.app.navigation-bar')
-        @include('inc.app.main-banner')
         @yield('content')
         @include('inc.app.footer')
     </div>
