@@ -10,6 +10,30 @@ a {
         text-decoration: none;
     }
 }
+
+.shadow-hover {
+    transition: box-shadow 0.3s;
+    &:hover {
+        box-shadow: 0 0 11px rgba(33, 33, 33, 0.2);
+    }
+}
+
+.btn-orange {
+    color: white;
+    background-color: $orange;
+    &:hover {
+        color: #ddd;
+    }
+}
+
+.text-orange {
+    color: $orange;
+}
+
+.line-through {
+    text-decoration: line-through;
+}
+
 // //variables
 // $primary-color: #185a91;
 // $primary-hover: #023966;

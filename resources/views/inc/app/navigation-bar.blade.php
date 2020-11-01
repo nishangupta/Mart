@@ -1,4 +1,4 @@
-<section class="top-banner my-0 py-0">
+<section class="top-banner bg-light my-0 py-0">
   <div class="container-fluid">
       <ul class="top-banner-list">
         <li>
@@ -40,7 +40,7 @@
       </div>
   </section>
 
-  <nav class="navbar navbar-expand-md navbar-main border-bottom">
+  <nav class="navbar navbar-expand-md navbar-main border-bottom shadow bg-light">
       <div class="container">
           <form class="d-md-none my-2">
               <div class="input-group"> 

@@ -1,4 +1,4 @@
-<div class="footer-main-box  pt-5 bg-light">
+<div class="footer-main-box mt-5 pt-5 bg-light">
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-auto"> 
