@@ -86,9 +86,9 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./resources/js/home.js":
+/***/ "./resources/js/shop.js":
 /*!******************************!*\
-  !*** ./resources/js/home.js ***!
+  !*** ./resources/js/shop.js ***!
   \******************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -99,12 +99,12 @@
 
 /***/ 2:
 /*!************************************!*\
-  !*** multi ./resources/js/home.js ***!
+  !*** multi ./resources/js/shop.js ***!
   \************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! D:\laravel-important\Mart\resources\js\home.js */"./resources/js/home.js");
+module.exports = __webpack_require__(/*! D:\laravel-important\Mart\resources\js\shop.js */"./resources/js/shop.js");
 
 
 /***/ })

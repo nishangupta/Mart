@@ -14,12 +14,11 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ShipCancelledController;
 use App\Http\Controllers\DeliveredController;
 use App\Http\Controllers\ReturnedController;
+use App\Http\Controllers\ShopController;
 use App\Http\Controllers\UserManagementController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [ShopController::class, 'index']);
 
 //app
 Route::get('/home', [HomeController::class, 'index'])->name('home.index');

@@ -1,0 +1,136 @@
+.top-banner {
+    background-color: #ececec;
+    margin: 0;
+    .top-banner-list {
+        margin: 0;
+        display: flex;
+        flex-direction: row-reverse;
+        margin-left: auto;
+        list-style-type: none;
+        li {
+            margin-right: 2rem;
+            &:hover a {
+                color: #2874f0;
+            }
+            &.active a {
+                color: #2874f0;
+            }
+            a {
+                color: #222;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 780px) {
+    .top-banner {
+        display: none;
+    }
+}
+
+.header-main {
+    position: relative;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    background-color: #2874f0;
+}
+
+.logo {
+    color: #fff;
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.brand-wrap {
+    text-decoration: none !important;
+}
+
+.icon-sm {
+    width: 48px;
+    height: 48px;
+    line-height: 48px !important;
+    font-size: 20px;
+}
+.search-form {
+    border: 1px solid #ffffff !important;
+}
+
+.search-button {
+    color: #007bff;
+    background-color: #ffffff;
+    border-color: #ffffff;
+}
+
+.navbar-main {
+    background-color: #fff;
+}
+
+.navbar-toggler {
+    color: rgba(0, 0, 0, 0.5);
+    color: rgba(0, 0, 0, 0.5);
+    border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+.navbar-toggler {
+    padding: 4px;
+    font-size: 1.25rem;
+    line-height: 1;
+    background-color: transparent;
+    border: 1px solid transparent;
+    border-radius: 0.37rem;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    display: none;
+    float: left;
+    min-width: 10rem;
+    padding: 0.5rem 0;
+    margin: 0.5rem 7px 0px;
+    font-size: 1rem;
+    color: #212529;
+    text-align: left;
+    list-style: none;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 0.25rem;
+}
+
+.dropdown-item {
+    display: block;
+    width: 100%;
+    padding: 0.45rem 1.5rem;
+    clear: both;
+    font-weight: 400;
+    color: #212529;
+    text-align: inherit;
+    white-space: nowrap;
+    background-color: transparent;
+    border: 0;
+}
+
+.navbar-toggler-icon {
+    background-image: url(https://img.icons8.com/ios/50/000000/menu.png);
+}
+
+.nav-link {
+    text-transform: uppercase;
+    font-weight: 400;
+}
+
+.vl {
+    border-left: 1px solid #fff;
+    height: 100%;
+}
+
+.fas {
+    color: #fff;
+}
+
+.login {
+    color: white;
+}

@@ -1,9 +1,18 @@
 //Css represents to the Home layouts only
 
+// Import Custom Admin Variables (Overrides Default Bootstrap Variables)
+@import "./shop/variables";
+
 //Bootstrap css
 @import "~bootstrap/scss/bootstrap";
 
-// @import "./default";
+//defaults
+@import "./shop/default";
+
+//topbar
+@import "./shop/navigation-bar";
+//main-banner
+@import "./shop/main-banner";
 
 // //main navbar
 // @import "./inc/navbar";

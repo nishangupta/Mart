@@ -9,8 +9,8 @@
   <!-- Divider -->
   <hr class="sidebar-divider my-0">
   <!-- Nav Item - Dashboard -->
-  <li class="nav-item {{ request()->segment(2) == 'dashboard' ? 'active': ''}}">
-    <a class="nav-link" href="route('admin.dashboard')}}">
+  <li class="nav-item {{ request()->segment(1) == 'admin' ? 'active': ''}}">
+    <a class="nav-link" href="{{route('admin.dashboard')}}">
       <i class="fas fa-fw fa-tachometer-alt"></i>
       <span>Dashboard</span></a>
   </li>
