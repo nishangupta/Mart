@@ -8,7 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     {{-- <title>{{ config('app.name')}}</title> --}}
-    <title>Buy @yield('page-title')</title>
+    <title>@yield('page-title')</title>
 
     <link rel="shortcut icon" type="image/png" href="{{asset('logo.png')}}" />
     <!-- Fonts -->

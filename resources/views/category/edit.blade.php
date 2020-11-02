@@ -22,6 +22,7 @@
           <div class="col-sm-12 col-md-8">
             <div class="form-group">
               <label for="">Category name</label>
+              <small class="text-primary d-block mb-3">Category name should be all uppercase !</small>
               <input type="text" name="category" value="{{$category->category_name}}" class="form-control" required autofocus>  
             </div>
             <div class="form-group">

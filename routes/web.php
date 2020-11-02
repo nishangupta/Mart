@@ -23,6 +23,7 @@ Route::get('/shop', function () {
   return redirect(route('shop.index'));
 });
 Route::get('/shop/{id}', [ShopController::class, 'show'])->name('shop.show');
+Route::get('/catalog', [ShopController::class, 'catalog'])->name('shop.catalog');
 
 //app
 Route::get('/home', [HomeController::class, 'index'])->name('home.index');
@@ -38,6 +39,9 @@ Route::put('/account/changePassword', [AccountController::class, 'changePassword
 Route::get('/admin', [AdminController::class, 'dashboard'])->name('admin.dashboard');
 Route::get('/admin/profile', [AdminController::class, 'profile'])->name('admin.profile');
 Route::get('/admin/login', [AdminController::class, 'loginView'])->name('admin.loginView');
+//print Invoice
+Route::get('/invoice/{order}', [InvoiceController::class, 'index'])->name('invoice.index');
+
 
 //User Management 
 Route::get('/user-management', [UserManagementController::class, 'index'])->name('userManagement.index');
@@ -83,9 +87,3 @@ Route::get('/category/{id}/edit', [CategoryController::class, 'edit'])->name('ca
 Route::put('/category/{id}', [CategoryController::class, 'update'])->name('category.update');
 Route::delete('/category/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
 Route::get('/category/removeSubCategory/{subCategory}', [CategoryController::class, 'removeSubCategory'])->name('category.removeSubCategory');
-
-
-// Route::get('/invoice', function () {
-//     return view('order.invoice');
-// });
-Route::get('/invoice/{order}', [InvoiceController::class, 'index'])->name('invoice.index');

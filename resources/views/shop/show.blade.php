@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('page-title', $product->title)
+@section('page-title', 'Show '.$product->title)
 
 @section('content')
 {{-- 

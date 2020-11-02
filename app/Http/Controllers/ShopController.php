@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Product;
-use Illuminate\Database\Eloquent\Collection;
 
 class ShopController extends Controller
 {
@@ -22,6 +22,14 @@ class ShopController extends Controller
         return view('shop.show')->with([
             'product' => $product,
             'mightAlsoLike' => $mightAlsoLike
+        ]);
+    }
+
+    public function catalog()
+    {
+        $products = Product::paginate(2);
+        return view('shop.catalog')->with([
+            'products' => $products
         ]);
     }
 }

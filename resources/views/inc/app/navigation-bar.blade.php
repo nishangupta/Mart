@@ -1,3 +1,4 @@
+@guest
 <section class="top-banner bg-light my-0 py-2">
   <div class="container-fluid">
       <ul class="top-banner-list small">
@@ -16,6 +17,7 @@
       </ul>
   </div>
 </section>
+@endguest
 
 <header class="section-header sticky-top my-0 py-0">
   <section class="header-main border-bottom">
@@ -36,7 +38,12 @@
               <div class="col-lg-3 col-sm-6 col-md-3 col-xl-4 col-7">
                   <div class="d-flex justify-content-end">
                     <a class="nav-link nav-user-img text-white" href="#"> <i class="fas fa-shopping-cart"></i></a>
+                    @guest
                     <a class="nav-link nav-user-img text-white" href="{{route('login')}}"> LOGIN</a>
+                    @endguest
+                    @auth
+                    <a class="nav-link nav-user-img text-white" href="{{route('user.index')}}"> Account</a>
+                    @endauth
                   </div>
               </div>
           </div>
@@ -56,13 +63,17 @@
           <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#dropdown6" aria-expanded="false"> <span class="navbar-toggler-icon"></span> </button>
           <div class="navbar-collapse collapse" id="dropdown6" style="">
               <ul class="navbar-nav mr-auto">
-                  <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="" data-toggle="dropdown" data-abc="true" aria-expanded="false">Laptops</a>
-                      <div class="dropdown-menu"> <a class="dropdown-item" href="" data-abc="true">Lenovo</a> <a class="dropdown-item" href="" data-abc="true">Dell</a> <a class="dropdown-item" href="" data-abc="true">HP</a> <a class="dropdown-item" href="" data-abc="true">Apple</a> </div>
+
+                @foreach($navbarCategories as $category)
+                  <li class="nav-item dropdown small"> <a class="nav-link dropdown-toggle" href="" data-toggle="dropdown" data-abc="true" aria-expanded="false">{{$category->category_name}}</a>
+                      <ul class="dropdown-menu"> 
+                      @foreach($category->subCategory as $item)
+                        <a class="dropdown-item" href="" style="font-size:.8rem" class="text-sm" data-abc="true">{{$item->subCategory_name}}</a> 
+                      @endforeach 
+                      </ul>
                   </li>
-                  <li class="nav-item"> <a class="nav-link" href="" data-abc="true">Refurbished Mobile</a> </li>
-                  <li class="nav-item"> <a class="nav-link" href="" data-abc="true">Accessories & Peripheral</a> </li>
-                  <li class="nav-item"> <a class="nav-link" href="" data-abc="true">Blog</a> </li>
-                  <li class="nav-item"> <a class="nav-link" href="" data-abc="true">Support</a> </li>
+                  @endforeach
+                  
               </ul>
           </div>
       </div>
