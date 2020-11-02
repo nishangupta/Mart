@@ -42,7 +42,11 @@ class AccountController extends Controller
                 $user->password = Hash::make($newP);
                 if ($user->save()) {
                     Alert::toast('Password Changed!', 'success');
-                    return redirect()->intended('admin.dashboard');
+                    if ($user->hasRole('admin')) {
+                        return redirect()->route('admin.dashboard');
+                    } else {
+                        return redirect()->intended('/');
+                    }
                 } else {
                     Alert::toast('Something went wrong!', 'warning');
                 }

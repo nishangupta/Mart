@@ -19,17 +19,22 @@ use App\Http\Controllers\UserManagementController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [ShopController::class, 'index'])->name('shop.index');
+
+Route::get('/shop/{id}', [ShopController::class, 'show'])->name('shop.show');
+Route::get('/catalog', [ShopController::class, 'catalog'])->name('shop.catalog');
 Route::get('/shop', function () {
   return redirect(route('shop.index'));
 });
-Route::get('/shop/{id}', [ShopController::class, 'show'])->name('shop.show');
-Route::get('/catalog', [ShopController::class, 'catalog'])->name('shop.catalog');
 
 //app
 Route::get('/home', [HomeController::class, 'index'])->name('home.index');
 
 //user
 Route::get('/user', [UserController::class, 'index'])->name('user.index');
+Route::post('/user/address', [UserController::class, 'address'])->name('user.address');
+Route::get('/user/order', [UserController::class, 'order'])->name('user.order');
+Route::get('/user/cancel', [UserController::class, 'cancel'])->name('user.cancel');
+Route::get('/user/review', [UserController::class, 'review'])->name('user.review');
 
 //accounts
 Route::get('/logout', [AccountController::class, 'logout'])->name('account.logout');

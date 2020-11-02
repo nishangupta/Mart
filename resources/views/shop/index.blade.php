@@ -104,7 +104,7 @@
       <div class="row h-100">
         
         <div class="col-4 col-sm-4 col-md-2 p-2">
-          <a href="">
+          <a href="{{'catalog?filter[subCategory]=Mobile'}}">
             <div class="card shadow-hover">
               <div class="card-body">
                 <img src="{{asset('images/demo/electronics.jpg')}}" class="img-fluid" alt="">
@@ -115,7 +115,7 @@
         </div>
         
         <div class="col-4 col-sm-4 col-md-2 p-2">
-          <a href="">
+          <a href="{{'catalog?filter[subCategory]=Furniture'}}">
             <div class="card shadow-hover">
               <div class="card-body">
                 <img src="{{asset('images/demo/home.jpg')}}" class="img-fluid" alt="">
@@ -126,7 +126,7 @@
         </div>
         
         <div class="col-4 col-sm-4 col-md-2 p-2">
-          <a href="">
+          <a href="{{'catalog?filter[subCategory]=Diapers'}}">
             <div class="card shadow-hover">
               <div class="card-body">
                 <img src="{{asset('images/demo/baby.jpg')}}" class="img-fluid" alt="">
@@ -137,7 +137,7 @@
         </div>
         
         <div class="col-4 col-sm-4 col-md-2 p-2">
-          <a href="">
+          <a href="{{'catalog?filter[subCategory]=Mens'}}">
             <div class="card shadow-hover">
               <div class="card-body">
                 <img src="{{asset('images/demo/sport.jpg')}}" class="img-fluid" alt="">
@@ -148,7 +148,7 @@
         </div>
         
         <div class="col-4 col-sm-4 col-md-2 p-2">
-          <a href="">
+          <a href="{{'catalog?filter[subCategory]=Kitchen'}}">
             <div class="card shadow-hover">
               <div class="card-body">
                 <img src="{{asset('images/demo/kitchen.jpg')}}" class="img-fluid" alt="">
@@ -159,7 +159,7 @@
         </div>
         
         <div class="col-4 col-sm-4 col-md-2 p-2">
-          <a href="">
+          <a href="{{'catalog?filter[subCategory]=Pet'}}">
             <div class="card shadow-hover">
               <div class="card-body">
                 <img src="{{asset('images/demo/pet.jpg')}}" class="img-fluid" alt="">
@@ -177,41 +177,25 @@
   <section class="just-for-you-section container h-100 my-4">
     <h3>Just For You</h3>
     <div class="row h-100">
+      @foreach($newProducts as $product)
       <div class="col-6 col-sm-4 col-md-2 p-2">
+        <a href="{{route('shop.show',['id'=>$product])}}">
         <div class="card shadow-hover h-100" >
-          <img src="https://static-01.daraz.com.np/p/516e4237465d928fb051fe7d0082ce5a.jpg_200x200q80-product.jpg_.webp" class="card-img-top" alt="">
+          <img src="{{$product->productImage->first()->original}}" class="card-img-top" alt="">
           <div class="card-body ">
-            <p class="product-title">100% cotton full sleves Tshirt for men</p>
-            <small class="line-through">Rs. 1200</small>
-            <p class="product-price">Rs.1599  </p>
+            <p class="product-title">{{$product->title}}</p>
+            @if($product->onSale)
+              <small class="line-through text-dark">Rs. {{$product->price}}</small>
+              <p class="product-price">Rs.{{number_format($product->sale_price)}}</p>
+            @else
+              <p class="product-price">Rs.{{number_format($product->price)}}</p>
+            @endif
           </div>
             <button class="btn btn-orange btn-block">Add to cart</button>
         </div>
+        </a>
       </div>
-      
-      <div class="col-6 col-sm-4 col-md-2 p-2">
-        <div class="card shadow-hover h-100" >
-          <img src="https://static-01.daraz.com.np/p/516e4237465d928fb051fe7d0082ce5a.jpg_200x200q80-product.jpg_.webp" class="card-img-top" alt="">
-          <div class="card-body ">
-            <p class="product-title">100% cotton full sleves Tshirt for men</p>
-            <small class="line-through">Rs. 1200</small>
-            <p class="product-price">Rs.1599  </p>
-          </div>
-            <button class="btn btn-orange btn-block">Add to cart</button>
-        </div>
-      </div>
-
-      <div class="col-6 col-sm-4 col-md-2 p-2">
-        <div class="card shadow-hover h-100" >
-          <img src="https://static-01.daraz.com.np/p/516e4237465d928fb051fe7d0082ce5a.jpg_200x200q80-product.jpg_.webp" class="card-img-top" alt="">
-          <div class="card-body ">
-            <p class="product-title">100% cotton full sleves Tshirt for men</p>
-            <small class="line-through">Rs. 1200</small>
-            <p class="product-price">Rs.1599  </p>
-          </div>
-            <button class="btn btn-orange btn-block">Add to cart</button>
-        </div>
-      </div>
+      @endforeach
   
     </div>
   

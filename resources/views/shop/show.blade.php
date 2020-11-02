@@ -1,18 +1,18 @@
 @extends('layouts.app')
-@section('page-title', 'Show '.$product->title)
+@section('page-title', 'Buy '.$product->title)
 
 @section('content')
-{{-- 
-  @component('components.breadcrumbs')
-    <a href="/">Home</a>
-    <i class="fa fa-chevron-right breadcrumb-separator"></i>
-    <span><a href="{{ route('shop.index') }}">Shop</a></span>
-    <i class="fa fa-chevron-right breadcrumb-separator"></i>
-    <span>{{ $product ?? ''->name }}</span>
-  @endcomponent --}}
 
   <div class="container">
     <div class="card shadow my-5">
+      @component('components.breadcrumbs')
+        <a href="/">Home</a>
+        <i class="fa fa-chevron-right breadcrumb-separator"></i>
+        <span><a href="{{ route('shop.catalog') }}">Shop</a></span>
+        <i class="fa fa-chevron-right breadcrumb-separator"></i>
+        <span>{{ $product->title }}</span>
+      @endcomponent
+    
       <div class="card-body">
         <div class="product-section">
           <div class="row">
@@ -30,9 +30,9 @@
       
                   @if ($product->productImage)
                       @foreach ($product->productImage as $image)
-                        <div class="col-sm-2 col-md-3 col-2">
+                        <div class="col-sm-2 col-md-3 col-2 mb-2">
                           <div class="product-section-thumbnail">
-                            <img src="{{ asset($image->original) }}" class="img-fluid" alt="product">
+                            <img src="{{ asset($image->original) }}" class="w-100" alt="product">
                           </div>
                         </div>
                       @endforeach
@@ -71,13 +71,19 @@
                 <p>&nbsp;</p>
         
                 @if ($product->stock > 0)
-                    <form action=" route('cart.store', $product ?? '') }}" method="POST">
-                        @csrf
-                        <button type="submit" class="btn btn-orange">Add to Cart</button>
-                        <button type="submit" class="btn btn-primary">Buy now</button>
-                    </form>
+                <input type="hidden" id="stockVal" value="{{$product->stock}}">
+                <form action=" route('cart.store', $product ?? '') }}" method="POST">
+                    @csrf
+                    <button type="submit" class="btn btn-orange">Add to Cart</button>
+                    <button type="submit" class="btn btn-primary">Buy now</button>
+                </form>
+                @else
+                    <button class="btn btn-secondary">Out of stock</button>
                 @endif
-            </div>
+
+                <p>&nbsp;</p>
+
+              </div>
             </div>
           </div>
         
@@ -103,9 +109,7 @@
       min-height: 66px;
       cursor: pointer;
     }
-  .product-section-thumbnail :hover {
-        border: 1px solid #979797;
-    }
+ 
   .product-section-image {
     display: flex;
     justify-content: center;
@@ -170,7 +174,14 @@
 
   //cart
   function cartIncrement(){
-    $('#cartCount').val(parseInt($('#cartCount').val()) + 1)
+    //check if the cart count is less than stock quantity
+    if(Number($('#cartCount').val()) < Number($('#stockVal').val()) ){
+      if(Number($('#cartCount').val() < 5)){
+        $('#cartCount').val(parseInt($('#cartCount').val()) + 1)
+      }
+    }else{
+      alert('Max quantity reached for this product');
+    }
   }
   function cartDecrement(){
     if( $('#cartCount').val() > 1){

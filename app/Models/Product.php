@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 
 class Product extends Model
 {
@@ -24,6 +25,16 @@ class Product extends Model
     public function scopeMightAlsoLike($query)
     {
         return $query->inRandomOrder()->with('first_image')->take(4);
+    }
+
+    public function scopeMinPrice(Builder $query, $price): Builder
+    {
+        return $query->where('price', '>=', $price);
+    }
+
+    public function scopeMaxPrice(Builder $query, $price): Builder
+    {
+        return $query->where('price', '<=', $price);
     }
 
     public function path()
