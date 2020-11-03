@@ -13,11 +13,11 @@
     <div class="col-xl-8 col-md-8 col-sm-12 mr-auto">
       <div class="card shadow">
         <div class="card-header bg-light border-bottom">
-          <p class="mb-0 ">My account</p>
+          <p class="mb-0 ">My Orders</p>
         </div>
 
         <div class="card-body">
-          <h6 class="heading-small text-muted mb-4">User information</h6>
+          <h6 class="heading-small text-muted mb-4">Order information</h6>
           <div class="pl-lg-4">
             <div class="row">
               <div class="col-lg-6">

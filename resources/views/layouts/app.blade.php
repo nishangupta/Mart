@@ -29,7 +29,7 @@
     
     @include('sweetalert::alert')
     <script src="{{ asset('js/app.js') }}"></script>
-    {{-- <script src="{{ asset('js/shop.js') }}"></script> --}}
+    <script src="{{ asset('js/shop.js') }}"></script>
     @stack('js')
 </body>
 </html>

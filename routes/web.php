@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InvoiceController;
@@ -17,6 +18,7 @@ use App\Http\Controllers\ReturnedController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\UserManagementController;
 use Illuminate\Support\Facades\Route;
+use App\Models\Cart;
 
 Route::get('/', [ShopController::class, 'index'])->name('shop.index');
 
@@ -24,6 +26,17 @@ Route::get('/shop/{id}', [ShopController::class, 'show'])->name('shop.show');
 Route::get('/catalog', [ShopController::class, 'catalog'])->name('shop.catalog');
 Route::get('/shop', function () {
   return redirect(route('shop.index'));
+});
+
+Route::resource('/cart', CartController::class);
+Route::get('/cart/api/all', [CartController::class, 'all']);
+Route::post('/cart/destroy/selected', [CartController::class, 'destroySelected']);
+Route::get('/cart/create/one', function () {
+  $cart = new Cart();
+  $cart->product_id = 2;
+  $cart->user_id = 12;
+  $cart->quantity = 1;
+  $cart->save();
 });
 
 //app
