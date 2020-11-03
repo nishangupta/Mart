@@ -27,8 +27,8 @@ class ProductApiController extends Controller
         return $item;
       })
       ->addColumn('actions', function ($row) {
-        $btns = '<a target="_blank" class="btn btn-info float-left btn-sm w-50 " href="/product/' . $row->id . '/image" ><i class="fas fa-eye"></i> Images</a>
-                <a class="btn btn-primary btn-sm float-left w-50 " href="/product/' . $row->id . '/edit"><i class="fas fa-pen-square"></i> Edit</a>';
+        $btns = '<a target="_blank" class="btn btn-info float-left btn-sm btn-block" href="/product/' . $row->id . '/image" ><i class="fas fa-eye"></i> Images</a>
+                <a class="btn btn-primary btn-sm float-left btn-block " href="/product/' . $row->id . '/edit"><i class="fas fa-pen-square"></i> Edit</a>';
         return $btns;
       })
       ->rawColumns(['actions', 'live', 'onSale'])
