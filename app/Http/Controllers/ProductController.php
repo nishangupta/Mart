@@ -99,6 +99,7 @@ class ProductController extends Controller
     {
         $product->user_id = auth()->user()->id;
         $product->title = $request->title;
+        $product->slug = Str::slug($request->title);
         $product->subCategory = $request->subCategory;
         $product->description = $request->description;
         $product->price = $request->price;
@@ -130,6 +131,7 @@ class ProductController extends Controller
     private function productUpdate($product, $request)
     {
         $product->title = $request->title;
+        $product->slug = Str::slug($request->title);
         $product->subCategory = $request->subCategory;
         $product->description = $request->description;
         $product->price = $request->price;

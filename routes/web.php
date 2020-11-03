@@ -22,22 +22,16 @@ use App\Models\Cart;
 
 Route::get('/', [ShopController::class, 'index'])->name('shop.index');
 
-Route::get('/shop/{id}', [ShopController::class, 'show'])->name('shop.show');
+Route::get('/shop/{id}-{slug}', [ShopController::class, 'show'])->name('shop.show');
 Route::get('/catalog', [ShopController::class, 'catalog'])->name('shop.catalog');
 Route::get('/shop', function () {
   return redirect(route('shop.index'));
 });
 
-Route::resource('/cart', CartController::class);
+Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+Route::post('/cart', [CartController::class, 'store'])->name('cart.store');
 Route::get('/cart/api/all', [CartController::class, 'all']);
 Route::post('/cart/destroy/selected', [CartController::class, 'destroySelected']);
-Route::get('/cart/create/one', function () {
-  $cart = new Cart();
-  $cart->product_id = 2;
-  $cart->user_id = 12;
-  $cart->quantity = 1;
-  $cart->save();
-});
 
 //app
 Route::get('/home', [HomeController::class, 'index'])->name('home.index');
@@ -89,7 +83,7 @@ Route::post('/shipped', [ShippedController::class, 'store'])->name('shipped.stor
 Route::get('/delivered', [DeliveredController::class, 'index'])->name('delivered.index');
 Route::post('/delivered', [DeliveredController::class, 'store'])->name('delivered.store');
 
-//cancelled 
+//returned 
 Route::get('/returned', [ReturnedController::class, 'index'])->name('returned.index');
 Route::post('/returned', [ReturnedController::class, 'store'])->name('returned.store');
 

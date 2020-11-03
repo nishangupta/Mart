@@ -45,7 +45,7 @@
               <div class="row">
                 <div class="col-12">
                   <div class="form-group">
-                    <input type="text" placeholder="Shipping address" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('address')??auth()->user()->userInfo->address }}" required>
+                    <input type="text" placeholder="Shipping address" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ auth()->user()->userInfo->address??'' }}" required>
                       @error('address')
                           <span class="invalid-feedback" role="alert">
                               <strong>{{ $message }}</strong>
@@ -53,7 +53,7 @@
                       @enderror
                   </div>
                   <div class="form-group">
-                    <input type="text" placeholder="Phone" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone')??auth()->user()->userInfo->phone }}" required>
+                    <input type="text" placeholder="Phone" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ auth()->user()->userInfo->phone??'' }}" required>
                       @error('phone')
                           <span class="invalid-feedback" role="alert">
                               <strong>{{ $message }}</strong>

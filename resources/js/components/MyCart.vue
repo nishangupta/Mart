@@ -41,13 +41,24 @@
               </div>
 
               <div class="col-md-4 col-8">
-                <a :href="`/shop/${cartItem.product.id}`" target="_blank">
+                <a
+                  :href="
+                    'shop/' + cartItem.product.id + '-' + cartItem.product.slug
+                  "
+                  target="_blank"
+                >
                   <p class="text-grey-800">{{ cartItem.product.title }}</p>
                 </a>
               </div>
 
               <div class="col-md-2 col-6 mt-sm-2 mt-md-0">
-                <p class="text-orange h5">Rs.{{ cartItem.product.price }}</p>
+                <p class="text-orange h5">
+                  Rs.{{
+                    cartItem.product.onSale
+                      ? cartItem.product.sale_price
+                      : cartItem.product.price
+                  }}
+                </p>
               </div>
 
               <div class="col-md-2 col-6">
@@ -164,13 +175,13 @@ export default {
         alert("Please select alteast one item.");
         return;
       }
-
       axios
         .post("/cart/destroy/selected", { cart: this.selectedCart })
         .then((res) => res.data)
         .then((data) => {
           this.getCartItems();
-        });
+        })
+        .catch((e) => console.log(e));
     },
 
     cartIncrement(cartId) {

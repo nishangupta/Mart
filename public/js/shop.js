@@ -207,6 +207,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "my-cart",
   data: function data() {
@@ -275,6 +286,8 @@ __webpack_require__.r(__webpack_exports__);
         return res.data;
       }).then(function (data) {
         _this3.getCartItems();
+      })["catch"](function (e) {
+        return console.log(e);
       });
     },
     cartIncrement: function cartIncrement(cartId) {
@@ -852,7 +865,11 @@ var render = function() {
                         "a",
                         {
                           attrs: {
-                            href: "/shop/" + cartItem.product.id,
+                            href:
+                              "shop/" +
+                              cartItem.product.id +
+                              "-" +
+                              cartItem.product.slug,
                             target: "_blank"
                           }
                         },
@@ -869,7 +886,15 @@ var render = function() {
                       { staticClass: "col-md-2 col-6 mt-sm-2 mt-md-0" },
                       [
                         _c("p", { staticClass: "text-orange h5" }, [
-                          _vm._v("Rs." + _vm._s(cartItem.product.price))
+                          _vm._v(
+                            "\n                Rs." +
+                              _vm._s(
+                                cartItem.product.onSale
+                                  ? cartItem.product.sale_price
+                                  : cartItem.product.price
+                              ) +
+                              "\n              "
+                          )
                         ])
                       ]
                     ),

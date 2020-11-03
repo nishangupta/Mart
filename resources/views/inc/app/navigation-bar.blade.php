@@ -41,7 +41,7 @@
               </div>
               <div class="col-lg-3 col-sm-6 col-md-3 col-xl-4 col-7">
                   <div class="d-flex justify-content-end">
-                    <a class="nav-link nav-user-img text-white" href="#"> <i class="fas fa-shopping-cart"></i></a>
+                    <a class="nav-link nav-user-img text-white" href="{{route('cart.index')}}"> <i class="fas fa-shopping-cart"></i></a>
                     @guest
                     <a class="nav-link nav-user-img text-white" href="{{route('login')}}"> LOGIN</a>
                     @endguest
@@ -56,9 +56,9 @@
 
   <nav class="navbar navbar-expand-md navbar-main border-bottom shadow bg-light">
       <div class="container">
-          <form class="d-md-none my-2">
+          <form action="{{route('shop.catalog')}}" class="d-md-none my-2">
               <div class="input-group"> 
-                  <input type="search" name="search" class="form-control" placeholder="Search" required="">
+                  <input type="search" name="filter[title]" class="form-control" placeholder="Search" required="">
                   <div class="input-group-append"> 
                     <button type="submit" class="btn btn-secondary"> <i class="fa fa-search"></i> </button> 
                   </div>

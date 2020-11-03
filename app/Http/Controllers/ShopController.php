@@ -43,7 +43,7 @@ class ShopController extends Controller
                 AllowedFilter::scope('max_price'),
             ])
             ->with('productImage')
-            ->paginate(1);
+            ->paginate(20);
 
         return view('shop.catalog')->with([
             'productCategories' => $productCategories,

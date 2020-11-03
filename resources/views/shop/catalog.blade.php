@@ -33,13 +33,13 @@
           @if($products->count())
             @foreach($products as $product)
             <div class="col-6 col-sm-4 col-md-3 p-2">
-              <a href="{{route('shop.show',['id'=>$product])}}">
+              <a href="{{$product->path()}}">
               <div class="card shadow-hover h-100" >
                 <img src="{{$product->productImage->first()->original}}" class="card-img-top" alt="">
                 <div class="card-body ">
                   <p class="text-dark">{{$product->title}}</p>
                   @if($product->onSale)
-                    <small class="line-through text-orange">{{$product->price}}</small>
+                    <small class="line-through text-dark">{{$product->price}}</small>
                     <p class="text-orange py-0 my-0 h5">Rs.{{number_format($product->sale_price)}}</p>
                   @else
                     <p class="text-orange py-0 my-0 h5">Rs.{{number_format($product->price)}}</p>

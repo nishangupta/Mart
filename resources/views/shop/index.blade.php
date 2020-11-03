@@ -179,9 +179,9 @@
     <div class="row h-100">
       @foreach($newProducts as $product)
       <div class="col-6 col-sm-4 col-md-2 p-2">
-        <a href="{{route('shop.show',['id'=>$product])}}">
+        <a href="{{$product->path()}}">
         <div class="card shadow-hover h-100" >
-          <img src="{{$product->productImage->first()->original}}" class="card-img-top" alt="">
+          <img src="{{asset($product->productImage->first()->original)}}" class="card-img-top" alt="">
           <div class="card-body ">
             <p class="product-title">{{$product->title}}</p>
             @if($product->onSale)
@@ -202,7 +202,7 @@
     <div class="d-flex justify-content-center mt-5">
       <div class="text-center">
         <h2>Didn't Find Your Match</h2>
-        <a href="search" class="btn btn-orange">Search for It</a>
+        <a href="{{route('shop.catalog')}}" class="btn btn-orange">Search for It</a>
       </div>
     </div>
   </section>

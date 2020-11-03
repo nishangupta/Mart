@@ -13,7 +13,7 @@
         <span>{{ $product->title }}</span>
       @endcomponent
     
-      <div class="card-body">
+      <div class="card-body mt-2">
         <div class="product-section">
           <div class="row">
             <div class="col-sm-12 col-md-5">
@@ -52,7 +52,7 @@
                   <p class="text-orange h4">Rs.{{number_format($product->sale_price)}}</p>
                   <p>
                     <span class="line-through h5"> Rs.{{$product->price}}</span> 
-                    <span class="btn btn-primary disabled ml-3"> {{ (($product->price - $product->sale_price)/$product->price)*100 }}% off</span> 
+                    <span class="btn btn-primary disabled ml-3"> {{ floor((($product->price - $product->sale_price)/$product->price)*100) }}% off</span> 
                   </p>
                   @else
                   <p class="text-orange h4">Rs.{{number_format($product->price)}}</p>
@@ -68,7 +68,7 @@
                   <h4>Quantity:</h4>
                   <div class="d-flex">
                     <button onclick="cartDecrement()" class="btn btn-outline-primary px-3">-</button>
-                    <input type="text" value="1" id="cartCount" placeholder="1" class="pl-3 border" disabled style="width: 50px">
+                    <input type="text" value="1" id="cartCount" name="quantity" placeholder="1" class="pl-3 border" disabled style="width: 50px">
                     <button onclick="cartIncrement()" class="btn btn-outline-primary px-3">+</button>
                   </div>
                 </div>
@@ -76,14 +76,15 @@
                 <p>&nbsp;</p>
         
                 @if ($product->stock > 0)
-                <input type="hidden" id="stockVal" value="{{$product->stock}}">
-                <form action=" route('cart.store', $product ?? '') }}" method="POST">
-                    @csrf
-                    <button type="submit" class="btn btn-orange">Add to Cart</button>
-                    <button type="submit" class="btn btn-primary">Buy now</button>
+                <form action="{{route('cart.store')}}" id="addToCartForm" method="POST">
+                  @csrf
+                  <input type="hidden" name="product_id" value="{{$product->id}}">
+                  <input type="hidden" id="stockVal" value="{{$product->stock}}">
+                  <input type="hidden" id="quantity" name="quantity" value="">
+                  <button type="submit" class="btn btn-orange">Add to Cart</button>
                 </form>
                 @else
-                    <button class="btn btn-secondary">Out of stock</button>
+                  <button id="addToCartBtn" type="submit" class="btn btn-secondary">Out of stock</button>
                 @endif
 
                 <p>&nbsp;</p>
@@ -195,6 +196,12 @@
     return
   }
 
+  //add to cart
+  $('#addToCartBtn').click(function(e){
+    e.preventDefault();
+    $('#quanity').val($('#cartCount').val());
+    $('#addToCartForm').submit();
+  })
 
 </script>   
 @endpush
