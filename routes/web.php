@@ -14,11 +14,11 @@ use App\Http\Controllers\ShippedController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ShipCancelledController;
 use App\Http\Controllers\DeliveredController;
+use App\Http\Controllers\MyOrderController;
 use App\Http\Controllers\ReturnedController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\UserManagementController;
 use Illuminate\Support\Facades\Route;
-use App\Models\Cart;
 
 Route::get('/', [ShopController::class, 'index'])->name('shop.index');
 
@@ -28,10 +28,13 @@ Route::get('/shop', function () {
   return redirect(route('shop.index'));
 });
 
+//user cart
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 Route::post('/cart', [CartController::class, 'store'])->name('cart.store');
 Route::get('/cart/api/all', [CartController::class, 'all']);
 Route::post('/cart/destroy/selected', [CartController::class, 'destroySelected']);
+
+Route::get('/my-order', [MyOrderController::class, 'index'])->name('myOrder.index');
 
 //app
 Route::get('/home', [HomeController::class, 'index'])->name('home.index');
@@ -39,8 +42,6 @@ Route::get('/home', [HomeController::class, 'index'])->name('home.index');
 //user
 Route::get('/user', [UserController::class, 'index'])->name('user.index');
 Route::post('/user/address', [UserController::class, 'address'])->name('user.address');
-Route::get('/user/order', [UserController::class, 'order'])->name('user.order');
-Route::get('/user/cancel', [UserController::class, 'cancel'])->name('user.cancel');
 Route::get('/user/review', [UserController::class, 'review'])->name('user.review');
 
 //accounts

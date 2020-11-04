@@ -3,16 +3,17 @@
 @section('content')
 <div class="container py-5">
     <h5 class="font-weight-light text-center">Sign in to your account </h5>
-    @if($errors->any())
-      <div class="alert alert-danger">
-        {{ implode('', $errors->all(':message')) }}
-      </div>
-    @endif
+   
     <div>
        <form action="{{route('login')}}" method="POST">
         @csrf
           <div class="row no-gutters">
              <div class="col-md-4 mx-auto col-sm-12">
+                @if($errors->any())
+                    <div class="alert alert-danger">
+                    {{ implode('', $errors->all(':message')) }}
+                    </div>
+                @endif
                  <div class="card shadow">
                      <div class="card-body">
                         <div class="form-group">

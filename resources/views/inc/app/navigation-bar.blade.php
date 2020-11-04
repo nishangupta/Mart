@@ -31,7 +31,8 @@
               <div class="col-lg-6 col-sm-8 col-md-6  col-xl-5  d-none d-md-block">
                   <form action="{{route('shop.catalog')}}" class="search-wrap">
                     @csrf
-                      <div class="input-group w-100"> <input type="text" class="form-control search-form" style="width:55%;" name="filter[title]" placeholder="Search">
+                      <div class="input-group w-100"> 
+                      <input type="text" class="form-control search-form" name="filter[title]" placeholder="Search">
                           <div class="input-group-append"> 
                             <button type="submit" class="btn btn-primary search-button"> <i class="fa fa-search"></i> 
                             </button> 

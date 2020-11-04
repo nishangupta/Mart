@@ -40,9 +40,4 @@ class UserController extends Controller
         Alert::toast('Shipping info updated!', 'success');
         return view('user.index');
     }
-
-    public function order()
-    {
-        return view('user.my-order');
-    }
 }

@@ -188,7 +188,7 @@ class ProductSeeder extends Seeder
                 'img' => 'macbook2'
             ],
             [
-                'title' => 'manual-hand-crank-single-auger-juicer',
+                'title' => 'Manual hand crank single auger juicer',
                 'subCategory' => 'Appliances & Electicals',
                 'price' => 5500,
                 'sale_price' => 3400,
@@ -227,7 +227,7 @@ class ProductSeeder extends Seeder
                 'subCategory' => 'Deodrants',
                 'price' => 450,
                 'sale_price' => 420,
-                'img' => 'coke'
+                'img' => 'detol'
             ],
             [
                 'title' => 'Apple 2kg',
@@ -235,6 +235,27 @@ class ProductSeeder extends Seeder
                 'price' => 350,
                 'sale_price' => 240,
                 'img' => 'apple'
+            ],
+            [
+                'title' => 'diaper baby soft material',
+                'subCategory' => 'Diapers',
+                'price' => 500,
+                'sale_price' => 450,
+                'img' => 'diaper'
+            ],
+            [
+                'title' => 'Bed sheet',
+                'subCategory' => 'Furniture',
+                'price' => 3530,
+                'sale_price' => 2440,
+                'img' => 'bed'
+            ],
+            [
+                'title' => 'Furnitute for dining',
+                'subCategory' => 'Furniture',
+                'price' => 32530,
+                'sale_price' => 22440,
+                'img' => 'bed2'
             ],
 
         ];

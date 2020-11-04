@@ -6,6 +6,7 @@ use App\Models\Order;
 use Carbon\Carbon;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\Request;
+use App\Models\Cart;
 
 class OrderController extends Controller
 {
@@ -24,6 +25,28 @@ class OrderController extends Controller
         $order->save();
 
         dd($order->date);
+    }
+    public function store(Request $request)
+    {
+        $cart = Cart::findOrFail($request->cart_id)->with('product')->first();
+        $order = new Order();
+        $order->user_id = auth()->user()->id;
+        $order->product_id = $cart->product->id;
+        $order->quantity = $request->quantity;
+
+        //shipping cost defult 100rs
+        $order->shipping_cost = 100;
+        $order->order_number = rand(200, 299) . '' . Carbon::now()->timestamp;
+
+
+        if ($cart->product->onSale) {
+            $totalPrice = $cart->product->sale_price;
+        } else {
+            $totalPrice = $cart->product->price;
+        }
+        $order->price = $totalPrice * $request->quantity;
+        $order->save();
+        return redirect(route('user.my-order'));
     }
     public function destroy(Request $request)
     {

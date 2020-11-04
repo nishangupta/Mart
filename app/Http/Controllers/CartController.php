@@ -14,7 +14,7 @@ class CartController extends Controller
 
     public function __construct()
     {
-        $this->middleware('role:user');
+        $this->middleware('auth');
     }
     public function index()
     {
@@ -28,13 +28,13 @@ class CartController extends Controller
         $exists = $user->cart()->where('product_id', $request->product_id)->get();
         if ($exists->count()) {
             Alert::info('You haved already added');
-            return redirect(route('shop.show', ['id' => $request->product_id]));
+            return redirect($product->path());
         }
 
         $cart = new Cart();
         $cart->user_id = auth()->user()->id;
         $cart->product_id = $product->id;
-        $cart->quantity = $request->quantity ?? 1;
+        $cart->quantity = $request->quantity;
         if ($cart->save()) {
             Alert::toast('Product added to cart!');
         } else {

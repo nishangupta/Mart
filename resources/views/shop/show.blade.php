@@ -81,10 +81,10 @@
                   <input type="hidden" name="product_id" value="{{$product->id}}">
                   <input type="hidden" id="stockVal" value="{{$product->stock}}">
                   <input type="hidden" id="quantity" name="quantity" value="">
-                  <button type="submit" class="btn btn-orange">Add to Cart</button>
+                  <button id="addToCartBtn"  type="submit" class="btn btn-orange">Add to Cart</button>
                 </form>
                 @else
-                  <button id="addToCartBtn" type="submit" class="btn btn-secondary">Out of stock</button>
+                  <button id="addToCartBtn" class="btn btn-secondary">Out of stock</button>
                 @endif
 
                 <p>&nbsp;</p>
@@ -142,7 +142,7 @@
 
 @push('js')
 <script>
-  (function(){
+  $(document).ready(function(){
     const currentImage = document.querySelector('#currentImage');
     const images = document.querySelectorAll('.product-section-thumbnail');
 
@@ -159,23 +159,34 @@
         images.forEach((element) => element.classList.remove('selected'));
         this.classList.add('selected');
     }
-  })();
 
-  //image zoom
-  const productCurrentImage = document.querySelector('#productCurrentImage');
-  const img = document.querySelector('#productCurrentImage img');
-  img.addEventListener('mousemove',e=>{
-    const x = e.clientX - 151 - e.target.offsetLeft;
-    const y = e.clientY -216 - e.target.offsetTop;
+    //image zoom
+    const productCurrentImage = document.querySelector('#productCurrentImage');
+    const img = document.querySelector('#productCurrentImage img');
+    img.addEventListener('mousemove',e=>{
+      const x = e.clientX - 151 - e.target.offsetLeft;
+      const y = e.clientY -216 - e.target.offsetTop;
 
-    img.style.transformOrigin = `${x}px ${y}px`;
-    img.style.transform = 'scale(2)';
+      img.style.transformOrigin = `${x}px ${y}px`;
+      img.style.transform = 'scale(2)';
+      
+    });
+
+    productCurrentImage.addEventListener('mouseleave',e=>{
+      img.style.transformOrigin = `center center`;
+      img.style.transform = 'scale(1)';
+    });
+
     
-  });
+    //add to cart
+    $('#addToCartBtn').click(function(e){
+      e.preventDefault();
+      let cartCount = document.querySelector('#cartCount');
+      let quantity = document.querySelector('#quantity');
+      quantity.value = cartCount.value;
+      $('#addToCartForm').submit();
+    })
 
-  productCurrentImage.addEventListener('mouseleave',e=>{
-    img.style.transformOrigin = `center center`;
-    img.style.transform = 'scale(1)';
   });
 
   //cart
@@ -194,14 +205,9 @@
       $('#cartCount').val(parseInt($('#cartCount').val()) - 1)
     }
     return
-  }
+    }
 
-  //add to cart
-  $('#addToCartBtn').click(function(e){
-    e.preventDefault();
-    $('#quanity').val($('#cartCount').val());
-    $('#addToCartForm').submit();
-  })
+
 
 </script>   
 @endpush
