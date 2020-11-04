@@ -44,7 +44,7 @@
             <div class="col-sm-12 col-md-7 pl-md-5 mt-5 mt-md-0">
               <div class="product-section-information">
                 <h3 class="product-section-title text-gray-700">{{ $product->title }}</h3>
-                <div>Brand: {{$product->brand}}</div>
+                <div>Brand: {{$product->brand ==''?'no brand':$product->brand }}</div>
       
                 <div class="my-2">
                   <h4>Price:</h4>

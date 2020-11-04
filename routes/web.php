@@ -34,7 +34,9 @@ Route::post('/cart', [CartController::class, 'store'])->name('cart.store');
 Route::get('/cart/api/all', [CartController::class, 'all']);
 Route::post('/cart/destroy/selected', [CartController::class, 'destroySelected']);
 
+//user my-orders
 Route::get('/my-order', [MyOrderController::class, 'index'])->name('myOrder.index');
+Route::delete('/my-order/{id}', [MyOrderController::class, 'destroy'])->name('myOrder.destroy');
 
 //app
 Route::get('/home', [HomeController::class, 'index'])->name('home.index');
@@ -68,7 +70,7 @@ Route::get('/product/get/image/{id}', [ProductImageController::class, 'index'])-
 Route::get('/product/{id}/image', [ProductImageController::class, 'show'])->name('productImage.show');
 Route::delete('/product/{id}/image', [ProductImageController::class, 'destroy'])->name('productImage.destroy');
 
-//orders
+//admin order controller
 Route::resource('/order', OrderController::class);
 // Route::get('/order/test', [OrderController::class, 'test']);
 

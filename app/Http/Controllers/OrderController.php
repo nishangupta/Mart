@@ -45,8 +45,15 @@ class OrderController extends Controller
             $totalPrice = $cart->product->price;
         }
         $order->price = $totalPrice * $request->quantity;
-        $order->save();
-        return redirect(route('user.my-order'));
+        if ($order->save()) {
+            //cart delete
+            $cart->delete();
+            Alert::toast('Order Placed!', 'success');
+        } else {
+            Alert::toast('Checkout fail' . 'error');
+        }
+
+        return redirect(route('myOrder.index'));
     }
     public function destroy(Request $request)
     {

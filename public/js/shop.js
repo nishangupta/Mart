@@ -108,9 +108,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "empty-cart"
 });
@@ -964,24 +961,22 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-10 mx-auto" }, [
+      _c("div", { staticClass: "col-10 col-sm-10 col-md-6 pb-5 mx-auto" }, [
         _c("div", { staticClass: "card" }, [
-          _c("div", { staticClass: "card-body" }, [
-            _c("img", {
-              staticClass: "img-fluid",
-              attrs: { src: "/images/demo/empty-cart.jpg", alt: "" }
-            }),
-            _vm._v(" "),
-            _c("div", { staticClass: "d-flex justify-content-center" }, [
-              _c(
-                "a",
-                {
-                  staticClass: "btn btn-sm btn-orange",
-                  attrs: { href: "/catalog" }
-                },
-                [_vm._v("Shop now")]
-              )
-            ])
+          _c("img", {
+            staticClass: "img-fluid",
+            attrs: { src: "/images/demo/empty-cart.jpg", alt: "" }
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "d-flex justify-content-center" }, [
+            _c(
+              "a",
+              {
+                staticClass: "btn btn-sm btn-orange",
+                attrs: { href: "/catalog" }
+              },
+              [_vm._v("Shop now")]
+            )
           ])
         ])
       ])
