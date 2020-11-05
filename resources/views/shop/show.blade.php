@@ -4,7 +4,7 @@
 @section('content')
 
   <div class="container">
-    <div class="card shadow my-5">
+    <div class="card shadow my-2">
       @component('components.breadcrumbs')
         <a href="/">Home</a>
         <i class="fa fa-chevron-right breadcrumb-separator"></i>
@@ -36,14 +36,13 @@
                           </div>
                         </div>
                       @endforeach
-                    </div>
-                      
                   @endif
+                </div>
               </div>
             </div>
             <div class="col-sm-12 col-md-7 pl-md-5 mt-5 mt-md-0">
               <div class="product-section-information">
-                <h3 class="product-section-title text-gray-700">{{ $product->title }}</h3>
+                <h3 class="product-section-title text-gray-900">{{ $product->title }}</h3>
                 <div>Brand: {{$product->brand ==''?'no brand':$product->brand }}</div>
       
                 <div class="my-2">
@@ -92,11 +91,73 @@
               </div>
             </div>
           </div>
-        
         </div> <!-- end product-section -->
       </div>
     </div>
+
+    <div class="card shadow">
+      <div class="card-body">
+        <div class="description-section">
+          <div class="row">
+            <div class="col-12 ">
+              <h4 class="text-gray-900">Product details of {{$product->title}}</h4>
+              <div class="container py-2 px-5 text-gray-800">
+                {!! $product->description !!}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card shadow my-2 mb-5">
+      <div class="card-body">
+        <div class="description-section">
+          <div class="row">
+            <div class="col-12 ">
+              <h6 class="text-gray-900">Questions about the product</h6>
+              <div class="py-2 px-1 text-gray-800">
+                <div class="row">
+                  <div class="col-12 bg-light shadow">
+                    <div class="row mb-3">
+                      <div class="col">
+                        <form action="route('')" method="POST">
+                          <div class="form-group d-flex">
+                            <input type="text" placeholder="Enter your question(s) here" class="form-control">
+                            <button class="btn btn-orange">Ask</button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+
+                    <div class="row shadow-hover mb-3 py-1">
+                      <div class="col-12">
+                        <p><i class="fas fa-question-circle text-warning"></i> <span class="text-gray-700"></span> [Ronik r] >> 6s lai milcha</p>
+                      </div>
+                      <div class="col-12">
+                        <p><i class="fas fa-comment-alt text-secondary"></i> <span class="text-gray-800">Milcha sir</span></p>
+                      </div>
+                    </div>
+                    <div class="row mb-3 shadow-hover mb-3 py-1">
+                      <div class="col-12 mb-2">
+                        <p><i class="fas fa-question-circle text-warning"></i> <span class="text-gray-700"></span> [Ronik r] :: 6s lai milcha</p>
+                      </div>
+                      <div class="col-12">
+                        <p><i class="fas fa-comment-alt text-secondary"></i> <span class="text-gray-800">Milcha sir</span></p>
+                      </div>
+                    </div>
+             
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
   </div>
+
 
 
 @include('inc.app.might-like')

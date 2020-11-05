@@ -14,6 +14,7 @@ class MyOrderController extends Controller
     }
     public function destroy(Order $id)
     {
+        //soft delete of the order
         $id->delete();
         return redirect()->route('myOrder.index');
     }

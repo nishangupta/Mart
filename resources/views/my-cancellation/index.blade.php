@@ -13,7 +13,7 @@
     <div class="col-xl-8 col-md-8 col-sm-12 mr-auto">
       <div class="card shadow">
         <div class="card-header bg-light border-bottom">
-          <p class="mb-0 ">My Orders</p>
+          <p class="mb-0 ">My Cancellation</p>
         </div>
 
         <div class="card-body" style="min-height: 40vh">
@@ -38,19 +38,19 @@
                     <td><a href="{{$order->product->path()}}">{{$order->product->title}}</a></td>
                       <td><a href="{{route('order.show',['order'=>$order->id])}}" title="Track order">{{$order->order_number}}</a></td>
                       <td>{{$order->quantity}}</td>
-                      <td><span class="badge badge-info">{{$order->status}}</span></td>
+                      <td><span class="badge badge-danger">cancelled</span></td>
                       <td>
-                        <form action="{{route('myOrder.destroy',['id'=>$order])}}" method="POST">
+                        <form action="{{route('myCancellation.store')}}" method="POST">
+                          <input type="hidden" name="order_id" value="{{$order->id}}">
                           @csrf
-                          @method('delete')
-                          <button type="submit" class="btn btn-danger btn-sm">Cancel</a>
+                          <button type="submit" class="btn btn-success btn-sm">Revive</a>
                         </form>
                       </td>
                     </tr>
                   @endforeach
                 @else
                 <tr>
-                  <td>You haven't placed any order </td>
+                  <td>No cancelled orders found </td>
                   <td></td>
                   <td></td>
                   <td></td>

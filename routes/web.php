@@ -14,6 +14,7 @@ use App\Http\Controllers\ShippedController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ShipCancelledController;
 use App\Http\Controllers\DeliveredController;
+use App\Http\Controllers\MyCancellationController;
 use App\Http\Controllers\MyOrderController;
 use App\Http\Controllers\ReturnedController;
 use App\Http\Controllers\ShopController;
@@ -37,6 +38,10 @@ Route::post('/cart/destroy/selected', [CartController::class, 'destroySelected']
 //user my-orders
 Route::get('/my-order', [MyOrderController::class, 'index'])->name('myOrder.index');
 Route::delete('/my-order/{id}', [MyOrderController::class, 'destroy'])->name('myOrder.destroy');
+
+//user my-orders
+Route::get('/my-cancellation', [MyCancellationController::class, 'index'])->name('myCancellation.index');
+Route::post('/my-cancellation', [MyCancellationController::class, 'store'])->name('myCancellation.store');
 
 //app
 Route::get('/home', [HomeController::class, 'index'])->name('home.index');

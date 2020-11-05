@@ -191,7 +191,7 @@
               <p class="product-price">Rs.{{number_format($product->price)}}</p>
             @endif
           </div>
-            <button class="btn btn-orange btn-block">Add to cart</button>
+            {{-- <button class="btn btn-orange btn-block">Add to cart</button> --}}
         </div>
         </a>
       </div>

@@ -36,7 +36,7 @@
                             @enderror
                         </div>
         
-                        <button type="submit" class="btn btn-orange btn-block ">SIGN UP</button>
+                        <button type="submit" class="btn btn-orange btn-block ">Login UP</button>
         
                         <div class="small my-2"><span>Don't have a account? <a href="{{route('register')}}">Create</a> here.</span></div>
         

@@ -24,6 +24,7 @@ class CreateOrdersTable extends Migration
             $table->string('price');
             $table->string('status')->default('PENDING');
             $table->boolean('printed')->default(0);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

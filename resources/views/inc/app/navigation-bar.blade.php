@@ -3,7 +3,7 @@
   <div class="container-fluid">
       <ul class="top-banner-list small">
         <li>
-          <a href="">Call us:+4222022</a>
+          <a href="call:4222022">Call us:+4222022</a>
         </li>
         <li>
           <a href="{{route('register')}}">Sign up</a>
@@ -12,7 +12,7 @@
           <a href="{{route('login')}}">Login</a>
         </li>
         <li class="active">
-          <a href="">Track my order</a>
+          <a href="{{route('myOrder.index')}}">Track my order</a>
         </li>
       </ul>
   </div>
