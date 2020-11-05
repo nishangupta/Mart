@@ -3,9 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
-use App\Models\User;
-use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Http\Request;
 
 class InvoiceController extends Controller
 {
@@ -16,8 +13,7 @@ class InvoiceController extends Controller
             'printed' => true
         ]);
 
-        // $user = $order->user()->first();
-        $user = User::find(1);
+        $user = $order->user()->with('userInfo')->first();
         $product = $order->product()->first();
 
         $invoice = $this->makeInvoice($user, $product, $order);

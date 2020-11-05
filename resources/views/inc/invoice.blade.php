@@ -24,12 +24,11 @@
         <td>{{$user->name}} </td>
         
         <td>PHONE:</td>
-        <td>9779823688646</td>
+        <td>{{$user->userInfo->phone ?? 'not set'}}</td>
       </tr>
       <tr>
         <td>ADDRESS:</td>
-        <td>Manmaya Tamang Thaiba ,lalitpur Bagmati Lalitpur Inside Ring Road Ward 15 - Satdobato Area
-          Lalitpur Inside Ring Road Nepal </td>
+        <td>{{$user->userInfo->address ?? 'not set'}}</td>
       </tr>
       <tr>
       
@@ -53,6 +52,7 @@
         <td>Product code</td>
         <td>Size</td>
         <td>Price</td>
+        <td>Quantity</td>
         <td>Item Total</td>
       </tr>
     </thead>
@@ -64,8 +64,9 @@
         <td><img src="{{asset($product->productImage->first()->original)}}" width="150px" alt=""></td>
         <td>{{$product->product_code}}</td>
         <td>Size:{{$product->size}}, Color:{{$product->color}}</td>
-        <td>{{$product->price}}</td>
-        <td>{{$product->price}}</td>
+        <td>{{$order->price}}</td>
+        <td>{{$order->quantity}}</td>
+        <td>{{$order->price}}</td>
       </tr>
 
     </tbody>
@@ -79,11 +80,11 @@
   <tbody>
     <tr>
       <td>Subtotal:</td>
-      <td>{{$product->price}}</td>
+      <td>{{$order->price* $order->quantity}}</td>
     </tr>
     <tr>
       <td><span>Shipping Cost:</span></td>
-      <td><span>59.00</span></td>
+      <td><span>100.00</span></td>
     </tr>
     <tr>
       <td>Voucher:</td>
@@ -91,7 +92,7 @@
     </tr>
     <tr>
       <td style="border-top:solid 2px;border-color:#CCCCCC;line-height:1.5; font-weight: bold">Total:</td>
-      <td style="border-top:solid 2px;border-color:#CCCCCC;line-height:1.5; font-weight: bold">{{number_format((int)$product->price + 58)}}</td>
+      <td style="border-top:solid 2px;border-color:#CCCCCC;line-height:1.5; font-weight: bold">{{number_format((int)($order->price*$order->quantity) + 100)}}</td>
     </tr>
   </tbody>
 </table>

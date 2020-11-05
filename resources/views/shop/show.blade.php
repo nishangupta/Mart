@@ -10,6 +10,8 @@
         <i class="fa fa-chevron-right breadcrumb-separator"></i>
         <span><a href="{{ route('shop.catalog') }}">Shop</a></span>
         <i class="fa fa-chevron-right breadcrumb-separator"></i>
+        <span>{{$product->subCategory}}</span>
+        <i class="fa fa-chevron-right breadcrumb-separator"></i>
         <span>{{ $product->title }}</span>
       @endcomponent
     

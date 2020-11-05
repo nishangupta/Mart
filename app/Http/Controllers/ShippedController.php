@@ -21,6 +21,6 @@ class ShippedController extends Controller
                 'status' => 'SHIPPED'
             ]);
         }
-        return redirect(route('delivered.index'));
+        return redirect(route('shipped.index'));
     }
 }

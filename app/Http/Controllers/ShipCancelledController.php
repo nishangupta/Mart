@@ -14,7 +14,7 @@ class ShipCancelledController extends Controller
 
     public function store(Request $request)
     {
-        $ids = $request->get('id');
+        $ids = $request->get('ids');
         $orders = Order::where('id', $ids)->get(['id', 'status']);
         foreach ($orders as $order) {
             $order->update([

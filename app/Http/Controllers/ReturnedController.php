@@ -14,13 +14,13 @@ class ReturnedController extends Controller
 
     public function store(Request $request)
     {
-        $ids = $request->get('id');
+        $ids = $request->get('ids');
         $orders = Order::where('id', $ids)->get(['id', 'status']);
         foreach ($orders as $order) {
             $order->update([
                 'status' => 'RETURNED'
             ]);
         }
-        return redirect(route('return.index'));
+        return redirect(route('returned.index'));
     }
 }
