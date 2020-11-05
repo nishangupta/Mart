@@ -45,7 +45,9 @@ Route::get('/my-cancellation', [MyCancellationController::class, 'index'])->name
 Route::post('/my-cancellation', [MyCancellationController::class, 'store'])->name('myCancellation.store');
 
 //customer messages
+Route::get('/customer-question', [CustomerQuestionController::class, 'index'])->name('customerQuestion.index');
 Route::post('/customer-question', [CustomerQuestionController::class, 'store'])->name('customerQuestion.store');
+Route::delete('/customer-question/{id}', [CustomerQuestionController::class, 'destroy'])->name('customerQuestion.destroy');
 
 //app
 Route::get('/home', [HomeController::class, 'index'])->name('home.index');
@@ -65,6 +67,11 @@ Route::get('/admin/profile', [AdminController::class, 'profile'])->name('admin.p
 Route::get('/admin/login', [AdminController::class, 'loginView'])->name('admin.loginView');
 //print Invoice
 Route::get('/invoice/{order}', [InvoiceController::class, 'index'])->name('invoice.index');
+//customer questions
+Route::get('/admin/customer-question', [CustomerQuestionController::class, 'adminView'])->name('customerQuestion.adminView');
+Route::get('/admin/customer-question/{id}/reply', [CustomerQuestionController::class, 'adminReply'])->name('customerQuestion.adminReply');
+Route::post('/admin/customer-question', [CustomerQuestionController::class, 'massDelete'])->name('customerQuestion.massDelete');
+Route::put('/admin/customer-question/{id}/reply', [CustomerQuestionController::class, 'reply'])->name('customerQuestion.reply');
 
 
 //User Management 
@@ -81,7 +88,6 @@ Route::delete('/product/{id}/image', [ProductImageController::class, 'destroy'])
 
 //admin order controller
 Route::resource('/order', OrderController::class);
-// Route::get('/order/test', [OrderController::class, 'test']);
 
 //Ready to ship
 Route::get('/ready-to-ship', [ReadyToShipController::class, 'index'])->name('readyToShip.index');

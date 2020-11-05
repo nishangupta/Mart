@@ -59,7 +59,6 @@
         <a class="collapse-item" href="{{route('delivered.index')}}">Delivered</a>
         <a class="collapse-item" href="{{route('shipCancelled.index')}}">Cancelled</a>
         <a class="collapse-item" href="{{route('returned.index')}}">Returned</a>
-        <a class="collapse-item" href="route('reviews.index')}}">Manage reviews</a>
       </div>
     </div>
   </li>
@@ -88,12 +87,28 @@
 
   <!-- Divider -->
   <hr class="sidebar-divider">
+  <!-- Heading -->
+  <div class="sidebar-heading">
+    Customer Information
+  </div>
 
+  <li class="nav-item">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#customerCollapse" aria-expanded="true" aria-controls="customerCollapse">
+      <i class="fas fa-fw fa-people-carry"></i>
+      <span>Customers</span>
+    </a>
+    <div id="customerCollapse" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+      <div class="bg-white py-2 collapse-inner rounded">
+        <a class="collapse-item" href="{{route('customerQuestion.adminView')}}">Customer questions</a>
+      </div>
+    </div>
+  </li>
+
+  <hr class="sidebar-divider">
   <!-- Heading -->
   <div class="sidebar-heading">
     Accounts Information
   </div>
-
 
   <li class="nav-item">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#accountsCollapse" aria-expanded="true" aria-controls="accountsCollapse">

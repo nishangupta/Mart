@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\Api\CartApiController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\DeliveredApiController;
@@ -12,6 +11,7 @@ use App\Http\Controllers\Api\ShipCancelledApiController;
 use App\Http\Controllers\Api\ShippedApiController;
 use App\Http\Controllers\Api\UserManagementApiController;
 use App\Http\Controllers\ProductImageController;
+use App\Http\Controllers\Api\CustomerQuestionApiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +32,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('/product/all', [ProductApiController::class, 'all'])->name('product.all');
 Route::get('/product/onsale/invert/{id}', [ProductApiController::class, 'onSaleInvert'])->name('product.onSaleInvert');
 Route::get('/product/live/invert/{id}', [ProductApiController::class, 'liveInvert'])->name('product.liveInvert');
+
+//customer question
+Route::get('/customer-question/all', [CustomerQuestionApiController::class, 'all'])->name('customerQuestion.all');
 
 //orders api
 Route::get('/order/all', [OrderApiController::class, 'all'])->name('order.all');

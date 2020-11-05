@@ -23,8 +23,8 @@
     </a>
   </li>
   <li class="list-group-item-action list-group-item">
-    <a href="">
-      <i class="fas fa-align-left text-primary"></i> Reviews
+    <a href="{{route('customerQuestion.index')}}">
+      <i class="fas fa-align-left text-primary"></i> My queries
     </a>
   </li>
   <li class="list-group-item-action list-group-item">
