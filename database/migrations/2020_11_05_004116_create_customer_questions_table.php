@@ -16,7 +16,9 @@ class CreateCustomerQuestionsTable extends Migration
         Schema::create('customer_questions', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->string('message');
+            $table->unsignedBigInteger('product_id');
+            $table->string('question');
+            $table->string('reply')->nullable();
             $table->timestamps();
         });
     }

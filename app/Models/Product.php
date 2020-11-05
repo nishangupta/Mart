@@ -28,6 +28,11 @@ class Product extends Model
         return $this->productImage();
     }
 
+    public function getQuestions()
+    {
+        return $this->hasMany('App\Models\CustomerQuestion');
+    }
+
     public function scopeMightAlsoLike($query)
     {
         return $query->inRandomOrder()->with('first_image')->take(4);

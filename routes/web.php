@@ -4,6 +4,7 @@ use App\Http\Controllers\AccountController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CustomerQuestionController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\OrderController;
@@ -42,6 +43,9 @@ Route::delete('/my-order/{id}', [MyOrderController::class, 'destroy'])->name('my
 //user my-orders
 Route::get('/my-cancellation', [MyCancellationController::class, 'index'])->name('myCancellation.index');
 Route::post('/my-cancellation', [MyCancellationController::class, 'store'])->name('myCancellation.store');
+
+//customer messages
+Route::post('/customer-question', [CustomerQuestionController::class, 'store'])->name('customerQuestion.store');
 
 //app
 Route::get('/home', [HomeController::class, 'index'])->name('home.index');

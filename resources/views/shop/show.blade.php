@@ -121,30 +121,36 @@
                   <div class="col-12 bg-light shadow">
                     <div class="row mb-3">
                       <div class="col">
-                        <form action="route('')" method="POST">
+                        <form action="{{route('customerQuestion.store')}}" method="POST">
+                          @csrf
                           <div class="form-group d-flex">
-                            <input type="text" placeholder="Enter your question(s) here" class="form-control">
-                            <button class="btn btn-orange">Ask</button>
+                            <input type="hidden" name="product_id" value="{{$product->id}}">
+                            <input type="text" placeholder="Enter your question(s) here" class="form-control" name="question">
+                            <button type="submit" class="btn btn-orange">Ask</button>
                           </div>
                         </form>
                       </div>
                     </div>
 
+                    @foreach($questions as $question)
                     <div class="row shadow-hover mb-3 py-1">
-                      <div class="col-12">
-                        <p><i class="fas fa-question-circle text-warning"></i> <span class="text-gray-700"></span> [Ronik r] >> 6s lai milcha</p>
+                      <div class="col-12 mb-1">
+                        <div><i class="fas fa-question-circle text-warning"></i> <span class="text-gray-700"></span> [{{$question->user->name}}] >> {{$question->question}} - {{$question->created_at->diffForHumans()}}</div>
                       </div>
                       <div class="col-12">
-                        <p><i class="fas fa-comment-alt text-secondary"></i> <span class="text-gray-800">Milcha sir</span></p>
+                        @if($question->reply)
+                        <div>
+                          <i class="fas fa-comment-alt text-secondary"></i> 
+                          <span class="text-gray-800">Milcha sir</span> - {{$question->updated_at->diffForHumans()}}
+                        </div>
+                        @else
+                        <div>Waiting for the seller to reply.</div>
+                        @endif
                       </div>
                     </div>
-                    <div class="row mb-3 shadow-hover mb-3 py-1">
-                      <div class="col-12 mb-2">
-                        <p><i class="fas fa-question-circle text-warning"></i> <span class="text-gray-700"></span> [Ronik r] :: 6s lai milcha</p>
-                      </div>
-                      <div class="col-12">
-                        <p><i class="fas fa-comment-alt text-secondary"></i> <span class="text-gray-800">Milcha sir</span></p>
-                      </div>
+                    @endforeach
+                    <div class="d-flex justify-content-end">
+                      {{$questions->links()}}
                     </div>
              
                   </div>
