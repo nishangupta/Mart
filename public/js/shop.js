@@ -316,6 +316,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "my-cart",
@@ -1070,7 +1074,7 @@ var render = function() {
                               })
                             ]),
                             _vm._v(" "),
-                            _c("div", { staticClass: "col-md-2 col-2" }, [
+                            _c("div", { staticClass: "col-md-1 col-2" }, [
                               _c("img", {
                                 staticClass: "img-fluid",
                                 attrs: {
@@ -1080,7 +1084,7 @@ var render = function() {
                               })
                             ]),
                             _vm._v(" "),
-                            _c("div", { staticClass: "col-md-4 col-8" }, [
+                            _c("div", { staticClass: "col-md-4 col-9" }, [
                               _c(
                                 "a",
                                 {
@@ -1297,10 +1301,12 @@ var render = function() {
                             _c("span", { staticClass: "text-orange" }, [
                               _vm._v("Rs. " + _vm._s(_vm.modalProduct.price))
                             ])
-                          ])
+                          ]),
+                          _vm._v(" "),
+                          _vm._m(3)
                         ]),
                         _vm._v(" "),
-                        _vm._m(3)
+                        _vm._m(4)
                       ]
                     )
                   ])
@@ -1351,6 +1357,15 @@ var staticRenderFns = [
         },
         [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
       )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h6", [
+      _vm._v("\n              Shipping cost:\n              "),
+      _c("span", { staticClass: "text-orange" }, [_vm._v("Rs. 100")])
     ])
   },
   function() {

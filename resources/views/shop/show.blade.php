@@ -121,6 +121,7 @@
                   <div class="col-12 bg-light shadow">
                     <div class="row mb-3">
                       <div class="col">
+                        @auth
                         <form action="{{route('customerQuestion.store')}}" method="POST">
                           @csrf
                           <div class="form-group d-flex">
@@ -129,26 +130,36 @@
                             <button type="submit" class="btn btn-orange">Ask</button>
                           </div>
                         </form>
+                        @endauth
+                        @guest
+                        <p><a href="{{route('login')}}">Login</a> or <a href="{{route('register')}}">Register</a> to ask the seller now</p>
+                        @endguest
                       </div>
                     </div>
-
-                    @foreach($questions as $question)
-                    <div class="row shadow-hover mb-3 py-1">
-                      <div class="col-12 mb-1">
-                        <div><i class="fas fa-question-circle text-warning"></i> <span class="text-gray-700"></span> [{{$question->user->name}}] >> {{$question->question}} - {{$question->created_at->diffForHumans()}}</div>
-                      </div>
-                      <div class="col-12">
-                        @if($question->reply)
-                        <div>
-                          <i class="fas fa-comment-alt text-secondary"></i> 
-                          <span class="text-gray-800">Milcha sir</span> - {{$question->updated_at->diffForHumans()}}
+                    @if($questions->count())
+                      @foreach($questions as $question)
+                      <div class="row shadow-hover mb-3 py-2 pl-2">
+                        <div class="col-12 mb-1">
+                          <div><i class="fas fa-question-circle text-warning"></i> <span class="text-gray-700"></span> [{{$question->user->name}}] >> {{$question->question}} - {{$question->created_at->diffForHumans()}}</div>
                         </div>
-                        @else
-                        <div>Waiting for the seller to reply.</div>
-                        @endif
+                        <div class="col-12">
+                          @if($question->reply)
+                          <div>
+                            <i class="fas fa-comment-alt text-secondary"></i> 
+                          <span class="text-gray-800">{{$question->reply}}</span>
+                          </div>
+                          @else
+                          <div>Waiting for the seller to reply.</div>
+                          @endif
+                        </div>
                       </div>
+                      @endforeach
+                    @else
+                    <div class="text-center">
+                      <div ><i class="fas fa-envelope fa-2x text-gray-500"></i></div>
+                      <p clas="d-block">There are not questions yet.</p>
                     </div>
-                    @endforeach
+                    @endif
                     <div class="d-flex justify-content-end">
                       {{$questions->links()}}
                     </div>

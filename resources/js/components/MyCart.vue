@@ -38,7 +38,7 @@
                 />
               </div>
 
-              <div class="col-md-2 col-2">
+              <div class="col-md-1 col-2">
                 <img
                   :src="cartItem.product.get_image[0].original"
                   class="img-fluid"
@@ -46,7 +46,7 @@
                 />
               </div>
 
-              <div class="col-md-4 col-8">
+              <div class="col-md-4 col-9">
                 <a
                   :href="
                     'shop/' + cartItem.product.id + '-' + cartItem.product.slug
@@ -169,6 +169,10 @@
               <h6>
                 Product price:
                 <span class="text-orange">Rs. {{ modalProduct.price }}</span>
+              </h6>
+              <h6>
+                Shipping cost:
+                <span class="text-orange">Rs. 100</span>
               </h6>
             </div>
             <div class="modal-footer">
