@@ -12,6 +12,7 @@ use App\Http\Controllers\Api\ShippedApiController;
 use App\Http\Controllers\Api\UserManagementApiController;
 use App\Http\Controllers\ProductImageController;
 use App\Http\Controllers\Api\CustomerQuestionApiController;
+use App\Http\Controllers\Api\FlashSaleApiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +33,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('/product/all', [ProductApiController::class, 'all'])->name('product.all');
 Route::get('/product/onsale/invert/{id}', [ProductApiController::class, 'onSaleInvert'])->name('product.onSaleInvert');
 Route::get('/product/live/invert/{id}', [ProductApiController::class, 'liveInvert'])->name('product.liveInvert');
+
+//campaign flash sale
+Route::get('/flash-sale/all', [FlashSaleApiController::class, 'all'])->name('flashSale.all');
 
 //customer question
 Route::get('/customer-question/all', [CustomerQuestionApiController::class, 'all'])->name('customerQuestion.all');

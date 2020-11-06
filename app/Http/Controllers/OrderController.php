@@ -33,7 +33,7 @@ class OrderController extends Controller
         } else {
             $totalPrice = $cart->product->price;
         }
-        $order->price = $totalPrice * $request->quantity;
+        $order->price = $totalPrice;
         if ($order->save()) {
             //cart delete
             $cart->delete();

@@ -66,7 +66,7 @@
         <td>Size:{{$product->size}}, Color:{{$product->color}}</td>
         <td>{{$order->price}}</td>
         <td>{{$order->quantity}}</td>
-        <td>{{$order->price}}</td>
+        <td>{{$order->price*$order->quantity}}</td>
       </tr>
 
     </tbody>

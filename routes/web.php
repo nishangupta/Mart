@@ -15,6 +15,7 @@ use App\Http\Controllers\ShippedController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ShipCancelledController;
 use App\Http\Controllers\DeliveredController;
+use App\Http\Controllers\FlashSaleController;
 use App\Http\Controllers\MyCancellationController;
 use App\Http\Controllers\MyOrderController;
 use App\Http\Controllers\ReturnedController;
@@ -49,7 +50,7 @@ Route::get('/customer-question', [CustomerQuestionController::class, 'index'])->
 Route::post('/customer-question', [CustomerQuestionController::class, 'store'])->name('customerQuestion.store');
 Route::delete('/customer-question/{id}', [CustomerQuestionController::class, 'destroy'])->name('customerQuestion.destroy');
 
-//app
+//redirect routes
 Route::get('/home', [HomeController::class, 'index'])->name('home.index');
 
 //user
@@ -72,6 +73,14 @@ Route::get('/admin/customer-question', [CustomerQuestionController::class, 'admi
 Route::get('/admin/customer-question/{id}/reply', [CustomerQuestionController::class, 'adminReply'])->name('customerQuestion.adminReply');
 Route::post('/admin/customer-question', [CustomerQuestionController::class, 'massDelete'])->name('customerQuestion.massDelete');
 Route::put('/admin/customer-question/{id}/reply', [CustomerQuestionController::class, 'reply'])->name('customerQuestion.reply');
+
+//flashSale
+Route::get('/flash-sale', [FlashSaleController::class, 'index'])->name('flashSale.index');
+Route::get('/flash-sale/create', [FlashSaleController::class, 'create'])->name('flashSale.create');
+Route::post('/flash-sale', [FlashSaleController::class, 'store'])->name('flashSale.store');
+Route::get('/flash-sale/{id}/edit', [FlashSaleController::class, 'edit'])->name('flashSale.edit');
+Route::put('/flash-sale/{id}', [FlashSaleController::class, 'update'])->name('flashSale.update');
+Route::delete('/flash-sale', [FlashSaleController::class, 'destroy'])->name('flashSale.destroy');
 
 
 //User Management 

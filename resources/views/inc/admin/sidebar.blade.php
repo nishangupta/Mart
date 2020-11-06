@@ -14,12 +14,12 @@
       <i class="fas fa-fw fa-tachometer-alt"></i>
       <span>Dashboard</span></a>
   </li>
-
+{{-- 
   <li class="nav-item {{ request()->segment(2) == '' ? 'active': ''}}">
     <a class="nav-link" href="route('home.index')}}">
       <i class="fas fa-fw fa-h-square"></i>
       <span>Store</span></a>
-  </li>
+  </li> --}}
   
   <!-- Divider -->
   <hr class="sidebar-divider">
@@ -72,6 +72,7 @@
     <div id="promotionsCollapse" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
       <div class="bg-white py-2 collapse-inner rounded">
         <h6 class="collapse-header">Promotion information:</h6>
+        <a class="collapse-item" href="{{route('flashSale.index')}}">Flash sale</a>
         <a class="collapse-item" href="route('freeshipping.index')}}">Free shipping</a>
         <a class="collapse-item" href="route('campaign.index')}}">Campaigns</a>
       </div>

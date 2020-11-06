@@ -9,9 +9,6 @@
     </div>
     <div class="card-body">
 
-      
-
-
       <div class="row">
         <div class="col-sm-12 col-md-8 pb-5">
 
@@ -21,9 +18,13 @@
                 <img src="{{asset($question->product->productImage->first()->thumbnail)}}" class="img-fluid" alt="">
               </div>
               <div class="col-sm-12 col-md-9">
-                <h4>Product title</h4>
-                <p>Price :: <span class="text-orange">Rs.{{number_format(132123)}}</span></p>
-                <p>Sale Price :: Rs.{{number_format(132123)}} </p>
+                <h4>{{$question->product->title}}</h4>
+                @if($question->product->onSale)
+                <p>Price : <span>Rs.{{number_format($question->product->price)}}</span></p>
+                <p>Sale Price : Rs.{{number_format($question->product->sale_price)}} </p>
+                @else
+                <p>Price : Rs.{{number_format($question->product->price)}} </p>
+                @endif
               </div>
             </div>
           </div>
