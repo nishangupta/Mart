@@ -15,6 +15,9 @@ class OrderController extends Controller
         return view('order.index');
     }
 
+    /**
+     * request->all() = ['cart_id','quantity']
+     */
     public function store(Request $request)
     {
         $cart = Cart::findOrFail($request->cart_id)->with('product')->first();

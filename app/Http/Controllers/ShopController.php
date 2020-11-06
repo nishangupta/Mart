@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\FlashSale;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\SubCategory;
@@ -13,8 +14,10 @@ class ShopController extends Controller
     public function index()
     {
         $newProducts = Product::inRandomOrder()->with('productImage')->take(18)->get();
+        $flashSaleProducts = FlashSale::inRandomOrder()->with('product.productImage')->take(12)->get();
         return view('shop.index')->with([
-            'newProducts' => $newProducts
+            'newProducts' => $newProducts,
+            'flashSaleProducts' => $flashSaleProducts
         ]);
     }
     public function show($id)

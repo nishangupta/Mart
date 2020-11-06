@@ -32,71 +32,32 @@
   </div>
   
   {{-- flash sale --}}
+  @if($flashSaleProducts->count())
   <section class="just-for-you-section container h-100 my-4">
     <h3>Flash sale</h3>
-    <div class="bg-white p-2">
-        <div class="d-flex justify-content-between align-items-center">
-          <div class="d-block pt-3">
-            <p class="d-block">Ending in <button class="btn btn-danger ml-3 btn-sm">01 hours</button> </p>
-          </div>  
-  
-          <div>
-            <a href="search" class="btn btn-danger">Shop more</a> 
-          </div>
-      </div>
-    </div>
-    
     <div class="row h-100">
+
+      @foreach($flashSaleProducts as $item)
       <div class="col-6 col-sm-4 col-md-2 p-2">
         <div class="card shadow-hover h-100" >
-          <img src="https://static-01.daraz.com.np/p/516e4237465d928fb051fe7d0082ce5a.jpg_200x200q80-product.jpg_.webp" class="card-img-top" alt="">
+          <img src="{{$item->product->productImage->first()->original}}" class="card-img-top" alt="">
           <div class="card-body ">
-            <p class="product-title">100% cotton full sleves Tshirt for men</p>
-            <small class="line-through">Rs. 1200</small>
-            <p class="product-price">Rs.1599  </p>
+            <p class="product-title">{{$item->product->title}}</p>
+          <small class="line-through">Rs. {{number_format($item->product->price)}}</small>
+            <p class="product-price">Rs. {{number_format($item->flash_price)}}</p>
           </div>
-            <button class="btn btn-orange btn-block">Add to cart</button>
+          <form action="{{route('directBuy.order')}}" method="POST">
+            @csrf
+            <input type="hidden" name="id" value="{{$item->id}}">
+            <button class="btn btn-primary btn-sm btn-block">Buy now</button>
+          </form>
         </div>
       </div>
-  
-      <div class="col-6 col-sm-4 col-md-2 p-2">
-        <div class="card shadow-hover h-100" >
-          <img src="https://static-01.daraz.com.np/p/8d45af190627c264f02a8dac5fe70bf3.jpg_200x200q80-product.jpg_.webp" class="card-img-top" alt="">
-          <div class="card-body ">
-            <p class="text-dark">100% cotton full sleves Tshirt for men</p>
-            <small class="line-through text-orange">1200</small>
-            <p class="text-orange py-0 my-0 h5">Rs.1599  </p>
-          </div>
-            <button class="btn btn-orange btn-block">Add to cart</button>
-        </div>
-      </div>
-      
-      <div class="col-6 col-sm-4 col-md-2 p-2 ">
-        <div class="card shadow-hover h-100" >
-          <img src="https://static-01.daraz.com.np/p/516e4237465d928fb051fe7d0082ce5a.jpg_200x200q80-product.jpg_.webp" class="card-img-top" alt="">
-          <div class="card-body ">
-            <p class="text-dark">100% cotton full sleves Tshirt for men</p>
-            <small class="line-through text-orange">1200</small>
-            <p class="text-orange py-0 my-0 h5">Rs.1599  </p>
-          </div>
-            <button class="btn btn-orange btn-block">Add to cart</button>
-        </div>
-      </div>
-         
-      <div class="col-6 col-sm-4 col-md-2 p-2">
-        <div class="card shadow-hover h-100" >
-          <img src="https://static-01.daraz.com.np/p/516e4237465d928fb051fe7d0082ce5a.jpg_200x200q80-product.jpg_.webp" class="card-img-top" alt="">
-          <div class="card-body ">
-            <p class="text-dark">100% cotton full sleves Tshirt for men</p>
-            <p class="text-orange py-0 my-0 h5">Rs.1599  </p>
-          </div>
-            <button class="btn btn-orange btn-block">Add to cart</button>
-        </div>
-      </div>
+      @endforeach
   
     </div>
-  
   </section>
+  @endif
 
   {{-- categories-section --}}
   <section class="categories-section container my-4 h-100">
@@ -191,7 +152,6 @@
               <p class="product-price">Rs.{{number_format($product->price)}}</p>
             @endif
           </div>
-            {{-- <button class="btn btn-orange btn-block">Add to cart</button> --}}
         </div>
         </a>
       </div>

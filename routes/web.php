@@ -15,6 +15,7 @@ use App\Http\Controllers\ShippedController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ShipCancelledController;
 use App\Http\Controllers\DeliveredController;
+use App\Http\Controllers\DirectBuyController;
 use App\Http\Controllers\FlashSaleController;
 use App\Http\Controllers\MyCancellationController;
 use App\Http\Controllers\MyOrderController;
@@ -30,6 +31,9 @@ Route::get('/catalog', [ShopController::class, 'catalog'])->name('shop.catalog')
 Route::get('/shop', function () {
   return redirect(route('shop.index'));
 });
+
+//flash-sale directbuy
+Route::post('/direct-buy', [DirectBuyController::class, 'order'])->name('directBuy.order');
 
 //user cart
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
