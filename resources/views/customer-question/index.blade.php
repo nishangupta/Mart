@@ -55,7 +55,7 @@
                   <td></td>
                   <td></td>
                 </tr>
-                <a href="{{route('shop.catalog')}}" class="btn btn-orange btn-sm">Go to products page/a>
+                <a href="{{route('shop.catalog')}}" class="btn btn-orange btn-sm">Go to products page</a>
                 @endif
               </tbody>
             </table>
