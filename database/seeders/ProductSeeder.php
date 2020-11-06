@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\FlashSale;
 use App\Models\Product;
 use App\Models\ProductImage;
 use Illuminate\Database\Seeder;
@@ -279,6 +280,13 @@ class ProductSeeder extends Seeder
                 'original' => 'images/products/' . $product['img'] . '.jpg',
                 'thumbnail' => 'images/products/' . $product['img'] . '.jpg',
             ]);
+
+            if ($newProduct->id < 11) {
+                $flashSale = FlashSale::create([
+                    'product_id' => $newProduct->id,
+                    'flash_price' => $newProduct->price - (0.1 * $newProduct->price),
+                ]);
+            }
         }
     }
 }
