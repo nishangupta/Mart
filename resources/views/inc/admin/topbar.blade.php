@@ -42,42 +42,10 @@
     </li>
   
     @role('admin')
-    <!-- Nav Item - Alerts -->
-    <li class="nav-item dropdown no-arrow mx-1">
-      <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <i class="fas fa-bell fa-fw"></i>
-        <!-- Counter - Alerts -->
-      <span class="badge badge-danger badge-counter">$notifications->count()}}+</span>
-      </a>
-      <!-- Dropdown - Alerts -->
-      <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
-        <h6 class="dropdown-header">
-          Alerts Center
-        </h6>
-        {{-- @if($notifications)
-          @foreach($notifications as $notification)
-            <a class="dropdown-item d-flex align-items-center" href="route('customer.pendingRequest')}}">
-              <div class="mr-3">
-                <div class="icon-circle bg-primary">
-                  <i class="fas fa-file-alt text-white"></i>
-                </div>
-              </div>
-              <div>
-              <div class="small text-gray-500">{{$notification->created_at->diffForHumans()}}</div>
-              <span class="font-weight-normal">{{$notification->data['reservation']}}</span>
-              </div>
-            </a>
-          @endforeach
-        @else
-          <div class="small text-gray-500">No notifications</div>
-        @endif --}}
-        <a class="dropdown-item text-center small text-gray-500" href="route('customer.pendingRequest')}}">Show All Requests</a>
-      </div>
-    </li>
-  
+
     <!-- Nav Item - Messages -->
     <li class="nav-item dropdown no-arrow mx-1">
-      <a class="nav-link" href="route('chat.index')}}" role="button" >
+      <a class="nav-link" href="{{route('customerQuestion.adminView')}}" role="button" >
         <i class="fas fa-envelope fa-fw"></i>
         <!-- Counter - Messages -->
         <span class="badge badge-danger badge-counter">+</span>

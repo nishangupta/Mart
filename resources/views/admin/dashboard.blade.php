@@ -11,86 +11,83 @@
   <!-- Content Row -->
   <div class="row">
 
-    <!-- Earnings (Monthly) Card Example -->
+    
     <div class="col-xl-3 col-md-6 mb-4">
-      <div class="card border-left-primary shadow h-100 py-2">
-        <div class="card-body">
-          <div class="row no-gutters align-items-center">
-            <div class="col mr-2">
-              <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Earnings (Monthly)</div>
-              {{-- <div class="h5 mb-0 font-weight-bold text-gray-800">${{number_format($earnings)}}</div> --}}
-            </div>
-            <div class="col-auto">
-              <i class="fas fa-calendar fa-2x text-gray-300"></i>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Earnings (Monthly) Card Example -->
-    <div class="col-xl-3 col-md-6 mb-4">
-      <div class="card border-left-success shadow h-100 py-2">
-        <div class="card-body">
-          <div class="row no-gutters align-items-center">
-            <div class="col mr-2">
-              <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Earnings (Annual)</div>
-              {{-- <div class="h5 mb-0 font-weight-bold text-gray-800">${{number_format($earnings*12)}}</div> --}}
-            </div>
-            <div class="col-auto">
-              <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Earnings (Monthly) Card Example -->
-    <div class="col-xl-3 col-md-6 mb-4">
-      <a href="('home.search')}}" style="text-decoration: none"> 
+      <a href="{{route('product.index')}}" style="text-decoration: none"> 
         <div class="card border-left-info shadow h-100 py-2">
           <div class="card-body">
             <div class="row no-gutters align-items-center">
               <div class="col mr-2">
-                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Buses</div>
-                <div class="row no-gutters align-items-center">
-                  <div class="col-auto">
-                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">12</div>
-                  </div>
-                  <div class="col">
-                    <div class="progress progress-sm mr-2">
-                      <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                  </div>
-                </div>
+                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Products</div>
+                <div class="h5 mb-0 font-weight-bold text-gray-800">{{$productsCount}}</div>
               </div>
               <div class="col-auto">
-                <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                <i class="fas fa-th-large fa-2x text-gray-300"></i>
               </div>
             </div>
           </div>
         </div>
         </a>
-    </div>
-
-    <!-- Pending Requests Card Example -->
+      </div>
+      
     <div class="col-xl-3 col-md-6 mb-4">
-      <a href="('customer.pendingRequest')}}" style="text-decoration: none"> 
-        <div class="card border-left-warning shadow h-100 py-2">
+      <a href="{{route('order.index')}}" style="text-decoration: none"> 
+        <div class="card border-left-primary shadow h-100 py-2">
           <div class="card-body">
             <div class="row no-gutters align-items-center">
               <div class="col mr-2">
-                <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Pending Requests</div>
-              <div class="h5 mb-0 font-weight-bold text-gray-800">12</div>
+                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Pending orders</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800">{{$ordersCount}}</div>
               </div>
               <div class="col-auto">
-                <i class="fas fa-comments fa-2x text-gray-300"></i>
+                <i class="fas fa-hourglass-start fa-2x text-gray-300"></i>
               </div>
             </div>
           </div>
         </div>
       </a>
     </div>
+
+    <div class="col-xl-3 col-md-6 mb-4">
+      <a href="{{route('readyToShip.index')}}" style="text-decoration: none"> 
+        <div class="card border-left-success shadow h-100 py-2">
+          <div class="card-body">
+            <div class="row no-gutters align-items-center">
+              <div class="col mr-2">
+                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Ready To Ship</div>
+                <div class="h5 mb-0 font-weight-bold text-gray-800">{{$readyToShipCount}}</div>
+              </div>
+              <div class="col-auto">
+                <i class="fas fa-shipping-fast fa-2x text-gray-300"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="col-xl-3 col-md-6 mb-4">
+      <a href="{{route('customerQuestion.adminView')}}" style="text-decoration: none"> 
+        <div class="card border-left-danger shadow h-100 py-2">
+          <div class="card-body">
+            <div class="row no-gutters align-items-center">
+              <div class="col mr-2">
+                <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Customer Queries</div>
+                <div class="h5 mb-0 font-weight-bold text-gray-800">{{number_format($customerQueryCount)}}</div>
+              </div>
+              <div class="col-auto">
+                <i class="fas fa-question-circle fa-2x text-gray-300"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    
+
+
+
   </div>
 
   <!-- Content Row -->
