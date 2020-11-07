@@ -12,7 +12,7 @@ class OrderController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('role:admin|shipper')->except(['order']);
+        $this->middleware('role:admin|shipper')->except(['store']);
     }
     public function index()
     {
