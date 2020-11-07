@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class ReadyToShipController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('role:admin|shipper');
+    }
+
     public function index()
     {
         return view('order.ready-to-ship');

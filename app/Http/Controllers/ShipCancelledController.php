@@ -11,8 +11,9 @@ class ShipCancelledController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('role:admin');
+        $this->middleware('role:admin|shipper');
     }
+
     public function index()
     {
         return view('order.ship-cancelled');

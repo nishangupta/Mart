@@ -18,12 +18,8 @@ class HomeController extends Controller
                 return redirect(route('admin.dashboard'));
                 break;
 
-            case 'seller':
-                return redirect(route('seller.dashboard'));
-                break;
-
             case 'shipper':
-                return redirect(route('shipper.dashboard'));
+                return redirect(route('order.index')); //gets only order management permissions in admin dashboard
                 break;
 
             default:

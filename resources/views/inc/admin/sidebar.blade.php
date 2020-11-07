@@ -1,7 +1,7 @@
 <!-- Sidebar -->
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
-  <!-- Sidebar - Brand -->
+  @role('admin')
   <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('admin.dashboard')}}">
     <div class="sidebar-brand-text mx-2">Admin panel</div>
   </a>
@@ -14,21 +14,25 @@
       <i class="fas fa-fw fa-tachometer-alt"></i>
       <span>Dashboard</span></a>
   </li>
-{{-- 
-  <li class="nav-item {{ request()->segment(2) == '' ? 'active': ''}}">
-    <a class="nav-link" href="route('home.index')}}">
-      <i class="fas fa-fw fa-h-square"></i>
-      <span>Store</span></a>
-  </li> --}}
   
   <!-- Divider -->
   <hr class="sidebar-divider">
+  @endrole
+  
+
+  @role('shipper')
+  <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('order.index')}}">
+    <div class="sidebar-brand-text mx-2">Shipper panel</div>
+  </a>
+  @endrole
+
 
   <!-- Heading -->
   <div class="sidebar-heading">
     Product Information
   </div>
 
+  @role('admin')
   <!-- Nav Item - Pages Collapse Menu -->
   <li class="nav-item">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#productsCollapse" aria-expanded="true" aria-controls="productsCollapse">
@@ -43,6 +47,7 @@
       </div>
     </div>
   </li>
+  @endrole
 
   <!-- Nav Item - Utilities Collapse Menu -->
   <li class="nav-item">
@@ -62,7 +67,8 @@
       </div>
     </div>
   </li>
-  
+
+  @role('admin')
   <!-- Nav Item - Utilities Collapse Menu -->
   <li class="nav-item">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#promotionsCollapse" aria-expanded="true" aria-controls="promotionsCollapse">
@@ -102,6 +108,7 @@
       </div>
     </div>
   </li>
+  @endrole
 
   <hr class="sidebar-divider">
   <!-- Heading -->
@@ -118,7 +125,9 @@
       <div class="bg-white py-2 collapse-inner rounded">
         <h6 class="collapse-header">Accounts information:</h6>
         <a class="collapse-item" href="{{route('admin.profile')}}">Profile</a>
+        @role('admin')
         <a class="collapse-item" href="{{route('userManagement.index')}}">User Management</a>
+        @endrole
       </div>
     </div>
   </li>
