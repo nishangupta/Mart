@@ -36,7 +36,7 @@
                     <tr>
                       <td><img src="{{asset($order->product->productImage->first()->thumbnail)}}" width="50px" alt=""></td>
                     <td><a href="{{$order->product->path()}}">{{$order->product->title}}</a></td>
-                      <td><a href="{{route('order.show',['order'=>$order->id])}}" title="Track order">{{$order->order_number}}</a></td>
+                      <td>{{$order->order_number}}</td>
                       <td>{{$order->quantity}}</td>
                       <td><span class="badge badge-info">{{$order->status}}</span></td>
                       <td>
