@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ShipCancelledController extends Controller
 {
@@ -25,6 +27,12 @@ class ShipCancelledController extends Controller
                 'status' => 'CANCELLED'
             ]);
         }
+        return redirect(route('shipCancelled.index'));
+    }
+    public function cleanUp(Request $request)
+    {
+        Order::where('status', 'CANCELLED')->where('updated_at', '<=', Carbon::now()->subDays(90))->delete();
+        Alert::toast('Db cleaned', 'success');
         return redirect(route('shipCancelled.index'));
     }
 }

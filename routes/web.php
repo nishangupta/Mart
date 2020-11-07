@@ -112,14 +112,17 @@ Route::post('/shipped', [ShippedController::class, 'store'])->name('shipped.stor
 //Delivered 
 Route::get('/delivered', [DeliveredController::class, 'index'])->name('delivered.index');
 Route::post('/delivered', [DeliveredController::class, 'store'])->name('delivered.store');
+Route::delete('/delivered/cleanup', [DeliveredController::class, 'cleanUp'])->name('delivered.cleanUp');
 
 //returned 
 Route::get('/returned', [ReturnedController::class, 'index'])->name('returned.index');
 Route::post('/returned', [ReturnedController::class, 'store'])->name('returned.store');
+Route::delete('/returned/cleanup', [ReturnedController::class, 'cleanUp'])->name('returned.cleanUp');
 
 //cancelled 
-Route::get('/ship/cancelled', [ShipCancelledController::class, 'index'])->name('shipCancelled.index');
-Route::post('/ship/cancelled', [ShipCancelledController::class, 'store'])->name('shipCancelled.store');
+Route::get('/ship-cancelled', [ShipCancelledController::class, 'index'])->name('shipCancelled.index');
+Route::post('/ship-cancelled', [ShipCancelledController::class, 'store'])->name('shipCancelled.store');
+Route::delete('/ship-cancelled/cleanup', [ShipCancelledController::class, 'cleanUp'])->name('shipCancelled.cleanUp');
 
 //category
 Route::get('/category', [CategoryController::class, 'index'])->name('category.index');

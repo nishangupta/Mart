@@ -15,8 +15,11 @@
             <label for="">Select all</label>
             <input type="checkbox" class="selectall">
           </div>
-          <button id="showSelected" class="btn btn-sm btn-primary">Returned</button>
-          <button class="btn btn-sm btn-info">Clean up older than 3 months</button>
+          <button id="showSelected" class="btn btn-sm btn-primary float-right">Returned</button>
+          <form action="{{route('delivered.cleanUp')}}" method="POST" class="float-left mb-2">
+            @csrf @method('delete')
+            <button type="submit" class="btn btn-sm btn-info">Clean up older than 3 months</button>
+          </form>
       </div>
       <form action="{{route('returned.store')}}" method="POST" id="selectorForm">
         @csrf

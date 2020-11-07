@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class DeliveredController extends Controller
 {
@@ -11,6 +13,7 @@ class DeliveredController extends Controller
     {
         $this->middleware('role:admin');
     }
+
     public function index()
     {
         return view('order.delivered');
@@ -26,5 +29,11 @@ class DeliveredController extends Controller
             ]);
         }
         return redirect(route('delivered.index'));
+    }
+    public function cleanUp(Request $request)
+    {
+        Order::where('status', 'DELIVERED')->where('updated_at', '<=', Carbon::now()->subDays(90))->delete();
+        Alert::toast('Db cleaned', 'success');
+        return redirect(route('deliverd.index'));
     }
 }

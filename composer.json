@@ -17,6 +17,7 @@
         "laravel/framework": "^8.0",
         "laravel/tinker": "^2.0",
         "realrashid/sweet-alert": "^3.1",
+        "spatie/laravel-model-cleanup": "^3.1",
         "spatie/laravel-permission": "^3.17",
         "spatie/laravel-query-builder": "^3.3",
         "yajra/laravel-datatables-oracle": "~9.0"
