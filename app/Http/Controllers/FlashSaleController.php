@@ -9,6 +9,10 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class FlashSaleController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('role:admin');
+    }
     public function index()
     {
         return view('flash-sale.index');

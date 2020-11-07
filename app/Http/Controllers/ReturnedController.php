@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class ReturnedController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('role:admin');
+    }
     public function index()
     {
         return view('order.returned');

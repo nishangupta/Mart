@@ -6,6 +6,10 @@ use App\Models\Order;
 
 class InvoiceController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('role:admin')->except(['loginView']);
+    }
     public function index(Order $order)
     {
         //change order printed status

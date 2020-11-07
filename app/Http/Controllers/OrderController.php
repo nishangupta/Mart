@@ -10,6 +10,10 @@ use App\Models\Cart;
 
 class OrderController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('role:admin');
+    }
     public function index()
     {
         return view('order.index');

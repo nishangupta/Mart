@@ -35,6 +35,9 @@ Route::get('/shop', function () {
 //flash-sale directbuy
 Route::post('/direct-buy', [DirectBuyController::class, 'order'])->name('directBuy.order');
 
+//redirect routes
+Route::get('/home', [HomeController::class, 'index'])->name('home.index');
+
 //user cart
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 Route::post('/cart', [CartController::class, 'store'])->name('cart.store');
@@ -49,18 +52,14 @@ Route::delete('/my-order/{id}', [MyOrderController::class, 'destroy'])->name('my
 Route::get('/my-cancellation', [MyCancellationController::class, 'index'])->name('myCancellation.index');
 Route::post('/my-cancellation', [MyCancellationController::class, 'store'])->name('myCancellation.store');
 
-//customer messages
-Route::get('/customer-question', [CustomerQuestionController::class, 'index'])->name('customerQuestion.index');
-Route::post('/customer-question', [CustomerQuestionController::class, 'store'])->name('customerQuestion.store');
-Route::delete('/customer-question/{id}', [CustomerQuestionController::class, 'destroy'])->name('customerQuestion.destroy');
-
-//redirect routes
-Route::get('/home', [HomeController::class, 'index'])->name('home.index');
-
 //user
 Route::get('/user', [UserController::class, 'index'])->name('user.index');
 Route::post('/user/address', [UserController::class, 'address'])->name('user.address');
-Route::get('/user/review', [UserController::class, 'review'])->name('user.review');
+
+//customer queries
+Route::get('/customer-question', [CustomerQuestionController::class, 'index'])->name('customerQuestion.index');
+Route::post('/customer-question', [CustomerQuestionController::class, 'store'])->name('customerQuestion.store');
+Route::delete('/customer-question/{id}', [CustomerQuestionController::class, 'destroy'])->name('customerQuestion.destroy');
 
 //accounts
 Route::get('/logout', [AccountController::class, 'logout'])->name('account.logout');

@@ -11,6 +11,10 @@ use Illuminate\Support\Facades\DB;
 
 class UserManagementController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('role:admin');
+    }
     public function index()
     {
         return view('user-management.index');

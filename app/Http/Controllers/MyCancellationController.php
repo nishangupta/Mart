@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class MyCancellationController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
         $orders = auth()->user()->orders()->with('product.productImage')->onlyTrashed()->latest()->paginate(5);
