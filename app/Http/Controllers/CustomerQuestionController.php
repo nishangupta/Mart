@@ -9,11 +9,6 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class CustomerQuestionController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('role:admin')->except(['loginView']);
-    }
-
     //admin 
     public function adminView()
     {

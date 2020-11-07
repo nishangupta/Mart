@@ -58,8 +58,8 @@ Route::post('/user/address', [UserController::class, 'address'])->name('user.add
 
 //customer queries
 Route::get('/customer-question', [CustomerQuestionController::class, 'index'])->name('customerQuestion.index');
-Route::post('/customer-question', [CustomerQuestionController::class, 'store'])->name('customerQuestion.store');
-Route::delete('/customer-question/{id}', [CustomerQuestionController::class, 'destroy'])->name('customerQuestion.destroy');
+Route::middleware('auth')->post('/customer-question', [CustomerQuestionController::class, 'store'])->name('customerQuestion.store');
+Route::middleware('auth')->delete('/customer-question/{id}', [CustomerQuestionController::class, 'destroy'])->name('customerQuestion.destroy');
 
 //accounts
 Route::get('/logout', [AccountController::class, 'logout'])->name('account.logout');
@@ -72,10 +72,10 @@ Route::get('/admin/login', [AdminController::class, 'loginView'])->name('admin.l
 //print Invoice
 Route::get('/invoice/{order}', [InvoiceController::class, 'index'])->name('invoice.index');
 //customer questions
-Route::get('/admin/customer-question', [CustomerQuestionController::class, 'adminView'])->name('customerQuestion.adminView');
-Route::get('/admin/customer-question/{id}/reply', [CustomerQuestionController::class, 'adminReply'])->name('customerQuestion.adminReply');
-Route::post('/admin/customer-question', [CustomerQuestionController::class, 'massDelete'])->name('customerQuestion.massDelete');
-Route::put('/admin/customer-question/{id}/reply', [CustomerQuestionController::class, 'reply'])->name('customerQuestion.reply');
+Route::middleware('role:admin')->get('/admin/customer-question', [CustomerQuestionController::class, 'adminView'])->name('customerQuestion.adminView');
+Route::middleware('role:admin')->get('/admin/customer-question/{id}/reply', [CustomerQuestionController::class, 'adminReply'])->name('customerQuestion.adminReply');
+Route::middleware('role:admin')->post('/admin/customer-question', [CustomerQuestionController::class, 'massDelete'])->name('customerQuestion.massDelete');
+Route::middleware('role:admin')->put('/admin/customer-question/{id}/reply', [CustomerQuestionController::class, 'reply'])->name('customerQuestion.reply');
 
 //flashSale
 Route::get('/flash-sale', [FlashSaleController::class, 'index'])->name('flashSale.index');
