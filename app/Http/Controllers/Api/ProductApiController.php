@@ -9,6 +9,7 @@ use Yajra\DataTables\DataTables;
 
 class ProductApiController extends Controller
 {
+
   public function all()
   {
     $products = Product::latest()->get();

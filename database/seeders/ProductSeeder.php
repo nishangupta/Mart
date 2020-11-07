@@ -21,39 +21,39 @@ class ProductSeeder extends Seeder
         <div>
            <div>
               <ul>
-                 <li >
-                    <span > Brand  </span>
+                 <li>
+                    <span>Brand  </span>
                     <div>Lenovo</div>
                  </li>
                  <li>
-                    <span> SKU  </span>
+                    <span>SKU  </span>
                     <div>LE599FA08295GNAFAMZ-185623</div>
                  </li>
-                 <li >
-                    <span > Compatible Laptop Size  </span>
+                 <li>
+                    <span>Compatible Laptop Size  </span>
                     <div  key-value>Not Specified</div>
                  </li>
-                 <li >
-                    <span > Closure Type  </span>
+                 <li>
+                    <span>Closure Type  </span>
                     <div  key-value>Zippers</div>
                  </li>
-                 <li >
-                    <span > Dust Resistant  </span>
-                    <div  key-value>Not Specified</div>
+                 <li>
+                    <span> Dust Resistant  </span>
+                    <div key-value>Not Specified</div>
                  </li>
                  <li>
                     <span > Lockable  </span>
-                    <div  key-value>Not Specified</div>
+                    <div key-value>Not Specified</div>
                  </li>
                  <li>
-                    <span> Model  </span>
-                    <div  key-value>GX40Q17226</div>
+                    <span> Model </span>
+                    <div>GX40Q17226</div>
                  </li>
               </ul>
            </div>
            <div >
-              <span >What’s in the box</span>
-              <div  box-content-html>Blue B210 15.6 Laptop Backpack- GX40Q17226</div>
+              <span>What’s in the box</span>
+              <div box-content-html>Blue B210 15.6 Laptop Backpack- GX40Q17226</div>
            </div>
         </div>";
 
@@ -112,11 +112,39 @@ class ProductSeeder extends Seeder
                 'img' => 'ram'
             ],
             [
+                'title' => 'Luxury Shockproof Semi Transparent Matte Finish Case for Oneplus 7T',
+                'subCategory' => 'Phone cases',
+                'price' => 300,
+                'sale_price' => 240,
+                'img' => 'phonecase'
+            ],
+            [
+                'title' => 'Masala Beads Luxury Fashion Diamond Crystal Bracelet Hand Chain Bling Glitter Soft Case Cover',
+                'subCategory' => 'Phone cases',
+                'price' => 150,
+                'sale_price' => 120,
+                'img' => 'phonecase1'
+            ],
+            [
                 'title' => 'Blackmaroon baseball t-shirt for women',
                 'subCategory' => 'Womens Collections',
                 'price' => 5000,
                 'sale_price' => 2500,
                 'img' => 'female-tshirt'
+            ],
+            [
+                'title' => 'Pure Cotton Home And Bath Towel',
+                'subCategory' => 'Bath',
+                'price' => 500,
+                'sale_price' => 450,
+                'img' => 'bath'
+            ],
+            [
+                'title' => 'Imperial Leather Classic Soap 115G',
+                'subCategory' => 'Bath',
+                'price' => 900,
+                'sale_price' => 850,
+                'img' => 'bath1'
             ],
             [
                 'title' => 'multifunctional electric skillet cooker',
