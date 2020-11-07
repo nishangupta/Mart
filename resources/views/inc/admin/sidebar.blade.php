@@ -32,7 +32,7 @@
   <!-- Nav Item - Pages Collapse Menu -->
   <li class="nav-item">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#productsCollapse" aria-expanded="true" aria-controls="productsCollapse">
-      <i class="fas fa-fw fa-bus-alt"></i>
+      <i class="fas fa-fw fa-th-large"></i>
       <span>Products</span>
     </a>
     <div id="productsCollapse" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -66,7 +66,7 @@
   <!-- Nav Item - Utilities Collapse Menu -->
   <li class="nav-item">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#promotionsCollapse" aria-expanded="true" aria-controls="promotionsCollapse">
-      <i class="fas fa-fw fa-people-carry"></i>
+      <i class="fas fa-fw fa-play"></i>
       <span>Promotions</span>
     </a>
     <div id="promotionsCollapse" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
@@ -79,7 +79,7 @@
 
   <li class="nav-item {{ request()->segment(1) == 'categories' ? 'active': ''}}">
     <a class="nav-link" href="{{route('category.index')}}">
-      <i class="fas fa-fw fa-ticket-alt"></i>
+      <i class="fas fa-fw fa-th-list"></i>
       <span>Manage Categories</span></a>
   </li>
 
@@ -93,7 +93,7 @@
 
   <li class="nav-item">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#customerCollapse" aria-expanded="true" aria-controls="customerCollapse">
-      <i class="fas fa-fw fa-people-carry"></i>
+      <i class="fas fa-fw fa-users"></i>
       <span>Customers</span>
     </a>
     <div id="customerCollapse" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
