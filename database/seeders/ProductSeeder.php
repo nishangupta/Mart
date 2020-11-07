@@ -158,7 +158,7 @@ class ProductSeeder extends Seeder
                 'subCategory' => 'Mens Collections',
                 'price' => 5499,
                 'sale_price' => 4500,
-                'img' => 't-shirt2'
+                'img' => 'tshirt2'
             ],
             [
                 'title' => 'Samsung mobile charger with usb-cable',

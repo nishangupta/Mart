@@ -18,7 +18,7 @@
       <div class="card-body mt-2">
         <div class="product-section">
           <div class="row">
-            <div class="col-sm-12 col-md-5">
+            <div class="col-sm-12 col-md-4 ml-auto">
               <div class="product-section-image" id="productCurrentImage">
                 <img src="{{ asset($product->image->original) }}" alt="product" class="active img-fluid" id="currentImage">
               </div>
@@ -42,7 +42,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-sm-12 col-md-7 pl-md-5 mt-5 mt-md-0">
+            <div class="col-sm-12 col-md-7 pl-md-5 mt-5 mt-md-0 mr-auto">
               <div class="product-section-information">
                 <h3 class="product-section-title text-gray-900">{{ $product->title }}</h3>
                 <div>Brand: {{$product->brand ==''?'no brand':$product->brand }}</div>
