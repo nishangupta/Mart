@@ -1,12 +1,12 @@
-![Laravel Mart Example Live](http://mart-laravel.herokuapp.com/)
-
-![ezgif com-gif-maker](https://user-images.githubusercontent.com/47269591/98431883-87064e80-20e1-11eb-9f84-7b769185e8ee.gif)
+[Laravel Mart Example Live](http://mart-laravel.herokuapp.com)
 
 # Mart Laravel
   laravel 8 and vue js
 
 Install locally for full access.
 Fully functional backend.
+
+![ezgif com-gif-maker](https://user-images.githubusercontent.com/47269591/98431883-87064e80-20e1-11eb-9f84-7b769185e8ee.gif)
 
 ## Screenshots
 
