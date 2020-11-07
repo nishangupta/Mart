@@ -1,3 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Invoice</title>
+  <style>
+    body{
+      padding:2rem;
+    }
+    .header{
+      padding:2rem;
+    }
+    .container{
+      padding:2.5rem;
+    }
+  </style>
+</head>
+<body>
 <h4>ORDER ID: {{$order->order_number}}</h4>
 <div class="header">
   <h2>{{config('app.name')}}</h2>
@@ -95,4 +115,6 @@
       <td style="border-top:solid 2px;border-color:#CCCCCC;line-height:1.5; font-weight: bold">{{number_format((int)($order->price*$order->quantity) + 100)}}</td>
     </tr>
   </tbody>
-</table>
+</table> 
+</body>
+</html>

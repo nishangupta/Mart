@@ -47,6 +47,12 @@ class OrderController extends Controller
 
         return redirect(route('myOrder.index'));
     }
+
+    public function show($id)
+    {
+        return redirect(route('invoice.index', ['order' => $id]));
+    }
+
     public function destroy(Request $request)
     {
         $ids = $request->get('ids');

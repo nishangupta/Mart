@@ -30,7 +30,6 @@ class FlashSaleController extends Controller
             Alert::toast('Product not found!', 'error');
             return redirect(route('flashSale.create'));
         }
-
         $flashSale = new FlashSale();
         $flashSale->product_id = $product->id;
         $flashSale->flash_price = $request->flash_price;

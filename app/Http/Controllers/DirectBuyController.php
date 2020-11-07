@@ -16,7 +16,7 @@ class DirectBuyController extends Controller
     }
     public function order(Request $request)
     {
-        $flashProduct = FlashSale::findOrFail($request->id)->with('product')->first();
+        $flashProduct = FlashSale::where('id', $request->id)->with('product')->first();
         $order = new Order();
         $order->user_id = auth()->user()->id;
         $order->product_id = $flashProduct->product->id;
