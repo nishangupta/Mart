@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Traits\RouteRoleTrait;
 use Illuminate\Http\Request;
 use App\Models\Cart;
 use App\Models\Product;
@@ -10,8 +9,6 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class CartController extends Controller
 {
-    use RouteRoleTrait;
-
     public function __construct()
     {
         $this->middleware('auth');
@@ -22,8 +19,8 @@ class CartController extends Controller
     }
     public function store(Request $request)
     {
-        $product = Product::findOrFail($request->product_id);
-        $user = auth()->user();
+        $product = Product::findOrFail($request->product_id); //get product
+        $user = auth()->user(); //get authenticated user
 
         $exists = $user->cart()->where('product_id', $request->product_id)->get();
         if ($exists->count()) {
@@ -47,7 +44,7 @@ class CartController extends Controller
     //mass delete
     public function destroySelected(Request $request)
     {
-        $cartItems = Cart::where('user_id', auth()->user()->id)->whereIn('id', $request->cart)->get();
+        $cartItems = Cart::where('user_id', auth()->user()->id)->whereIn('id', $request->cart)->get(); //get all cart ids
         foreach ($cartItems as $item) {
             $item->delete();
         }

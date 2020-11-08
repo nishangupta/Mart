@@ -12,7 +12,7 @@ class AdminController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('role:admin')->except(['loginView']);
+        $this->middleware('role:admin', ['except' => ['loginView']]);
     }
     public function loginView()
     {
