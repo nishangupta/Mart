@@ -17,7 +17,7 @@ class CartControllerTest extends TestCase
     public function userCanManageCart()
     {
         Artisan::call('db:seed');
-        Auth::loginUsingId(2); //user according to the user
+        Auth::loginUsingId(2); //user according to the seeder
         $response = $this->post(route('cart.store'), [
             'product_id' => 1,
             'quantity' => 2,
@@ -37,7 +37,7 @@ class CartControllerTest extends TestCase
     public function userGetsHisCartItemsOnly()
     {
         Artisan::call('db:seed');
-        Auth::loginUsingId(2); //user according to the user
+        Auth::loginUsingId(2); //user according to the seeder
 
         $response = $this->post(route('cart.store'), [
             'product_id' => 1,
@@ -46,7 +46,7 @@ class CartControllerTest extends TestCase
 
         $response = $this->get('/cart/api/all');
         $response->assertJson([
-            ['user_id' => '2']
+            ['user_id' => '2'] //same as the auth user id
         ]);
     }
 }
