@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Feature\Http\Controllers;
 
 use App\Models\Order;
 use Illuminate\Foundation\Testing\RefreshDatabase;
