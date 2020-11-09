@@ -42,8 +42,10 @@
         <div class="card shadow-hover h-100" >
           <img src="{{$item->product->productImage->first()->original}}" class="card-img-top" alt="">
           <div class="card-body ">
-            <p class="product-title">{{$item->product->title}}</p>
-          <small class="line-through">Rs. {{number_format($item->product->price)}}</small>
+            <p class="product-title">{{substr($item->product->title,0,25)}}..</p>
+            <button class="btn btn-info btn-sm disabled">{{(($item->product->price-$item->flash_price)/$item->product->price*100)}}% OFF</button>
+            <br>
+            <small class="line-through">Rs. {{number_format($item->product->price)}}</small>
             <p class="product-price">Rs. {{number_format($item->flash_price)}}</p>
           </div>
           <form action="{{route('directBuy.order')}}" method="POST">
@@ -144,7 +146,7 @@
         <div class="card shadow-hover h-100" >
           <img src="{{asset($product->productImage->first()->original)}}" class="card-img-top" alt="">
           <div class="card-body ">
-            <p class="product-title">{{$product->title}}</p>
+            <p class="product-title">{{substr($product->title,0,35)}}..</p>
             @if($product->onSale)
               <small class="line-through text-dark">Rs. {{$product->price}}</small>
               <p class="product-price">Rs.{{number_format($product->sale_price)}}</p>

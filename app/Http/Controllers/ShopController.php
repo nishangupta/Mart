@@ -14,7 +14,7 @@ class ShopController extends Controller
     public function index()
     {
         $newProducts = Product::inRandomOrder()->with('productImage')->take(18)->get();
-        $flashSaleProducts = FlashSale::inRandomOrder()->with('product.productImage')->take(12)->get();
+        $flashSaleProducts = FlashSale::inRandomOrder()->with('product.productImage')->take(6)->get();
         return view('shop.index')->with([
             'newProducts' => $newProducts,
             'flashSaleProducts' => $flashSaleProducts
