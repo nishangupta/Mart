@@ -28,9 +28,7 @@ Route::get('/', [ShopController::class, 'index'])->name('shop.index');
 
 Route::get('/shop/{id}-{slug}', [ShopController::class, 'show'])->name('shop.show');
 Route::get('/catalog', [ShopController::class, 'catalog'])->name('shop.catalog');
-Route::get('/shop', function () {
-  return redirect(route('shop.index'));
-});
+Route::redirect('/shop', '/');
 
 //flash-sale directbuy
 Route::post('/direct-buy', [DirectBuyController::class, 'order'])->name('directBuy.order');
