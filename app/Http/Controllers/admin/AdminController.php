@@ -24,7 +24,7 @@ class AdminController extends Controller
         $productsCount = Product::count();
         $ordersCount = Order::where('status', 'PENDING')->count();
         $readyToShipCount  = Order::where('status', 'READY TO SHIP')->count();
-        $customerQueryCount  = CustomerQuestion::whereNotNUll('reply')->count();
+        $customerQueryCount  = CustomerQuestion::whereNUll('reply')->count();
         return view('admin.dashboard', compact([
             'productsCount', 'ordersCount', 'readyToShipCount', 'customerQueryCount'
         ]));
