@@ -34,7 +34,7 @@
 
   @role('admin')
   <!-- Nav Item - Pages Collapse Menu -->
-  <li class="nav-item">
+  <li class="nav-item {{ request()->segment(1) == 'product' ? 'active': ''}}">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#productsCollapse" aria-expanded="true" aria-controls="productsCollapse">
       <i class="fas fa-fw fa-th-large"></i>
       <span>Products</span>
@@ -50,7 +50,7 @@
   @endrole
 
   <!-- Nav Item - Utilities Collapse Menu -->
-  <li class="nav-item">
+  <li class="nav-item {{ request()->segment(1) == 'orders' ? 'active': ''}}">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#ordersCollapse" aria-expanded="true" aria-controls="ordersCollapse">
       <i class="fas fa-fw fa-people-carry"></i>
       <span>Orders</span>
@@ -70,7 +70,7 @@
 
   @role('admin')
   <!-- Nav Item - Utilities Collapse Menu -->
-  <li class="nav-item">
+  <li class="nav-item {{ request()->segment(1) == 'flash-sale' ? 'active': ''}}">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#promotionsCollapse" aria-expanded="true" aria-controls="promotionsCollapse">
       <i class="fas fa-fw fa-play"></i>
       <span>Promotions</span>
@@ -83,12 +83,23 @@
     </div>
   </li>
 
-  <li class="nav-item {{ request()->segment(1) == 'categories' ? 'active': ''}}">
-    <a class="nav-link" href="{{route('category.index')}}">
-      <i class="fas fa-fw fa-th-list"></i>
-      <span>Manage Categories</span></a>
+  <li class="nav-item {{ request()->segment(1) == 'category' ? 'active': ''}}" >
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#shopCollapse" aria-expanded="true" aria-controls="shopCollapse">
+      <i class="fas fa-fw fa-play"></i>
+      <span>Manage shop</span>
+    </a>
+    <div id="shopCollapse" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+      <div class="bg-white py-2 collapse-inner rounded">
+        <h6 class="collapse-header">Shop information:</h6>
+        <a class="collapse-item" href="{{route('category.index')}}">
+          <span>Manage Categories</span>
+        </a>
+        <a class="collapse-item" href="{{route('carousel.index')}}">
+          <span>Manage Carousel</span>
+        </a>
+      </div>
+    </div>
   </li>
-
 
   <!-- Divider -->
   <hr class="sidebar-divider">

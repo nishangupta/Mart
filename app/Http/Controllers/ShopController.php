@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Carousel;
 use App\Models\FlashSale;
 use Illuminate\Http\Request;
 use App\Models\Product;
@@ -13,9 +14,11 @@ class ShopController extends Controller
 {
     public function index()
     {
+        $carousels = Carousel::latest()->take(3)->get();
         $newProducts = Product::inRandomOrder()->with('productImage')->take(18)->get();
         $flashSaleProducts = FlashSale::inRandomOrder()->with('product.productImage')->take(6)->get();
         return view('shop.index')->with([
+            'carousels' => $carousels,
             'newProducts' => $newProducts,
             'flashSaleProducts' => $flashSaleProducts
         ]);

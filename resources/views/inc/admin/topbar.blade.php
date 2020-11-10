@@ -42,7 +42,6 @@
     </li>
   
     @role('admin')
-
     <!-- Nav Item - Messages -->
     <li class="nav-item dropdown no-arrow mx-1">
       <a class="nav-link" href="{{route('customerQuestion.adminView')}}" role="button" >
@@ -84,7 +83,7 @@
     </li>
     @endauth
     @guest
-    <a href="route('login')}}" class="btn btn-primary">Login</a>
+    <a href="{{route('login')}}" class="btn btn-primary">Login</a>
     @endguest
   
   </ul>

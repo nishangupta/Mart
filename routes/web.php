@@ -22,6 +22,7 @@ use App\Http\Controllers\MyOrderController;
 use App\Http\Controllers\ReturnedController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\UserManagementController;
+use App\Http\Controllers\CarouselController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [ShopController::class, 'index'])->name('shop.index');
@@ -63,7 +64,7 @@ Route::middleware('auth')->delete('/customer-question/{id}', [CustomerQuestionCo
 Route::get('/logout', [AccountController::class, 'logout'])->name('account.logout');
 Route::put('/account/changePassword', [AccountController::class, 'changePassword'])->name('account.changePassword');
 
-//admin
+//Admin routes starts from here
 Route::get('/admin', [AdminController::class, 'dashboard'])->name('admin.dashboard');
 Route::get('/admin/profile', [AdminController::class, 'profile'])->name('admin.profile');
 Route::get('/admin/login', [AdminController::class, 'loginView'])->name('admin.loginView');
@@ -82,7 +83,6 @@ Route::post('/flash-sale', [FlashSaleController::class, 'store'])->name('flashSa
 Route::get('/flash-sale/{id}/edit', [FlashSaleController::class, 'edit'])->name('flashSale.edit');
 Route::put('/flash-sale/{id}', [FlashSaleController::class, 'update'])->name('flashSale.update');
 Route::delete('/flash-sale', [FlashSaleController::class, 'destroy'])->name('flashSale.destroy');
-
 
 //User Management 
 Route::get('/user-management', [UserManagementController::class, 'index'])->name('userManagement.index');
@@ -130,3 +130,6 @@ Route::get('/category/{id}/edit', [CategoryController::class, 'edit'])->name('ca
 Route::put('/category/{id}', [CategoryController::class, 'update'])->name('category.update');
 Route::delete('/category/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
 Route::get('/category/removeSubCategory/{subCategory}', [CategoryController::class, 'removeSubCategory'])->name('category.removeSubCategory');
+
+//carousel / front page banner
+Route::resource('/carousel', CarouselController::class);
