@@ -137,7 +137,7 @@
                         </form>
                         @endauth
                         @guest
-                        <p><a href="{{route('login')}}">Login</a> or <a href="{{route('register')}}">Register</a> to ask the seller now</p>
+                        <p class="text-center py-2"><a href="{{route('login')}}" class="text-primary">Login</a> or <a href="{{route('register')}}" class="text-primary">Register</a> to ask the seller now</p>
                         @endguest
                       </div>
                     </div>
