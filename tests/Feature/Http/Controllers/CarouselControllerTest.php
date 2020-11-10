@@ -17,6 +17,6 @@ class CarouselControllerTest extends TestCase
     {
         $response = $this->get('/carousel');
 
-        $response->assertViewHas('carousel.index');
+        $response->assertOk();
     }
 }
