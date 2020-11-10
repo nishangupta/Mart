@@ -24,15 +24,18 @@
               </div>
               <div class="product-section-images">
                 <div class="row mt-3">
-                  <div class="col-sm-2 col-md-3 col-2">
+
+                  {{-- comment this in production --}}
+                  <div class="col-sm-4 col-md-4 col-xl-3 col-3">
                     <div class="product-section-thumbnail selected">
                         <img src="{{ asset($product->image->original) }}" class="img-fluid" alt="product">
                     </div>
                   </div>
+                  {{-- comment this in production --}}
       
                   @if ($product->productImage)
                       @foreach ($product->productImage as $image)
-                        <div class="col-sm-2 col-md-3 col-2 mb-2">
+                        <div class="col-sm-4 col-md-4 col-xl-3 col-3 mb-2">
                           <div class="product-section-thumbnail">
                             <img src="{{ asset($image->original) }}" class="w-100" alt="product">
                           </div>
@@ -243,7 +246,7 @@
     //image zoom
     const productCurrentImage = document.querySelector('#productCurrentImage');
     const img = document.querySelector('#productCurrentImage img');
-    img.addEventListener('mousemove',e=>{
+    $('#productCurrentImage img').bind('touchmove mousemove',e=>{
       const x = e.clientX - 151 - e.target.offsetLeft;
       const y = e.clientY -216 - e.target.offsetTop;
 
@@ -286,8 +289,6 @@
     }
     return
     }
-
-
 
 </script>   
 @endpush

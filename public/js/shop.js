@@ -13675,6 +13675,11 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 Vue.component("my-cart", __webpack_require__(/*! ./components/MyCart */ "./resources/js/components/MyCart.vue")["default"]);
 var app = new Vue({
   el: "#app"
+}); //loading js
+
+$(document).ready(function () {
+  console.log(1123);
+  $("#loaderSvg").remove();
 });
 
 /***/ }),
