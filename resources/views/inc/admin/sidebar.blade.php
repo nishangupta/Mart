@@ -85,7 +85,7 @@
 
   <li class="nav-item {{ request()->segment(1) == 'category' ? 'active': ''}}" >
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#shopCollapse" aria-expanded="true" aria-controls="shopCollapse">
-      <i class="fas fa-fw fa-play"></i>
+      <i class="fas fa-fw fa-store"></i>
       <span>Manage shop</span>
     </a>
     <div id="shopCollapse" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
