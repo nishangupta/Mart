@@ -34,10 +34,16 @@ class FlashSaleController extends Controller
             Alert::toast('Product not found!', 'error');
             return redirect(route('flashSale.create'));
         }
+        //flash price should be less than the actual price
+        if ($request->flash_price > $product->price) {
+            $request->flash_price = $product->price;
+        }
+
         $flashSale = new FlashSale();
         $flashSale->product_id = $product->id;
         $flashSale->flash_price = $request->flash_price;
         $flashSale->save();
+
         Alert::toast('Added', 'success');
         return redirect(route('flashSale.index'));
     }
