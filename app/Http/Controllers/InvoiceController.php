@@ -18,7 +18,7 @@ class InvoiceController extends Controller
         ]);
 
         $user = $order->user()->with('userInfo')->first();
-        $product = $order->product()->first();
+        $product = $order->product()->with('productImage')->first();
 
         $invoice = $this->makeInvoice($user, $product, $order);
         return $invoice;
