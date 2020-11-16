@@ -38,7 +38,7 @@
       @foreach($flashSaleProducts as $item)
       <div class="col-6 col-sm-4 col-md-2 p-2">
         <div class="card shadow-hover h-100" >
-          <img src="{{$item->product->productImage->first()->original}}" class="card-img-top" alt="">
+          <img src="{{asset($item->product->productImage->first()->original)}}" class="card-img-top" alt="">
           <div class="card-body ">
             <p class="product-title">{{substr($item->product->title,0,25)}}..</p>
             <button class="btn btn-info btn-sm disabled">{{(($item->product->price-$item->flash_price)/$item->product->price*100)}}% OFF</button>
