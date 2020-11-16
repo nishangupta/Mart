@@ -30,7 +30,7 @@
   </div>
   
   {{-- flash sale --}}
-  @if($flashSaleProducts->count())
+  {{-- @if($flashSaleProducts->count())
   <section class="just-for-you-section container h-100 my-4">
     <h3>Flash sale</h3>
     <div class="row h-100">
@@ -57,7 +57,7 @@
   
     </div>
   </section>
-  @endif
+  @endif --}}
 
   {{-- categories-section --}}
   <section class="categories-section container my-4 h-100">
