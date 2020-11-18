@@ -79,9 +79,11 @@ class ProductController extends Controller
         return redirect(route('product.index'));
     }
 
-    public function destroy($id)
+    public function destroy(Product $product)
     {
-        //
+        $product->delete();
+        Alert::toast('Product Deleted Successfully!', 'success');
+        return redirect()->route('product.index');
     }
 
     private function requestValidate($request)

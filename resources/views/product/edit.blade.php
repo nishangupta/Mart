@@ -168,7 +168,12 @@
   </form>
   <div class="submitBtn bg-white p-2 border-top">
     <div class="d-flex justify-content-center"> 
-      <button id="submitProductBtn" class="btn btn-primary">Submit</button>
+      <button id="submitProductBtn" class="btn btn-primary mx-3">Submit</button>
+      <form action="{{route('product.destroy',['product'=>$product])}}" method="POST">
+        @csrf
+        @method('delete')
+        <button id="submitProductBtn" class="btn btn-danger">Delete</button>
+      </form>
     </div>
   </div>
 </div>
