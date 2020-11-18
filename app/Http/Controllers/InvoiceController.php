@@ -8,7 +8,7 @@ class InvoiceController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('role:admin')->except(['loginView']);
+        $this->middleware('role:admin|shipper')->except(['loginView']);
     }
     public function index(Order $order)
     {
