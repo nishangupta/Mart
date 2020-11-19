@@ -5,29 +5,18 @@
 
 Install locally for full access.
 Fully functional backend.
+Installations at the bottom
 
 ![ezgif com-gif-maker](https://user-images.githubusercontent.com/47269591/98431883-87064e80-20e1-11eb-9f84-7b769185e8ee.gif)
 
-## Screenshots
 
 ### Admin panel Dashboard
 <a href="https://i.ibb.co/k8BQ6HV/Screenshot-100.png"><img src="https://i.ibb.co/k8BQ6HV/Screenshot-100.png"  width="70%" target="_blank" alt="Screenshot-23"
 border="0" /></a>
 <br />
 
-
 ### Order Management
 <a href="https://i.ibb.co/CQ3Frbm/Screenshot-102.png"><img src="https://i.ibb.co/CQ3Frbm/Screenshot-102.png"  width="70%" target="_blank" alt="Screenshot-23"
-border="0" /></a>
-<br />
-
-### Customer queries
-<a href="https://i.ibb.co/k4YMFyg/Screenshot-98.png"><img src="https://i.ibb.co/k4YMFyg/Screenshot-98.png"  width="70%" target="_blank" alt="Screenshot-23"
-border="0" /></a>
-<br />
-
-### User Management
-<a href="https://i.ibb.co/2g88pRL/Screenshot-103.png"><img src="https://i.ibb.co/2g88pRL/Screenshot-103.png"  width="70%" target="_blank" alt="Screenshot-23"
 border="0" /></a>
 <br />
 
@@ -51,7 +40,7 @@ border="0" /></a>
 10. Visit `localhost:8000` in your browser
 11. Visit `/admin/login` for admin login,  
 
-Admin User: `admin@admin.com`
+Admin User: `admin@admin.com` <br/>
 Admin Password: `password`
 
-Add your packages,modify and push to production easily.
+Add your necessary packages own, modify thorolly, Test all components and Push to production with ease.
