@@ -2,11 +2,10 @@
 
 namespace Tests\Feature\Http\Controllers;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Support\Facades\Artisan;
-use Illuminate\Support\Facades\Auth;
 use Tests\TestCase;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class CarouselControllerTest extends TestCase
 {
@@ -15,8 +14,19 @@ class CarouselControllerTest extends TestCase
     /** @test */
     public function loadCarouselManagementPage()
     {
+        Artisan::call('db:seed');
+        Auth::loginUsingId(1); // admin according to seeder
         $response = $this->get('/carousel');
 
         $response->assertOk();
+    }
+    /** @test */
+    public function usersAreForbiddenToVisitCarouselPage()
+    {
+        Artisan::call('db:seed');
+        Auth::loginUsingId(2); //user according to the seeder
+
+        $response = $this->get('/carousel');
+        $response->assertForbidden();
     }
 }

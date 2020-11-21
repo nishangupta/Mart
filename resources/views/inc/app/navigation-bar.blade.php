@@ -47,7 +47,7 @@
                     <a class="nav-link nav-user-img text-white" href="{{route('login')}}"> LOGIN</a>
                     @endguest
                     @auth
-                    <a class="nav-link nav-user-img text-white" href="{{route('user.index')}}"> Account</a>
+                    <a class="nav-link nav-user-img text-white" href="{{route('home.index')}}"> Account</a>
                     @endauth
                   </div>
               </div>

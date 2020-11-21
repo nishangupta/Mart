@@ -12,6 +12,7 @@ class HomeController extends Controller
     }
     public function index()
     {
+        //Redirecting the users on the basis of their roles
         $userRole = auth()->user()->getRoleNames()->first();
         switch ($userRole) {
             case 'admin':

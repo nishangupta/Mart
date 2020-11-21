@@ -29,7 +29,7 @@ class AccountControllerTest extends TestCase
       'confirmation_password' => 'asdasdasdasd'
     ]);
 
-    $response->assertRedirect('/user');
+    $response->assertRedirect('/login');
     $this->assertGuest();
   }
 
