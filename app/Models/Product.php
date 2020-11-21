@@ -40,12 +40,12 @@ class Product extends Model
 
     public function scopeMinPrice(Builder $query, $price): Builder
     {
-        return $query->where('price', '>=', $price);
+        return $query->where('price', '>=', (int)$price);
     }
 
     public function scopeMaxPrice(Builder $query, $price): Builder
     {
-        return $query->where('price', '<=', $price);
+        return $query->where('price', '<=', (int) $price);
     }
 
     public function path()
