@@ -174,6 +174,12 @@
                 Shipping cost:
                 <span class="text-orange">Rs. 100</span>
               </h6>
+              <h6>
+                Total shipping fee:
+                <span class="text-orange"
+                  >Rs. {{ Number(modalProduct.price) + 100 }}</span
+                >
+              </h6>
             </div>
             <div class="modal-footer">
               <button
@@ -243,7 +249,7 @@ export default {
           );
         } else {
           this.cartTotalPrice += Number(
-            newCart.product.sale_price * newCart.quantity
+            newCart.product.price * newCart.quantity
           );
         }
 
@@ -257,7 +263,7 @@ export default {
           );
         } else {
           this.cartTotalPrice -= Number(
-            newCart.product.sale_price * newCart.quantity
+            newCart.product.price * newCart.quantity
           );
         }
 
