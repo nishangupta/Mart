@@ -42,7 +42,7 @@ class AccountController extends Controller
             return redirect()->back();
         }
 
-        if (Str::of($newP)->exactly($confirmP)) {
+        if (!Str::of($newP)->exactly($confirmP)) {
             Alert::toast('Passwords do not match!', 'info');
             return redirect()->back();
         }

@@ -11,19 +11,18 @@ use Illuminate\Support\Facades\DB;
 
 class UserManagementController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('role:admin');
-    }
     public function index()
     {
         return view('user-management.index');
     }
     public function store(Request $request)
     {
+        //validating the req
         $this->requestValidate($request);
         $user = new User;
+
         $this->saveUser($user, $request);
+
         Alert::toast('User Created!', 'success');
         return redirect(route('userManagement.index'));
     }
@@ -32,6 +31,13 @@ class UserManagementController extends Controller
     {
         $id->delete();
         return redirect(route('userManagement.index'));
+    }
+
+    public function getAllUsers()
+    {
+        return view('user-management.all')->with([
+            'users' => User::paginate(25),
+        ]);
     }
 
     private function saveUser($user, $request)

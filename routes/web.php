@@ -111,6 +111,7 @@ Route::group(['middleware' => ['web', 'role:admin']], function () {
   Route::get('/user-management', [UserManagementController::class, 'index'])->name('userManagement.index');
   Route::post('/user-management', [UserManagementController::class, 'store'])->name('userManagement.store');
   Route::get('/user-management/{id}/destroy', [UserManagementController::class, 'destroy'])->name('userManagement.destroy');
+  Route::get('/user-management/get-all-users', [UserManagementController::class, 'getAllUsers'])->name('userManagement.getAllUsers');
 
   //carousel / front page banner
   Route::resource('/carousel', CarouselController::class);
