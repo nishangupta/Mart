@@ -36,7 +36,7 @@ class UserManagementController extends Controller
     public function getAllUsers()
     {
         return view('user-management.all')->with([
-            'users' => User::paginate(25),
+            'users' => User::with('userInfo')->paginate(25),
         ]);
     }
 

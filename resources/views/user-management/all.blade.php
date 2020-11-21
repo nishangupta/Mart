@@ -29,9 +29,9 @@
               <tr>
                 <td>{{$user->id}}</td>
                 <td>{{$user->name}}</td>
-                <td>{{$user->email}}</td>
-                <td>{{$user->phone}}</td>
-                <td>{{$user->address}}</td>
+                <td>{{$user->email }}</td>
+                <td>{{$user->userInfo->phone?? 'not set'}}</td>
+                <td>{{$user->userInfo->address ?? 'not set'}}</td>
                 <td>{{$user->created_at}}</td>
                 <td><a href="mailto:{{$user->email}}" class="btn btn-sm btn-block btn-success">Mail</a></td>
               </tr>
