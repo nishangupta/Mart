@@ -36,25 +36,26 @@ class AccountController extends Controller
         $newP = $request->new_password;
         $confirmP = $request->confirm_password;
 
-        if (Hash::check($currentP, $authUser->password)) {
-            if (Str::of($newP)->exactly($confirmP)) {
-                $user = User::find($authUser->id);
-                $user->password = Hash::make($newP);
-                if ($user->save()) {
-                    Alert::toast('Password Changed!', 'success');
-                    if ($user->hasRole('admin')) {
-                        return redirect()->route('admin.dashboard');
-                    } else {
-                        return redirect()->intended('/');
-                    }
-                } else {
-                    Alert::toast('Something went wrong!', 'warning');
-                }
-            } else {
-                Alert::toast('Passwords do not match!', 'info');
-            }
-        } else {
+        //If the password is incorrect
+        if (!Hash::check($currentP, $authUser->password)) {
             Alert::toast('Incorrect Password!', 'info');
+            return redirect()->back();
+        }
+
+        if (Str::of($newP)->exactly($confirmP)) {
+            Alert::toast('Passwords do not match!', 'info');
+            return redirect()->back();
+        }
+
+        $user = User::find($authUser->id);
+        $user->password = Hash::make($newP);
+        if ($user->save()) {
+            Alert::toast('Password Changed!', 'success');
+            if ($user->hasRole('admin')) {
+                return redirect()->route('admin.dashboard');
+            } else {
+                return redirect()->intended('/');
+            }
         }
         return redirect()->back();
     }

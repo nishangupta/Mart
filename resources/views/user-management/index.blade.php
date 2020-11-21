@@ -59,7 +59,9 @@
     <div class="card">
       <div class="card-body">
         <h3>User Management</h3>
-        <div class="table-responsive">
+        <a href="{{route('userManagement.getAllUsers')}}" class="btn btn-primary btn-sm float-right">view all registered users</a>
+        
+        <div class="table-responsive pt-2">
           <table class="table table-hover table-bordered small" id="dataTable" width="100%" cellspacing="0">
             <thead>
               <tr>
@@ -79,8 +81,8 @@
         </div>
       </div>
     </div>
-    
   </section>
+
 </div>
 
 @endsection
