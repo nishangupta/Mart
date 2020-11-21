@@ -43,4 +43,4 @@ border="0" /></a>
 Admin User: `admin@admin.com` <br/>
 Admin Password: `password`
 
-Add your necessary packages own, modify thorolly, Test all components and Push to production with ease.
+Add your necessary packages, modify, optimize for seo, Test components and Push to production with ease.
