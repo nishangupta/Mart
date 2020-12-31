@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\CustomerQuestion;
 use Illuminate\Http\Request;
 use App\Models\Product;
@@ -12,13 +13,13 @@ class CustomerQuestionController extends Controller
     //admin 
     public function adminView()
     {
-        return view('customer.customer-question');
+        return view('admin.customer.customer-question');
     }
 
     public function adminReply($id)
     {
         $question = CustomerQuestion::where('id', $id)->with('user', 'product.productImage')->first();
-        return view('customer.reply', compact('question'));
+        return view('admin.customer.reply', compact('question'));
     }
 
     public function reply(CustomerQuestion $id, Request $request)
@@ -47,7 +48,7 @@ class CustomerQuestionController extends Controller
     public function index()
     {
         $questions = auth()->user()->questions()->with('product')->paginate(20);
-        return view('customer-question.index')->with([
+        return view('admin.customer-question.index')->with([
             'questions' => $questions
         ]);
     }

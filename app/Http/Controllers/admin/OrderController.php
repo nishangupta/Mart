@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\Order;
+use App\Http\Controllers\Controller;
 use Carbon\Carbon;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\Request;
@@ -16,7 +17,7 @@ class OrderController extends Controller
     }
     public function index()
     {
-        return view('order.index');
+        return view('admin.order.index');
     }
 
     /**

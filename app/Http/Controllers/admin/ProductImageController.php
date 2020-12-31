@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
@@ -49,7 +49,7 @@ class ProductImageController extends Controller
     //$id -- Product id
     public function show(Product $id)
     {
-        return view('product.show')->with([
+        return view('admin.product.show')->with([
             'product' => $id
         ]);
     }

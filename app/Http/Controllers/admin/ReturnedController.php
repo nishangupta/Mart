@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\Order;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use RealRashid\SweetAlert\Facades\Alert;
 
-class DeliveredController extends Controller
+class ReturnedController extends Controller
 {
     public function __construct()
     {
@@ -16,24 +17,24 @@ class DeliveredController extends Controller
 
     public function index()
     {
-        return view('order.delivered');
+        return view('admin.order.returned');
     }
 
     public function store(Request $request)
     {
         $ids = $request->get('ids');
-        $orders = Order::whereIn('id', $ids)->get(['id', 'status']);
+        $orders = Order::where('id', $ids)->get(['id', 'status']);
         foreach ($orders as $order) {
             $order->update([
-                'status' => 'DELIVERED'
+                'status' => 'RETURNED'
             ]);
         }
-        return redirect(route('delivered.index'));
+        return redirect(route('returned.index'));
     }
     public function cleanUp(Request $request)
     {
-        Order::where('status', 'DELIVERED')->where('updated_at', '<=', Carbon::now()->subDays(90))->delete();
+        Order::where('status', 'RETURNED')->where('updated_at', '<=', Carbon::now()->subDays(90))->delete();
         Alert::toast('Db cleaned', 'success');
-        return redirect(route('deliverd.index'));
+        return redirect(route('returned.index'));
     }
 }

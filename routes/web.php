@@ -1,29 +1,30 @@
 <?php
 
-use App\Http\Controllers\AccountController;
-use App\Http\Controllers\Admin\AdminController;
-use App\Http\Controllers\CartController;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\CustomerQuestionController;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\InvoiceController;
-use App\Http\Controllers\OrderController;
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\ProductImageController;
-use App\Http\Controllers\ReadyToShipController;
-use App\Http\Controllers\ShippedController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\ShipCancelledController;
-use App\Http\Controllers\DeliveredController;
-use App\Http\Controllers\DirectBuyController;
-use App\Http\Controllers\FlashSaleController;
-use App\Http\Controllers\MyCancellationController;
-use App\Http\Controllers\MyOrderController;
-use App\Http\Controllers\ReturnedController;
-use App\Http\Controllers\ShopController;
-use App\Http\Controllers\UserManagementController;
-use App\Http\Controllers\CarouselController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ShopController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\AccountController;
+use App\Http\Controllers\MyOrderController;
+use App\Http\Controllers\DirectBuyController;
+
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\OrderController;
+use App\Http\Controllers\Admin\InvoiceController;
+use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\ShippedController;
+use App\Http\Controllers\Admin\CarouselController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ReturnedController;
+use App\Http\Controllers\Admin\DeliveredController;
+use App\Http\Controllers\Admin\FlashSaleController;
+use App\Http\Controllers\Admin\ReadyToShipController;
+use App\Http\Controllers\Admin\ProductImageController;
+use App\Http\Controllers\Admin\ShipCancelledController;
+use App\Http\Controllers\Admin\MyCancellationController;
+use App\Http\Controllers\Admin\UserManagementController;
+use App\Http\Controllers\Admin\CustomerQuestionController;
 
 // Public routes
 Route::group(['middleware' => ['web']], function () {

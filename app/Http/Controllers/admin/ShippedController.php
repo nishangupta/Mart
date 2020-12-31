@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\Order;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class ReadyToShipController extends Controller
+class ShippedController extends Controller
 {
     public function __construct()
     {
@@ -14,7 +15,7 @@ class ReadyToShipController extends Controller
 
     public function index()
     {
-        return view('order.ready-to-ship');
+        return view('admin.order.shipped');
     }
 
     public function store(Request $request)
@@ -23,9 +24,9 @@ class ReadyToShipController extends Controller
         $orders = Order::whereIn('id', $ids)->get(['id', 'status']);
         foreach ($orders as $order) {
             $order->update([
-                'status' => 'READY TO SHIP'
+                'status' => 'SHIPPED'
             ]);
         }
-        return redirect(route('readyToShip.index'));
+        return redirect(route('shipped.index'));
     }
 }

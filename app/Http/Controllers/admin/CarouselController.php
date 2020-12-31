@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Carousel;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -13,12 +14,12 @@ class CarouselController extends Controller
     public function index()
     {
         $carousels = Carousel::latest()->paginate(15);
-        return view('carousel.index', compact('carousels'));
+        return view('admin.carousel.index', compact('carousels'));
     }
 
     public function create()
     {
-        return view('carousel.create');
+        return view('admin.carousel.create');
     }
 
     public function store(Request $request)
@@ -38,7 +39,7 @@ class CarouselController extends Controller
 
     public function edit(Carousel $carousel)
     {
-        return view('carousel.edit', compact('carousel'));
+        return view('admin.carousel.edit', compact('carousel'));
     }
 
     public function update(Request $request, Carousel $carousel)

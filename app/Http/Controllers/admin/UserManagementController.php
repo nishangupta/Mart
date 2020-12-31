@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\User;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -8,12 +8,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 
 class UserManagementController extends Controller
 {
     public function index()
     {
-        return view('user-management.index');
+        return view('admin.user-management.index');
     }
     public function store(Request $request)
     {
@@ -35,7 +36,7 @@ class UserManagementController extends Controller
 
     public function getAllUsers()
     {
-        return view('user-management.all')->with([
+        return view('admin.user-management.all')->with([
             'users' => User::with('userInfo')->paginate(25),
         ]);
     }

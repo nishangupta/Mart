@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\SubCategory;
@@ -16,7 +17,7 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::with('subCategory')->get();
-        return view('category.index', compact('categories'));
+        return view('admin.category.index', compact('categories'));
     }
     public function create()
     {
@@ -42,7 +43,7 @@ class CategoryController extends Controller
 
     public function edit(Category $id)
     {
-        return view('category.edit')->with([
+        return view('admin.category.edit')->with([
             'category' => $id
         ]);
     }

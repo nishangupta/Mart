@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\FlashSale;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -15,11 +16,11 @@ class FlashSaleController extends Controller
     }
     public function index()
     {
-        return view('flash-sale.index');
+        return view('admin.flash-sale.index');
     }
     public function create()
     {
-        return view('flash-sale.create');
+        return view('admin.flash-sale.create');
     }
 
     public function store(Request $request)
@@ -52,7 +53,7 @@ class FlashSaleController extends Controller
     {
         //here the id become an instance of flashsale
         $product = Product::where('id', $id->product_id)->with('productImage')->first();
-        return view('flash-sale.edit')->with([
+        return view('admin.flash-sale.edit')->with([
             'flashSale' => $id, //here the id is an instance of flashsale
             'product' => $product,
         ]);

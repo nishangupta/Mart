@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\SubCategory;
@@ -18,14 +19,14 @@ class ProductController extends Controller
 
     public function index()
     {
-        return view('product.index');
+        return view('admin.product.index');
     }
 
     public function create()
     {
         $categories = Category::get(['id', 'category_name']);
         $subCategories = SubCategory::get(['id', 'subCategory_name', 'category_id']);
-        return view('product.create')->with(
+        return view('admin.product.create')->with(
             [
                 'categories' => $categories,
                 'subCategories' => $subCategories
@@ -51,7 +52,7 @@ class ProductController extends Controller
     {
         $categories = Category::get(['id', 'category_name']);
         $subCategories = SubCategory::get(['id', 'subCategory_name', 'category_id']);
-        return view('product.edit')->with([
+        return view('admin.product.edit')->with([
             'product' => $product,
             'categories' => $categories,
             'subCategories' => $subCategories

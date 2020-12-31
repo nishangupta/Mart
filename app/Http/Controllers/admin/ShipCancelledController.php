@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\Order;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class ShipCancelledController extends Controller
@@ -16,7 +17,7 @@ class ShipCancelledController extends Controller
 
     public function index()
     {
-        return view('order.ship-cancelled');
+        return view('admin.order.ship-cancelled');
     }
 
     public function store(Request $request)
