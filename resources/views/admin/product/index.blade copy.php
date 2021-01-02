@@ -24,21 +24,7 @@
               <th>Actions</th>
             </tr>
           </thead>
-          <tbody>
-            @if($products->count() > 0)
-              @foreach($products as $product)
-              <tr>
-                <td>{{$product->id}}</td>
-                <td>{{$product->title}}</td>
-                <td>{{$product->code}}</td>
-                <td>{{$product->price}}</td>
-                
-              </tr>
-              @endforeach
-            @else
-              <h6 class="text-center">No Products found!!! Please create Product</h6>
-            @endif
-          </tbody>
+          <tbody></tbody>
         </table>
       </div>
     </div>
@@ -51,8 +37,23 @@
 <script>
 $(document).ready(function(){
   $('#dataTable').dataTable({
-    // processing:true,
+  processing:true,
+  serverSide:true,
+  ajax:"{{route('product.all')}}",
+    columns:[
+      {data:'id'},
+      {data:'title'},
+      {data:'product_code'},
+      {data:'price',orderable:false,searchable:false},
+      {data:'sale_price',orderable:false,searchable:false},
+      {data:'onSale',searchable:false},
+      {data:'stock',orderable:false,searchable:false},
+      {data:'live',searchable:false},
+      {data:'actions',orderable:false,searchable:false},
+    ]
   });
-});
+
+})
+
 </script>
 @endpush

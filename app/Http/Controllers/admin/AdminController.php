@@ -4,21 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Order;
-use Illuminate\Support\Facades\Auth;
 use App\Models\Product;
 use App\Models\CustomerQuestion;
 
 class AdminController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('role:admin', ['except' => ['loginView']]);
-    }
-    public function loginView()
-    {
-        Auth::logout();
-        return view('auth-admin.login');
-    }
     public function dashboard()
     {
         $productsCount = Product::count();

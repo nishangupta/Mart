@@ -7,14 +7,11 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ 'Admin | '.config('app.name') }}</title>
+    <title>{{ 'Admin Login' }}</title>
 
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <!-- Styles -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">    
     <link href="{{ asset('css/admin.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="{{asset('css/lib/dataTables.bootstrap4.min.css')}}">
     @stack('css')
     
 </head>
@@ -28,8 +25,6 @@
     @include('sweetalert::alert')
     
     <script src="{{asset('js/app.js')}}"></script>
-    <script src="{{asset('js/admin.js')}}"></script>
-    {{-- needs to be imported here --}}
     @stack('js')
 </body>
 </html>

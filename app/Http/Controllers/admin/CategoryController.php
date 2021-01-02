@@ -43,6 +43,7 @@ class CategoryController extends Controller
 
     public function edit(Category $id)
     {
+
         return view('admin.category.edit')->with([
             'category' => $id
         ]);

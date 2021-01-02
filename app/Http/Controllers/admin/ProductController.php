@@ -12,14 +12,10 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class ProductController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('role:admin');
-    }
-
     public function index()
     {
-        return view('admin.product.index');
+        $products = Product::latest()->get();
+        return view('admin.product.index',compact('products'));
     }
 
     public function create()
