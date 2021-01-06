@@ -9,7 +9,7 @@ use App\Http\Controllers\AccountController;
 use App\Http\Controllers\MyOrderController;
 use App\Http\Controllers\DirectBuyController;
 use App\Http\Controllers\Admin\AdminController;
-use App\Http\Controllers\Admin\MyCancellationController;
+use App\Http\Controllers\MyCancellationController;
 use App\Http\Controllers\Admin\CustomerQuestionController;
 
 // Public routes

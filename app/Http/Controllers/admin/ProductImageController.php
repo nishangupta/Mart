@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
-use App\Models\Product;
-use App\Models\ProductImage;
-use Illuminate\Support\Collection;
-use Illuminate\Support\Str;
-use Illuminate\Support\Facades\File;
 use Image;
+use App\Models\Product;
+use Illuminate\Support\Str;
+use App\Models\ProductImage;
+use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\File;
 
 class ProductImageController extends Controller
 {

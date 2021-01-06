@@ -1,7 +1,10 @@
 <?php
 
+use App\Models\Category;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\InvoiceController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ShippedController;
@@ -19,21 +22,44 @@ use App\Http\Controllers\Admin\CustomerQuestionController;
 
 //admin login page
 Route::get('/admin/login', [AdminLoginController::class, 'login'])->name('adminLogin.login')->middleware('guest');
+Route::prefix('admin')->get('/cat',function(){
+  $categories = [
+    ['name'=>'electorins','slug'=>'electronics','is_parent'=>1], //1
+    ['name'=>'mobile','slug'=>'mobile','parent_id'=>1], //2
+    ['name'=>'laptop','slug'=>'lap','parent_id'=>1], 
+
+    ['name'=>'kitchn','slug'=>'kit','is_parent'=>true], //3
+    ['name'=>'cup','slug'=>'cup','parent_id'=>4], //4
+
+    // ['name'=>'samsung','slug'=>'samsung','stage'=>3,'parent_id'=>2], 
+
+  ];
+  Category::truncate();
+  foreach($categories as $category){
+    Category::create([
+      'name'=>$category['name'],
+      'slug'=>Str::slug($category['name']),
+      'is_parent'=>$category['is_parent'] ?? 0,
+      'parent_id'=>$category['parent_id'] ?? null
+    ]);
+  }
+  return redirect()->back();
+});
 
 //Admin routes starts from here
-Route::group(['middleware' => ['web', 'role:admin']], function () {
+Route::group(['prefix'=>'/admin','middleware' => ['auth', 'role:admin']], function () {
 
-  Route::get('/admin', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+  Route::get('/', [AdminController::class, 'dashboard'])->name('admin.dashboard');
   
   Route::resource('/product', ProductController::class);
   Route::get('/product/get/image/{id}', [ProductImageController::class, 'index'])->name('productImage.index');
   Route::get('/product/{id}/image', [ProductImageController::class, 'show'])->name('productImage.show');
   Route::delete('/product/{id}/image', [ProductImageController::class, 'destroy'])->name('productImage.destroy');
 
-  Route::get('/admin/customer-question', [CustomerQuestionController::class, 'adminView'])->name('customerQuestion.adminView');
-  Route::get('/admin/customer-question/{id}/reply', [CustomerQuestionController::class, 'adminReply'])->name('customerQuestion.adminReply');
-  Route::post('/admin/customer-question', [CustomerQuestionController::class, 'massDelete'])->name('customerQuestion.massDelete');
-  Route::put('/admin/customer-question/{id}/reply', [CustomerQuestionController::class, 'reply'])->name('customerQuestion.reply');
+  Route::get('/customer-question', [CustomerQuestionController::class, 'adminView'])->name('customerQuestion.adminView');
+  Route::get('/customer-question/{id}/reply', [CustomerQuestionController::class, 'adminReply'])->name('customerQuestion.adminReply');
+  Route::post('/customer-question', [CustomerQuestionController::class, 'massDelete'])->name('customerQuestion.massDelete');
+  Route::put('/customer-question/{id}/reply', [CustomerQuestionController::class, 'reply'])->name('customerQuestion.reply');
 
   Route::get('/flash-sale', [FlashSaleController::class, 'index'])->name('flashSale.index');
   Route::get('/flash-sale/create', [FlashSaleController::class, 'create'])->name('flashSale.create');
@@ -49,13 +75,7 @@ Route::group(['middleware' => ['web', 'role:admin']], function () {
 
   Route::resource('/carousel', CarouselController::class);
 
-  Route::get('/category', [CategoryController::class, 'index'])->name('category.index');
-  Route::get('/category/create', [CategoryController::class, 'create'])->name('category.create');
-  Route::post('/category/store', [CategoryController::class, 'store'])->name('category.store');
-  Route::get('/category/{id}/edit', [CategoryController::class, 'edit'])->name('category.edit');
-  Route::put('/category/{id}', [CategoryController::class, 'update'])->name('category.update');
-  Route::delete('/category/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
-  Route::get('/category/removeSubCategory/{subCategory}', [CategoryController::class, 'removeSubCategory'])->name('category.removeSubCategory');
+  Route::resource('/category', CategoryController::class);
 });
 
 

@@ -2,17 +2,17 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\DeliveredApiController;
 use App\Http\Controllers\Api\OrderApiController;
 use App\Http\Controllers\Api\ProductApiController;
-use App\Http\Controllers\Api\ReadyToShipApiController;
-use App\Http\Controllers\Api\ReturnedApiController;
-use App\Http\Controllers\Api\ShipCancelledApiController;
 use App\Http\Controllers\Api\ShippedApiController;
-use App\Http\Controllers\Api\UserManagementApiController;
-use App\Http\Controllers\ProductImageController;
-use App\Http\Controllers\Api\CustomerQuestionApiController;
+use App\Http\Controllers\Api\ReturnedApiController;
+use App\Http\Controllers\Api\DeliveredApiController;
 use App\Http\Controllers\Api\FlashSaleApiController;
+use App\Http\Controllers\Admin\ProductImageController;
+use App\Http\Controllers\Api\ReadyToShipApiController;
+use App\Http\Controllers\Api\ShipCancelledApiController;
+use App\Http\Controllers\Api\UserManagementApiController;
+use App\Http\Controllers\Api\CustomerQuestionApiController;
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();

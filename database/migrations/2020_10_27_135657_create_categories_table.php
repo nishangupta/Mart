@@ -15,17 +15,15 @@ class CreateCategoriesTable extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->string('category_name')->unique();
+            $table->string('name')->unique();
+            $table->string('slug')->unique();
+            $table->boolean('is_parent');
+            $table->boolean('status')->default(1);
+            $table->unsignedBigInteger('parent_id')->nullable();
+            $table->foreign('parent_id')->references('id')->on('categories')->onDelete('SET NULL');
             $table->timestamps();
         });
 
-        Schema::create('sub_categories', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('category_id');
-            $table->string('subCategory_name')->unique();
-            $table->timestamps();
-            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
-        });
     }
 
     /**
@@ -36,6 +34,6 @@ class CreateCategoriesTable extends Migration
     public function down()
     {
         Schema::dropIfExists('categories');
-        Schema::dropIfExists('sub_categories');
+        // Schema::dropIfExists('sub_categories');
     }
 }
