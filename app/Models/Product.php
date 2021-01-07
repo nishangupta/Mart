@@ -13,6 +13,14 @@ class Product extends Model
 
     protected $guarded = [];
 
+    public function attributes(){
+        return $this->hasMany('App\Models\ProductAttribute');
+    }
+
+    // public function getAttribute($attr){
+    //     return $this->attributes()->where('type',$attr);
+    // }
+
     public function productImage()
     {
         return $this->hasMany('App\Models\ProductImage');

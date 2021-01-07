@@ -37,7 +37,10 @@ class Category extends Model
     }
 
     public static function allCategories(){
-        return  Category::where('status',1)->with('parent_info')->simplePaginate(30);
+        return  Category::with('parent_info')->simplePaginate(50);
     }
 
+    public static function allCategoryNames(){
+        return Category::where('status',1)->with('parent_info')->get();
+    }
 }

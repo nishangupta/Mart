@@ -14,26 +14,30 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::latest()->get();
+        $products = Product::latest()->paginate(50);
         return view('admin.product.index',compact('products'));
     }
 
     public function create()
     {
-        $categories = Category::get(['id', 'category_name']);
-        $subCategories = SubCategory::get(['id', 'subCategory_name', 'category_id']);
+        $categories = Category::allCategoryNames();
         return view('admin.product.create')->with(
             [
                 'categories' => $categories,
-                'subCategories' => $subCategories
             ]
         );
     }
 
     public function store(Request $request)
     {
-        $this->requestValidate($request);
+        // $request->validate([
+        //     'title' => 'required|min:4',
+        //     'summary' => 'sometimes',
+        //     'price' => 'required',
+        //     'stock' => 'required',
+        // ]);
 
+        dd($request->all());
         $product = new Product();
 
         if ($this->productSave($product, $request)) {
@@ -81,17 +85,6 @@ class ProductController extends Controller
         $product->delete();
         Alert::toast('Product Deleted Successfully!', 'success');
         return redirect()->route('product.index');
-    }
-
-    private function requestValidate($request)
-    {
-        return $request->validate([
-            'title' => 'required|min:4',
-            'subCategory' => 'required',
-            'description' => 'sometimes',
-            'price' => 'required',
-            'stock' => 'required',
-        ]);
     }
 
     private function productSave($product, $request)

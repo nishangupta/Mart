@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
@@ -22,29 +22,39 @@ use App\Http\Controllers\Admin\CustomerQuestionController;
 
 //admin login page
 Route::get('/admin/login', [AdminLoginController::class, 'login'])->name('adminLogin.login')->middleware('guest');
-Route::prefix('admin')->get('/cat',function(){
+
+Route::prefix('admin')->get('/pro',function(){
   $categories = [
-    ['name'=>'electorins','slug'=>'electronics','is_parent'=>1], //1
-    ['name'=>'mobile','slug'=>'mobile','parent_id'=>1], //2
-    ['name'=>'laptop','slug'=>'lap','parent_id'=>1], 
-
-    ['name'=>'kitchn','slug'=>'kit','is_parent'=>true], //3
-    ['name'=>'cup','slug'=>'cup','parent_id'=>4], //4
-
-    // ['name'=>'samsung','slug'=>'samsung','stage'=>3,'parent_id'=>2], 
+    [
+      'title'=>'Phone',
+      'product_code'=>'asdasdas',
+    ],
 
   ];
-  Category::truncate();
+  // Product::truncate();
   foreach($categories as $category){
-    Category::create([
-      'name'=>$category['name'],
-      'slug'=>Str::slug($category['name']),
-      'is_parent'=>$category['is_parent'] ?? 0,
-      'parent_id'=>$category['parent_id'] ?? null
-    ]);
+    DB::transaction(function()use($category){
+      $product = Product::create([
+        'title'=>$category['title'],
+        'user_id'=>1,
+        'summary'=>'asdasdasd',
+        'slug'=>Str::slug($category['title']),
+        'price'=>123123,
+        'product_code'=>$category['product_code'],
+      ]);
+
+      $product->attributes()->create([
+        'product_id'=>1,
+        'type'=>'size',
+        'attribute'=>'M',
+        'stock'=>40,  
+      ]);
+    });
+    
   }
-  return redirect()->back();
+  return redirect()->route('product.index');
 });
+
 
 //Admin routes starts from here
 Route::group(['prefix'=>'/admin','middleware' => ['auth', 'role:admin']], function () {

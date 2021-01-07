@@ -4,13 +4,9 @@
 <div class="container-fluid ">
   
   <div class="card shadow">
-    <div class="row mb-2">
-      <div class="col-sm-12 col-md-12">
-        <div class="card-header py-3 d-flex justify-content-between">
-          <h5 class="m-0 font-weight-bold text-primary">Category Management</h5>
-          <a href="{{route('category.create')}}" class="btn btn-primary  float-right">Add a category</a>
-        </div>
-      </div>
+    <div class="card-header py-3 d-flex justify-content-between">
+      <h5 class="m-0 font-weight-bold text-primary">Category Management</h5>
+      <a href="{{route('category.create')}}" class="btn btn-primary  float-right">Add a category</a>
     </div>
   
     <div class="card-body">
@@ -55,13 +51,14 @@
                           </form>
                         </td>
                        
-                        @include('admin.admin-inc.datatable-delete-modal')
 
                     </tr>  
                 @endforeach
               </tbody>
             </table>
             <span style="float:right">{{$categories->links()}}</span>
+            
+            @include('admin.admin-inc.datatable-delete-modal')
             @else
               <h6 class="text-center">No Categories found!!! Please create Category</h6>
             @endif

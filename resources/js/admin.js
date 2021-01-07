@@ -14,8 +14,8 @@ Vue.component(
     require("./components/admin/ProductImages").default
 );
 Vue.component(
-    "category-management",
-    require("./components/admin/CategoryManagement").default
+    "category-selector",
+    require("./components/admin/CategorySelector").default
 );
 
 const app = new Vue({
