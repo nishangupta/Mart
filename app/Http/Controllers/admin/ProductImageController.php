@@ -13,19 +13,16 @@ use Illuminate\Support\Facades\File;
 
 class ProductImageController extends Controller
 {
-    //product id
+    /** getting product images by id */
     public function index($id)
     {
         $products = ProductImage::where('product_id', $id)->get();
         return $products;
     }
 
+    //storing images happens here
     public function store(Request $request, $id)
     {
-        if (!is_dir(public_path('/images/products'))) {
-            mkdir(public_path('/images/products'), 0777);
-        }
-
         $images = Collection::wrap($request->file('file'));
 
         $images->each(function ($image) use ($id) {
@@ -34,15 +31,14 @@ class ProductImageController extends Controller
             $thumbnail = $basename . '_thumb.' . $image->getClientOriginalExtension();
 
             Image::make($image)
-                ->fit(250, 250)
-                ->save(public_path('/images/products/' . $thumbnail));
+                ->save(storage_path('/app/public/products/' . $thumbnail),20);
 
-            $image->move(public_path('/images/products'), $original);
+            $image->move(storage_path('/app/public/products'), $original);
 
             ProductImage::create([
                 'product_id' => $id,
-                'original' => '/images/products/' . $original,
-                'thumbnail' => '/images/products/' . $thumbnail
+                'original' => '/storage/products/' . $original,
+                'thumbnail' => '/storage/products/' . $thumbnail
             ]);
         });
     }

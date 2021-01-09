@@ -59,7 +59,7 @@ export default {
     getProductImages() {
       this.isLoading = true;
       axios
-        .get(`/product/get/image/${this.productId}`)
+        .get(`/admin/product/get/image/${this.productId}`)
         .then((res) => res.data)
         .then((data) => {
           this.images = data;

@@ -16,8 +16,10 @@
             <tr>
               <th>Id</th>
               <th>Title</th>
-              <th>Code</th>
               <th>Price</th>
+              <th>Discount</th>
+              <th>Code</th>
+              <th>Created at</th>
               <th>Actions</th>
             </tr>
           </thead>
@@ -26,9 +28,19 @@
             <tr>
               <td>{{$product->id}}</td>
               <td>{{$product->title}}</td>
+              <td>{{$product->price}}</td>
+              <td>{{$product->discount}}</td>
               <td>{{$product->product_code}}</td>
-              <td>{{$product->price}}</td>
-              <td>{{$product->price}}</td>
+              <td>{{$product->updated_at}}</td>
+              <td>
+                <a href="{{route('productImage.show',['id'=>$product->id])}}" class="btn btn-info btn-sm float-left mr-1" title="images"><i class="fas fa-camera"></i></a>
+                <a href="{{route('product.edit',$product->id)}}" class="btn btn-primary btn-sm float-left mr-1" title="edit"><i class="fas fa-edit"></i></a>
+                <form method="POST" action="{{route('product.destroy',[$product->id])}}">
+                  @csrf 
+                  @method('delete')
+                      <button class="btn btn-danger btn-sm dltBtn" data-id={{$product->id}}  title="Delete"><i class="fas fa-trash-alt"></i></button>
+                </form>
+              </td>
             </tr>
             @endforeach
           </tbody>

@@ -50,5 +50,4 @@ Route::get('/ship/cancelled/all', [ShipCancelledApiController::class, 'all'])->n
 //usermangement api
 Route::get('/user-management/all', [UserManagementApiController::class, 'all'])->name('userManagement.all');
 
-//image uploading
-Route::post('/product/images/{id}', [ProductImageController::class, 'store'])->name('store');
+

@@ -19,6 +19,8 @@ class CreateProductAttributesTable extends Migration
             $table->string('type');
             $table->string('attribute');
             $table->integer('stock');
+            $table->boolean('live');
+            $table->integer('uid');
             $table->foreign('product_id')->references('id')->on('products')->cascadeOnDelete();
         });
     }

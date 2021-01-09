@@ -36,6 +36,7 @@ class ProductController extends Controller
             'description' => 'sometimes|min:3',
             'price' => 'required',
             'subCategory_id'=>'required',
+            'status'=>'required'
         ]);
 
         DB::transaction(function()use($request){
@@ -46,7 +47,7 @@ class ProductController extends Controller
                 'product_code'=>Str::random(8),
                 'price'=>$request->price,
                 'discount'=>$request->discount,
-                'brand'=>$request->brand??null,
+                'brand'=>$request->brand??'',
                 'warranty'=>$request->warranty?? null,
                 'subCategory_id'=>$request->subCategory_id,
                 'user_id'=>auth()->id(),
@@ -59,9 +60,11 @@ class ProductController extends Controller
 
             foreach($attributes as $attr){
                 $product->attributes()->create([
+                    'uid'=>$attr->uid,
                     'type'=>$attr->type,
                     'attribute'=>$attr->attribute,
                     'stock'=>$attr->stock,
+                    'live'=>$attr->live,
                 ]);
             }
 
@@ -73,12 +76,10 @@ class ProductController extends Controller
 
     public function edit(Product $product)
     {
-        $categories = Category::get(['id', 'category_name']);
-        $subCategories = SubCategory::get(['id', 'subCategory_name', 'category_id']);
+        $categories = Category::allCategoryNames();
         return view('admin.product.edit')->with([
             'product' => $product,
             'categories' => $categories,
-            'subCategories' => $subCategories
         ]);
     }
 
@@ -86,20 +87,44 @@ class ProductController extends Controller
     {
         $request->validate([
             'title' => 'required|min:4',
+            'description' => 'sometimes|min:3',
             'price' => 'required',
-            'stock' => 'required',
+            'subCategory_id'=>'required',
+            'status'=>'required'
         ]);
 
-        if ($request->subCategory === null) {
-            Alert::toast('Must enter sub category', 'warning');
-            return redirect()->back();
+        
+        $product->update([
+            'title'=>$request->title,
+            'description'=>$request->description,
+            'slug'=>Str::slug($request->title),
+            'price'=>$request->price,
+            'discount'=>$request->discount,
+            'brand'=>$request->brand??null,
+            'warranty'=>$request->warranty?? null,
+            'subCategory_id'=>$request->subCategory_id,
+            'user_id'=>auth()->id(),
+            'status'=>$request->status,
+            ]);
+            
+        //delete the relationships
+        foreach($product->attributes as $item){
+            $item->delete();
         }
-        //id is product here
-        if ($this->productUpdate($product, $request)) {
-            Alert::toast('Product updated', 'success');
-        } else {
-            Alert::toast('Something went wrong', 'error');
+            
+        $attributes = json_decode($request->attr);
+
+        foreach($attributes as $attr){
+            $product->attributes()->create([
+                'uid'=>$attr->uid,
+                'type'=>$attr->type,
+                'attribute'=>$attr->attribute,
+                'stock'=>$attr->stock,
+                'live'=>$attr->live,
+            ]);
         }
+
+        Alert::toast('Product updated', 'success');
         return redirect(route('product.index'));
     }
 

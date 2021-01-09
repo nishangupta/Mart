@@ -433,29 +433,34 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       mainCategories: [],
-      subCategories: []
+      subCategories: [],
+      selectedMainCategoryId: null
     };
   },
   props: ["categories", "selected_id"],
   mounted: function mounted() {
+    //getting the parent categories only
     this.mainCategories = this.categories.filter(function (item) {
       return item.is_parent == true;
-    });
+    }); //if receives a selected_id prop
 
     if (this.selected_id) {
       this.selectById(this.selected_id);
     }
   },
   methods: {
-    selectSubCategory: function selectSubCategory(e) {
+    categorySelected: function categorySelected(e) {
       this.subCategories = this.categories.filter(function (item) {
         return item.parent_id == e.target.value;
       });
     },
     selectById: function selectById(id) {
+      //getting the subCategory
       this.subCategories = this.categories.filter(function (item) {
         return item.id == id;
-      });
+      }); //get the parentCategory
+
+      this.selectedMainCategoryId = this.subCategories[0].parent_id;
     }
   }
 });
@@ -483,12 +488,62 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "image-upload",
   data: function data() {
     return {
-      dropzone: null
+      dropzone: null,
+      images: [],
+      isLoading: true,
+      noImages: false
     };
   },
   props: {
@@ -498,10 +553,64 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   mounted: function mounted() {
-    this.dropzone = new dropzone__WEBPACK_IMPORTED_MODULE_0___default.a(this.$refs.imageUpload, {
-      url: "/api/product/images/" + this.productId,
-      method: "POST"
+    var _this = this;
+
+    this.getProductImages(); //initializing dropzone
+
+    var dropzone = new dropzone__WEBPACK_IMPORTED_MODULE_0___default.a(this.$refs.uploadBox, {
+      url: "/admin/product/image/" + this.productId,
+      method: "POST",
+      headers: {
+        "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').getAttribute("content")
+      }
     });
+    dropzone.on("uploadprogress", function (file) {
+      this.isLoading = true;
+    });
+    dropzone.on("complete", function (file) {
+      _this.isLoading = false;
+      dropzone.removeFile(file);
+
+      _this.getProductImages();
+    });
+  },
+  methods: {
+    getProductImages: function getProductImages() {
+      var _this2 = this;
+
+      this.isLoading = true;
+      axios.get("/admin/product/get/image/".concat(this.productId)).then(function (res) {
+        return res.data;
+      }).then(function (data) {
+        _this2.images = data;
+
+        if (!data.length) {
+          _this2.noImages = true;
+        }
+      })["catch"](function (e) {
+        console.log(e);
+      })["finally"](function (e) {
+        _this2.isLoading = false;
+      });
+    },
+    deleteImage: function deleteImage(imageId) {
+      var _this3 = this;
+
+      this.isLoading = true;
+      axios["delete"]("/admin/product/".concat(imageId, "/image")).then(function (res) {
+        return res.data;
+      }).then(function (data) {
+        if (data.success) {
+          _this3.images = _this3.images.filter(function (image) {
+            return image.id !== imageId;
+          });
+        }
+      })["catch"](function (e) {
+        console.log(e);
+      })["finally"](function (e) {
+        _this3.isLoading = false;
+      });
+    }
   }
 });
 
@@ -577,7 +686,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.isLoading = true;
-      axios.get("/product/get/image/".concat(this.productId)).then(function (res) {
+      axios.get("/admin/product/get/image/".concat(this.productId)).then(function (res) {
         return res.data;
       }).then(function (data) {
         _this.images = data;
@@ -626,7 +735,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.uploader[data-v-65a56ba1] {\r\n  min-height: 20vh;\n}\r\n", ""]);
+exports.push([module.i, "\n.uploader[data-v-65a56ba1] {\r\n  min-height: 300px;\r\n  position: relative;\n}\n.image-upload[data-v-65a56ba1] {\r\n  display: flex;\r\n  justify-content: center;\r\n  flex-direction: column;\r\n  align-items: center;\r\n  padding: 2rem;\n}\n.upload-box[data-v-65a56ba1] {\r\n  height: 100%;\r\n  width: 100%;\r\n  border: 3px dotted #444;\r\n  position: absolute;\r\n  overflow: hidden;\r\n  top: 0;\r\n  left: 0;\n}\r\n", ""]);
 
 // exports
 
@@ -5643,22 +5752,22 @@ var render = function() {
           "select",
           {
             staticClass: "form-control",
-            attrs: {
-              id: "categorySelector",
-              required: "",
-              name: "category_id"
-            },
-            on: { change: _vm.selectSubCategory }
+            attrs: { required: "", name: "category_id" },
+            on: { change: _vm.categorySelected }
           },
           [
-            _c("option", { attrs: { value: "", selected: "", disabled: "" } }, [
-              _vm._v("Choose a category")
-            ]),
+            _c("option", [_vm._v("Choose a category")]),
             _vm._v(" "),
             _vm._l(_vm.mainCategories, function(category) {
               return _c(
                 "option",
-                { key: category.id, domProps: { value: category.id } },
+                {
+                  key: category.id,
+                  domProps: {
+                    value: category.id,
+                    selected: _vm.selectedMainCategoryId == category.id
+                  }
+                },
                 [_vm._v("\n          " + _vm._s(category.name) + "\n        ")]
               )
             })
@@ -5724,23 +5833,100 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container uploader" }, [
-    _c(
-      "div",
-      { ref: "imageUpload", staticClass: "row justify-content-center mb-3" },
-      [
-        _c(
-          "div",
-          {
-            staticClass:
-              "col-12 bg-primary text-white rounded py-3 my-2 text-center"
-          },
-          [_vm._v("\n      DROP IMAGES HERE\n    ")]
-        )
-      ]
-    )
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-12" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("div", { ref: "uploadBox", staticClass: "upload-box" })
+      ]),
+      _vm._v(" "),
+      _c("br"),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-12 mt-5" }, [
+        _c("div", { staticClass: "product-images" }, [
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-sm btn-block btn-primary mb-5",
+              on: { click: _vm.getProductImages }
+            },
+            [
+              _vm.isLoading
+                ? _c("span", {
+                    staticClass: "spinner-border spinner-border-sm",
+                    attrs: { role: "status", "aria-hidden": "true" }
+                  })
+                : _vm._e(),
+              _vm._v("\n          Refresh\n        ")
+            ]
+          ),
+          _vm._v(" "),
+          _vm.images.length
+            ? _c(
+                "div",
+                { staticClass: "card-columns" },
+                _vm._l(_vm.images, function(image) {
+                  return _c("div", { key: image.id, staticClass: "card p-3" }, [
+                    _c(
+                      "a",
+                      { attrs: { href: image.original, target: "_blank" } },
+                      [
+                        _c("img", {
+                          staticClass: "card-img-top",
+                          attrs: { src: image.thumbnail, alt: "product img" }
+                        })
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass:
+                          "btn btn-outline-danger btn-sm mt-1 btn-rounded",
+                        on: {
+                          click: function($event) {
+                            return _vm.deleteImage(image.id)
+                          }
+                        }
+                      },
+                      [_vm._v("\n              delete\n            ")]
+                    )
+                  ])
+                }),
+                0
+              )
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.noImages
+            ? _c("div", [
+                _c("p", { staticClass: "text-center" }, [
+                  _vm._v("No images uploded for this product")
+                ])
+              ])
+            : _vm._e()
+        ])
+      ])
+    ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "image-upload" }, [
+      _c("i", { staticClass: "fas fa-cloud-upload-alt fa-2x" }),
+      _vm._v(" "),
+      _c("h5", { staticClass: "py-2" }, [
+        _c("b", [_vm._v("Click here to upload")])
+      ]),
+      _vm._v(" "),
+      _c("h6", { staticClass: "mt-10 mb-70" }, [
+        _vm._v("Or Drop Your Image Here")
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 

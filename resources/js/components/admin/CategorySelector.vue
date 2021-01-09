@@ -5,16 +5,16 @@
         <label for="">Choose a category</label>
         <select
           class="form-control"
-          id="categorySelector"
-          @change="selectSubCategory"
+          @change="categorySelected"
           required
           name="category_id"
         >
-          <option value="" selected disabled>Choose a category</option>
+          <option>Choose a category</option>
           <option
             v-for="category in mainCategories"
             :key="category.id"
             :value="category.id"
+            :selected="selectedMainCategoryId == category.id"
           >
             {{ category.name }}
           </option>
@@ -41,27 +41,35 @@ export default {
     return {
       mainCategories: [],
       subCategories: [],
+      selectedMainCategoryId: null,
     };
   },
   props: ["categories", "selected_id"],
+
   mounted() {
+    //getting the parent categories only
     this.mainCategories = this.categories.filter(
       (item) => item.is_parent == true
     );
 
+    //if receives a selected_id prop
     if (this.selected_id) {
       this.selectById(this.selected_id);
     }
   },
   methods: {
-    selectSubCategory(e) {
+    categorySelected(e) {
       this.subCategories = this.categories.filter(
         (item) => item.parent_id == e.target.value
       );
     },
 
     selectById(id) {
+      //getting the subCategory
       this.subCategories = this.categories.filter((item) => item.id == id);
+
+      //get the parentCategory
+      this.selectedMainCategoryId = this.subCategories[0].parent_id;
     },
   },
 };

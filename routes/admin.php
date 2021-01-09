@@ -62,8 +62,9 @@ Route::group(['prefix'=>'/admin','middleware' => ['auth', 'role:admin']], functi
   Route::get('/', [AdminController::class, 'dashboard'])->name('admin.dashboard');
   
   Route::resource('/product', ProductController::class);
+  Route::get('/product/{id}/image', [ProductImageController::class, 'show'])->name('productImage.show'); 
   Route::get('/product/get/image/{id}', [ProductImageController::class, 'index'])->name('productImage.index');
-  Route::get('/product/{id}/image', [ProductImageController::class, 'show'])->name('productImage.show');
+  Route::post('/product/image/{id}', [ProductImageController::class, 'store'])->name('productImage.store');
   Route::delete('/product/{id}/image', [ProductImageController::class, 'destroy'])->name('productImage.destroy');
 
   Route::get('/customer-question', [CustomerQuestionController::class, 'adminView'])->name('customerQuestion.adminView');
@@ -86,10 +87,6 @@ Route::group(['prefix'=>'/admin','middleware' => ['auth', 'role:admin']], functi
   Route::resource('/carousel', CarouselController::class);
 
   Route::resource('/category', CategoryController::class);
-});
-
-
-Route::group(['middleware' => ['web', 'role:admin|shipper']], function () {
 
   Route::get('/admin/profile', [AdminController::class, 'profile'])->name('admin.profile');
 
