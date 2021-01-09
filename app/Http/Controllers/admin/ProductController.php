@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Models\Category;
 use App\Models\Product;
+use App\Models\Category;
 use App\Models\SubCategory;
-use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class ProductController extends Controller
@@ -30,21 +31,43 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-        // $request->validate([
-        //     'title' => 'required|min:4',
-        //     'summary' => 'sometimes',
-        //     'price' => 'required',
-        //     'stock' => 'required',
-        // ]);
+        $request->validate([
+            'title' => 'required|min:4',
+            'description' => 'sometimes|min:3',
+            'price' => 'required',
+            'subCategory_id'=>'required',
+        ]);
 
-        dd($request->all());
-        $product = new Product();
+        DB::transaction(function()use($request){
+            $product = Product::create([
+                'title'=>$request->title,
+                'description'=>$request->description,
+                'slug'=>Str::slug($request->title),
+                'product_code'=>Str::random(8),
+                'price'=>$request->price,
+                'discount'=>$request->discount,
+                'brand'=>$request->brand??null,
+                'warranty'=>$request->warranty?? null,
+                'subCategory_id'=>$request->subCategory_id,
+                'user_id'=>auth()->id(),
+                'status'=>$request->status,
+            ]);
+            
 
-        if ($this->productSave($product, $request)) {
-            Alert::toast('Product added', 'success');
-        } else {
-            Alert::toast('Something went wrong', 'error');
-        }
+            $attributes = json_decode($request->attr);
+            // dd($attributes);
+
+            foreach($attributes as $attr){
+                $product->attributes()->create([
+                    'type'=>$attr->type,
+                    'attribute'=>$attr->attribute,
+                    'stock'=>$attr->stock,
+                ]);
+            }
+
+        });
+
+        Alert::toast('Product created successfully!','success');
         return redirect(route('product.index'));
     }
 

@@ -17,7 +17,7 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->string('title');
-            $table->text('summary');
+            $table->text('description');
             $table->string('slug')->unique();
             $table->string('product_code');
             $table->string('price');
@@ -25,8 +25,8 @@ class CreateProductsTable extends Migration
             $table->string('brand')->default('No brand');
             $table->string('warranty')->nullable();
             $table->boolean('status')->default(1);
-            $table->unsignedBigInteger('category_id')->nullable();
-            $table->foreign('category_id')->references('id')->on('categories')->nullOnDelete();
+            $table->unsignedBigInteger('subCategory_id')->nullable();
+            $table->foreign('subCategory_id')->references('id')->on('categories')->nullOnDelete();
             $table->timestamps();
         });
     }

@@ -37,7 +37,7 @@ Route::prefix('admin')->get('/pro',function(){
       $product = Product::create([
         'title'=>$category['title'],
         'user_id'=>1,
-        'summary'=>'asdasdasd',
+        'description'=>'asdasdasd',
         'slug'=>Str::slug($category['title']),
         'price'=>123123,
         'product_code'=>$category['product_code'],

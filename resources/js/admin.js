@@ -18,6 +18,11 @@ Vue.component(
     require("./components/admin/CategorySelector").default
 );
 
+Vue.component(
+    "attribute-selector",
+    require("./components/admin/AttributeSelector").default
+);
+
 const app = new Vue({
     el: "#app"
 });

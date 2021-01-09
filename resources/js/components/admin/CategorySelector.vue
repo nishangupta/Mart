@@ -2,7 +2,7 @@
   <div class="form-group">
     <div class="row">
       <div class="col">
-        <label class="small" for="">Choose a category</label>
+        <label for="">Choose a category</label>
         <select
           class="form-control"
           id="categorySelector"
