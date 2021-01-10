@@ -70,11 +70,11 @@
               <ul class="navbar-nav mr-auto">
 
                 @foreach($navbarCategories as $category)
-                  <li class="nav-item dropdown small"> <a class="nav-link dropdown-toggle" href="" data-toggle="dropdown" data-abc="true" aria-expanded="false">{{$category->category_name}}</a>
+                  <li class="nav-item dropdown small"> <a class="nav-link dropdown-toggle" href="" data-toggle="dropdown" data-abc="true" aria-expanded="false">{{$category->name}}</a>
                       <ul class="dropdown-menu"> 
-                      @foreach($category->subCategory as $item)
+                      {{-- @foreach($category->subCategory as $item)
                         <a class="dropdown-item" href="{{'/catalog?filter[subCategory]='.$item->subCategory_name}}" style="font-size:.8rem" class="text-sm" data-abc="true">{{$item->subCategory_name}}</a> 
-                      @endforeach 
+                      @endforeach  --}}
                       </ul>
                   </li>
                   @endforeach

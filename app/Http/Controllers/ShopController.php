@@ -16,16 +16,14 @@ class ShopController extends Controller
     {
         $carousels = Carousel::latest()->take(3)->get();
         $newProducts = Product::inRandomOrder()->with('productImage')->take(24)->get();
-        $flashSaleProducts = FlashSale::inRandomOrder()->with('product.productImage')->take(6)->get();
         return view('shop.index')->with([
             'carousels' => $carousels,
             'newProducts' => $newProducts,
-            'flashSaleProducts' => $flashSaleProducts
         ]);
     }
     public function show($id)
     {
-        $product = Product::where('id', $id)->with('productImage')->first();
+        $product = Product::where('id', $id)->with('productImage','category','attributes')->first();
         $product->image = $product->productImage->first();
 
         $questions = $product->getQuestions()->with('user')->paginate(6);

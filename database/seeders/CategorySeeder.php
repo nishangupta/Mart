@@ -18,12 +18,22 @@ class CategorySeeder extends Seeder
     {
 
       $categories = [
-          ['name'=>'electorins','slug'=>'electronics','is_parent'=>1], //1
-          ['name'=>'mobile','slug'=>'mobile','parent_id'=>1], //2
-          ['name'=>'laptop','slug'=>'lap','parent_id'=>1], 
+          ['name'=>'Electronics','is_parent'=>1], //1
+          ['name'=>'Mobile','parent_id'=>1], //2
+          ['name'=>'Tablets','parent_id'=>1], 
+          ['name'=>'Laptops','parent_id'=>1], 
       
-          ['name'=>'kitchn','slug'=>'kit','is_parent'=>true], //3
-          ['name'=>'cup','slug'=>'cup','parent_id'=>4], //4
+          ['name'=>'kitchn','is_parent'=>true], //5
+          ['name'=>'cup','parent_id'=>5], //4
+          ['name'=>'furniture','parent_id'=>5], //4
+
+          ['name'=>'Personal Care','is_parent'=>true], //8
+          ['name'=>'Mens grooming','parent_id'=>8], //4
+          ['name'=>'Foundation','parent_id'=>8], //4
+
+          ['name'=>'Grocery & Pets','is_parent'=>true], //11
+          ['name'=>'Beverages','parent_id'=>11], //4
+          ['name'=>'Breakfast','parent_id'=>11], //4
       
         ];
         foreach($categories as $category){
@@ -46,7 +56,7 @@ class CategorySeeder extends Seeder
         //     ],
         //     [
         //         'name' => 'Personal Care',
-        //         'subCategory' => ['Mens grooming', 'Makeups', 'Foundation', 'Deodrants', 'Female hygiene', 'Soap handwash', 'Skin care', 'Hair care']
+        //         'subCategory' => ['Mens grooming', 'Mens grooming', 'Foundation', 'Deodrants', 'Female hygiene', 'Soap handwash', 'Skin care', 'Hair care']
         //     ],
         //     [
         //         'name' => 'Babys & Toys',

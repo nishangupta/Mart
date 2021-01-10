@@ -4,7 +4,7 @@
 
 @section('content')
   {{-- carousel --}}
-  <div id="mainBanner" class="carousel slide main-banner" data-ride="carousel">
+  {{-- <div id="mainBanner" class="carousel slide main-banner" data-ride="carousel">
     <ol class="carousel-indicators">
       <li data-target="#mainBanner" data-slide-to="0" class="active"></li>
       <li data-target="#mainBanner" data-slide-to="1"></li>
@@ -27,10 +27,10 @@
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="sr-only">Next</span>
     </a>
-  </div>
+  </div> --}}
   
   {{-- flash sale --}}
-  @if($flashSaleProducts->count())
+  {{-- @if($flashSaleProducts->count())
   <section class="just-for-you-section container h-100 my-4">
     <h3>Flash sale</h3>
     <div class="row h-100">
@@ -57,7 +57,7 @@
   
     </div>
   </section>
-  @endif
+  @endif --}}
 
   {{-- categories-section --}}
   <section class="categories-section container my-4 h-100">
@@ -145,12 +145,7 @@
           <img src="{{asset($product->productImage->first()->original)}}" class="card-img-top" alt="">
           <div class="card-body ">
             <p class="product-title">{{substr($product->title,0,35)}}..</p>
-            @if($product->onSale)
-              <small class="line-through text-dark">Rs. {{$product->price}}</small>
-              <p class="product-price">Rs.{{number_format($product->sale_price)}}</p>
-            @else
-              <p class="product-price">Rs.{{number_format($product->price)}}</p>
-            @endif
+            <p class="product-price">Rs.{{number_format($product->price)}}</p>
           </div>
         </div>
         </a>

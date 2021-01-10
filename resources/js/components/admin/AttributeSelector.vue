@@ -284,7 +284,8 @@ export default {
       this.type = "";
       this.attribute = "";
       this.stock = "";
-      (this.live = ""), (this.selectedUid = null);
+      this.live = "";
+      this.selectedUid = null;
     },
   },
 };

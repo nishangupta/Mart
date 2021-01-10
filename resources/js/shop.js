@@ -3,6 +3,7 @@
 window.Vue = require("vue");
 
 Vue.component("my-cart", require("./components/MyCart").default);
+Vue.component("product-show", require("./components/ProductShow").default);
 
 const app = new Vue({
     el: "#app"
@@ -10,6 +11,5 @@ const app = new Vue({
 
 //loading js
 $(document).ready(function() {
-    console.log(1123);
     $("#loaderSvg").remove();
 });

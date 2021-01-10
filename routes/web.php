@@ -26,7 +26,6 @@ Route::group(['middleware' => ['web']], function () {
 //Redirecting users, admin to dashboard and users to their accounts
 Route::get('/home', [HomeController::class, 'index'])->name('home.index');
 
-
 //Account management
 Route::group(['middleware' => ['web', 'auth']], function () {
 
@@ -39,8 +38,7 @@ Route::group(['middleware' => ['web', 'auth']], function () {
 
 
 // User routes
-// needs auth middleware
-Route::group(['middleware' => ['web', 'role:user|admin']], function () {
+Route::group(['middleware' => ['auth', 'role:user|admin']], function () {
 
   // flash-sale products directly added to order
   Route::post('/direct-buy', [DirectBuyController::class, 'order'])->name('directBuy.order');

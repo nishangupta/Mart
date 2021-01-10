@@ -30,7 +30,7 @@ class AppServiceProvider extends ServiceProvider
     {
         Paginator::useBootstrap();
         View::composer('layouts.app', function ($view) {
-            $navbarCategories = Category::with('subCategory')->take(7)->get();
+            $navbarCategories = Category::take(7)->get();
             $view->with([
                 'navbarCategories' => $navbarCategories
             ]);

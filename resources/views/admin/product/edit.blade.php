@@ -32,7 +32,7 @@
         <div class="form-group">
           <label for="">Discount</label>
           <small class="text-primary d-block mb-3">Discount will be automatically shown. leave empty for no disount!</small>
-          <input type="text" name="discount" value="{{$product->discount}}" placeholder="Discount" class="form-control w-50" required> 
+          <input type="text" name="discount" value="{{$product->discount}}" placeholder="Discount" class="form-control w-50" > 
         </div>
 
         <div class="form-group">

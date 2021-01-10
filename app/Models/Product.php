@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Support\Str;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Product extends Model
 {
@@ -17,6 +17,10 @@ class Product extends Model
         return $this->hasMany('App\Models\ProductAttribute');
     }
 
+    public function category(){
+        return $this->belongsTo('App\Models\Category','subCategory_id','id');
+    }
+    
     // public function getAttribute($attr){
     //     return $this->attributes()->where('type',$attr);
     // }

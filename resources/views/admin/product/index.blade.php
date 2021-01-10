@@ -19,6 +19,7 @@
               <th>Price</th>
               <th>Discount</th>
               <th>Code</th>
+              <th>Status</th>
               <th>Created at</th>
               <th>Actions</th>
             </tr>
@@ -31,6 +32,7 @@
               <td>{{$product->price}}</td>
               <td>{{$product->discount}}</td>
               <td>{{$product->product_code}}</td>
+              <td> <span class="badge p-2 {{$product->status ?'badge-primary':'badge-secondary'}}">{{$product->status}}</span> </td>
               <td>{{$product->updated_at}}</td>
               <td>
                 <a href="{{route('productImage.show',['id'=>$product->id])}}" class="btn btn-info btn-sm float-left mr-1" title="images"><i class="fas fa-camera"></i></a>

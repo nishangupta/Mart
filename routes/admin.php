@@ -23,37 +23,37 @@ use App\Http\Controllers\Admin\CustomerQuestionController;
 //admin login page
 Route::get('/admin/login', [AdminLoginController::class, 'login'])->name('adminLogin.login')->middleware('guest');
 
-Route::prefix('admin')->get('/pro',function(){
-  $categories = [
-    [
-      'title'=>'Phone',
-      'product_code'=>'asdasdas',
-    ],
+// Route::prefix('admin')->get('/pro',function(){
+//   $categories = [
+//     [
+//       'title'=>'Phone',
+//       'product_code'=>'asdasdas',
+//     ],
 
-  ];
-  // Product::truncate();
-  foreach($categories as $category){
-    DB::transaction(function()use($category){
-      $product = Product::create([
-        'title'=>$category['title'],
-        'user_id'=>1,
-        'description'=>'asdasdasd',
-        'slug'=>Str::slug($category['title']),
-        'price'=>123123,
-        'product_code'=>$category['product_code'],
-      ]);
+//   ];
+//   // Product::truncate();
+//   foreach($categories as $category){
+//     DB::transaction(function()use($category){
+//       $product = Product::create([
+//         'title'=>$category['title'],
+//         'user_id'=>1,
+//         'description'=>'asdasdasd',
+//         'slug'=>Str::slug($category['title']),
+//         'price'=>123123,
+//         'product_code'=>$category['product_code'],
+//       ]);
 
-      $product->attributes()->create([
-        'product_id'=>1,
-        'type'=>'size',
-        'attribute'=>'M',
-        'stock'=>40,  
-      ]);
-    });
+//       $product->attributes()->create([
+//         'product_id'=>1,
+//         'type'=>'size',
+//         'attribute'=>'M',
+//         'stock'=>40,  
+//       ]);
+//     });
     
-  }
-  return redirect()->route('product.index');
-});
+//   }
+//   return redirect()->route('product.index');
+// });
 
 
 //Admin routes starts from here
