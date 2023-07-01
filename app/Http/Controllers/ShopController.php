@@ -29,7 +29,11 @@ class ShopController extends Controller
         $product->image = $product->productImage->first();
 
         $questions = $product->getQuestions()->with('user')->paginate(6);
-        $mightAlsoLike = Product::where('id', '!=', $product->id)->inRandomOrder()->with('productImage')->take(6)->get();
+        $mightAlsoLike = Product::where('id', '!=', $product->id)
+            ->inRandomOrder()
+            ->with('productImage')
+            ->take(6)
+            ->get();
 
         return view('shop.show')->with([
             'product' => $product,

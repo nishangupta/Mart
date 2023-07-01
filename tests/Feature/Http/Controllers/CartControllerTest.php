@@ -7,13 +7,14 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Auth;
+use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
 class CartControllerTest extends TestCase
 {
     use RefreshDatabase;
 
-    /** @test */
+    #[Test]
     public function userCanManageCart()
     {
         Artisan::call('db:seed');
@@ -33,7 +34,7 @@ class CartControllerTest extends TestCase
         $newResponse->assertJson(['delete' => 'success']);
     }
 
-    /** @test */
+    #[Test]
     public function userGetsHisCartItemsOnly()
     {
         Artisan::call('db:seed');

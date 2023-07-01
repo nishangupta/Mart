@@ -20,7 +20,7 @@ class UserManagementController extends Controller
     {
         //validating the req
         $this->requestValidate($request);
-        $user = new User;
+        $user = new User();
 
         $this->saveUser($user, $request);
 

@@ -18,7 +18,7 @@ class Product extends Model
         return $this->hasMany('App\Models\ProductImage');
     }
 
-    public function first_image()
+    public function firstImage()
     {
         return $this->hasMany('App\Models\ProductImage')->limit(1);
     }

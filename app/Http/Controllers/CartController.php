@@ -44,10 +44,12 @@ class CartController extends Controller
     //mass delete
     public function destroySelected(Request $request)
     {
-        $cartItems = Cart::where('user_id', auth()->user()->id)->whereIn('id', $request->cart)->get(); //get all cart ids
+        $cartItems = Cart::where('user_id', auth()->user()->id)->whereIn('id', $request->cart)->get();
+
         foreach ($cartItems as $item) {
             $item->delete();
         }
+
         return ['delete' => "success"];
     }
 

@@ -7,13 +7,14 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Auth;
+use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
 class CustomerQuestionTest extends TestCase
 {
     use RefreshDatabase;
 
-    /** @test */
+    #[Test]
     public function onlyAdminsCanGoToAdminView()
     {
         Artisan::call('db:seed');
@@ -22,7 +23,8 @@ class CustomerQuestionTest extends TestCase
         $response = $this->get('/admin/customer-question');
         $response->assertStatus(200);
     }
-    /** @test */
+
+    #[Test]
     public function usersAreRestrictedToGoToAdminView()
     {
         Artisan::call('db:seed');
@@ -32,7 +34,7 @@ class CustomerQuestionTest extends TestCase
         $response->assertForbidden();
     }
 
-    /** @test */
+    #[Test]
     public function userCanStoreQuestionToProduct()
     {
         Artisan::call('db:seed');

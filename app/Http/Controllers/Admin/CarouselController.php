@@ -79,10 +79,12 @@ class CarouselController extends Controller
                 public_path($carousel->img),
             ]);
 
-            if ($carousel->update([
+            if (
+                $carousel->update([
                 'caption' => $request->caption,
                 'img' => '/images/banner/' . $original,
-            ])) {
+                ])
+            ) {
                 $request->file->move(public_path('/images/banner'), $original);
                 return true;
             }
@@ -99,10 +101,12 @@ class CarouselController extends Controller
         $basename = Str::random();
         $original = $basename . '.' . $request->file->getClientOriginalExtension();
 
-        if (Carousel::create([
+        if (
+            Carousel::create([
             'caption' => $request->caption,
             'img' => '/images/banner/' . $original,
-        ])) {
+            ])
+        ) {
             $request->file->move(public_path('/images/banner'), $original);
             return true;
         }

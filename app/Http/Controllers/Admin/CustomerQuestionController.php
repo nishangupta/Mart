@@ -10,7 +10,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class CustomerQuestionController extends Controller
 {
-    //admin 
+    //admin
     public function adminView()
     {
         return view('admin.customer.customer-question');
@@ -61,7 +61,7 @@ class CustomerQuestionController extends Controller
         //product imported to redirect to its path
         $product = Product::findOrFail($request->product_id);
 
-        $question = new CustomerQuestion;
+        $question = new CustomerQuestion();
         $question->user_id = auth()->user()->id;
         $question->product_id = $request->product_id;
         $question->question = $request->question;

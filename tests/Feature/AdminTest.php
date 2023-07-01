@@ -6,14 +6,15 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
+use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
 class AdminTest extends TestCase
 {
     use RefreshDatabase;
 
-    /** @test */
-    public function AdminsAreRedirectedToHomeAfterLogin()
+    #[Test]
+    public function adminsAreRedirectedToHomeAfterLogin()
     {
         Artisan::call('db:seed');
         // login as admin

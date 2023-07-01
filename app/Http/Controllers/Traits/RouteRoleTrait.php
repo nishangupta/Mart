@@ -9,7 +9,7 @@ trait RouteRoleTrait
         $user = auth()->user();
         if ($user->hasRole('admin')) {
             return redirect(route('admin.dashboard'));
-        } else if (!$user->hasRole('user')) {
+        } elseif (!$user->hasRole('user')) {
             return redirect(route('home.index'));
         } else {
             return redirect(route($route));

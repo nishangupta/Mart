@@ -8,7 +8,8 @@ use Illuminate\Support\Facades\Auth;
 
 class AdminLoginController extends Controller
 {
-    public function login(){
+    public function login()
+    {
         Auth::logout();
         return view('admin.auth-admin.login');
     }

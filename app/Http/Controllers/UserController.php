@@ -15,7 +15,7 @@ class UserController extends Controller
     {
         $this->middleware('auth');
     }
-    //user profile 
+    //user profile
     public function index()
     {
         if (auth()->user()->hasRole('admin')) {

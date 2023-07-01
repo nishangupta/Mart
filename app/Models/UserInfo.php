@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class UserInfo extends Model
 {
     use HasFactory;
+
     public $timestamps = false;
     protected $guarded = [];
 

@@ -29,11 +29,11 @@ class CategoryController extends Controller
             'category' => 'required|min:3',
             'sub_category' => 'required|min:3'
         ]);
-        $category = new Category;
+        $category = new Category();
         $category->category_name = $request->category;
         $category->save();
 
-        $subCategory = new SubCategory;
+        $subCategory = new SubCategory();
         $subCategory->category_id = $category->id;
         $subCategory->subCategory_name = $request->sub_category;
         $subCategory->save();
@@ -61,7 +61,7 @@ class CategoryController extends Controller
         if ($request->sub_category === null) {
             Alert::toast('Category updated', 'success');
         } else {
-            $subCategory = new SubCategory;
+            $subCategory = new SubCategory();
             $subCategory->category_id = $category->id;
             $subCategory->subCategory_name = $request->sub_category;
             $subCategory->save();

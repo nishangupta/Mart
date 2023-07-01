@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Http\Controllers;
 
+use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Artisan;
@@ -11,7 +12,7 @@ class CarouselControllerTest extends TestCase
 {
     use RefreshDatabase;
 
-    /** @test */
+    #[Test]
     public function loadCarouselManagementPage()
     {
         Artisan::call('db:seed');
@@ -20,7 +21,8 @@ class CarouselControllerTest extends TestCase
 
         $response->assertOk();
     }
-    /** @test */
+
+    #[Test]
     public function usersAreForbiddenToVisitCarouselPage()
     {
         Artisan::call('db:seed');
