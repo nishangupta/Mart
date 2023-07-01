@@ -1,0 +1,33 @@
+version: '2.4'
+
+services:
+  healthy:
+    image: busybox
+    depends_on:
+      database:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  database:
+    image: mysql:8
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: pass
+      MYSQL_DATABASE: laravel
+    healthcheck:
+      test: mysqladmin ping --password=secret
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  redis:
+    image: redis:5-alpine
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: redis-cli ping
+      interval: 10s
+      timeout: 5s
+      retries: 3
