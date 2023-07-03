@@ -6,8 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Order;
 use Yajra\DataTables\DataTables;
 
-class ReturnedApiController extends Controller
-{
+class ReturnedApiController extends Controller{
     public function all()
     {
         $orders = Order::where('status', 'RETURNED')->latest()->get();

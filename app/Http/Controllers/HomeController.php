@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 class HomeController extends Controller
 {
@@ -10,22 +12,16 @@ class HomeController extends Controller
     {
         $this->middleware('auth');
     }
-    public function index()
+
+    public function index(): RedirectResponse
     {
         //Redirecting the users on the basis of their roles
-        $userRole = auth()->user()->getRoleNames()->first();
-        switch ($userRole) {
-            case 'admin':
-                return redirect(route('admin.dashboard'));
-                break;
+        $userRole = Auth::user()->getRoleNames()->first();
 
-            case 'shipper':
-                return redirect(route('order.index')); //gets only order management permissions in admin dashboard
-                break;
-
-            default:
-                return redirect(route('user.index'));
-                break;
-        }
+        return match ($userRole) {
+            'admin' => Redirect::route('admin.dashboard'),
+            'shipper' => Redirect::route('order.index'),
+            default => Redirect::route('user.index'),
+        };
     }
 }

@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Str;
 
 class Product extends Model
@@ -13,24 +14,24 @@ class Product extends Model
 
     protected $guarded = [];
 
-    public function productImage()
+    public function productImage(): HasMany
     {
         return $this->hasMany('App\Models\ProductImage');
     }
 
-    public function firstImage()
+    public function firstImage(): HasMany
     {
-        return $this->hasMany('App\Models\ProductImage')->limit(1);
+        return $this->hasMany(ProductImage::class)->limit(1);
     }
 
-    public function getImage()
+    public function getImage(): HasMany
     {
         return $this->productImage();
     }
 
-    public function getQuestions()
+    public function getQuestions(): HasMany
     {
-        return $this->hasMany('App\Models\CustomerQuestion');
+        return $this->hasMany(CustomerQuestion::class);
     }
 
     public function scopeMightAlsoLike($query)

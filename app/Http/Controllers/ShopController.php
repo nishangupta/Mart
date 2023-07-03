@@ -4,11 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Carousel;
 use App\Models\FlashSale;
-use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\SubCategory;
-use Spatie\QueryBuilder\QueryBuilder;
 use Spatie\QueryBuilder\AllowedFilter;
+use Spatie\QueryBuilder\QueryBuilder;
 
 class ShopController extends Controller
 {
@@ -42,7 +41,7 @@ class ShopController extends Controller
         ]);
     }
 
-    public function catalog(Request $request)
+    public function catalog()
     {
         //get random sub categories
         $productCategories = SubCategory::inRandomOrder()->take(20)->get();

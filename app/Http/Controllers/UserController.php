@@ -15,12 +15,13 @@ class UserController extends Controller
     {
         $this->middleware('auth');
     }
-    //user profile
+
     public function index()
     {
         if (auth()->user()->hasRole('admin')) {
             return redirect()->route('admin.dashboard');
         }
+
         return view('user.index');
     }
 
@@ -32,12 +33,14 @@ class UserController extends Controller
             'phone' => 'required|min:6'
         ]);
 
-        $userInfo = UserInfo::updateOrCreate([
+        UserInfo::updateOrCreate([
             'user_id' => auth()->user()->id,
             'address' => $request->address,
             'phone' => $request->phone
         ]);
+
         Alert::toast('Shipping info updated!', 'success');
+
         return view('user.index');
     }
 }

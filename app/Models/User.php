@@ -2,12 +2,28 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
 
+/**
+ * @property int id
+ * @property string name
+ * @property string email
+ * @property mixed email_verified_at
+ * @property string password
+ * @property string two_factor_secret
+ * @property string two_factor_recovery_codes
+ * @property string profile_img
+ * @property bool status
+ * @property string remember_token
+ * @property Carbon created_at
+ * @property Carbon updated_at
+ */
 class User extends Authenticatable
 {
     use HasFactory;
@@ -44,23 +60,23 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function userInfo()
+    public function userInfo(): HasOne
     {
-        return $this->hasOne('App\Models\UserInfo');
+        return $this->hasOne(UserInfo::class);
     }
 
-    public function cart()
+    public function cart(): HasMany
     {
-        return $this->hasMany('App\Models\Cart');
+        return $this->hasMany(Cart::class);
     }
 
-    public function orders()
+    public function orders(): HasMany
     {
-        return $this->hasMany('App\Models\Order');
+        return $this->hasMany(Order::class);
     }
 
-    public function questions()
+    public function questions(): HasMany
     {
-        return $this->hasMany('App\Models\CustomerQuestion');
+        return $this->hasMany(CustomerQuestion::class);
     }
 }

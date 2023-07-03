@@ -14,6 +14,7 @@ class DirectBuyController extends Controller
     {
         $this->middleware('auth');
     }
+
     public function order(Request $request)
     {
         $flashProduct = FlashSale::where('id', $request->id)->with('product')->first();
@@ -26,6 +27,7 @@ class DirectBuyController extends Controller
         $order->order_number = rand(200, 299) . '' . Carbon::now()->timestamp;
 
         $order->price = $flashProduct->flash_price;
+
         if ($order->save()) {
             Alert::toast('Order Placed!', 'success');
         } else {
