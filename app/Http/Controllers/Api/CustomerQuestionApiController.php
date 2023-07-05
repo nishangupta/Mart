@@ -11,6 +11,7 @@ class CustomerQuestionApiController extends Controller
     public function all()
     {
         $questions = CustomerQuestion::latest()->get();
+
         return DataTables::of($questions)
         ->addColumn('select', function ($row) {
             $item = '<input type="checkbox" name="ids[]" class="selectbox" value="' . $row->id . '">

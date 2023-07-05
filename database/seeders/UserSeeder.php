@@ -7,12 +7,7 @@ use Illuminate\Database\Seeder;
 
 class UserSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
-    public function run()
+    public function run(): void
     {
         $factoryUsers = [
             [
@@ -36,11 +31,12 @@ class UserSeeder extends Seeder
         ];
 
         foreach ($factoryUsers as $user) {
-            $newUser =  User::create([
+            /** @var User $newUser */
+            $newUser =  User::factory()->create([
                 'name' => $user['name'],
                 'email' => $user['email'],
-                'password' => $user['password'],
             ]);
+
             $newUser->assignRole($user['role']);
         }
     }

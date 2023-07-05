@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\UserInfo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\Http\Controllers\Traits\RouteRoleTrait;
 
@@ -18,7 +19,7 @@ class UserController extends Controller
 
     public function index()
     {
-        if (auth()->user()->hasRole('admin')) {
+        if (Auth::user()->hasRole('admin')) {
             return redirect()->route('admin.dashboard');
         }
 

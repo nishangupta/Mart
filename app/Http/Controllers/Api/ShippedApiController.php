@@ -11,6 +11,7 @@ class ShippedApiController extends Controller
     public function all()
     {
         $orders = Order::where('status', 'SHIPPED')->latest()->get();
+
         return DataTables::of($orders)
         ->addColumn('select', function ($row) {
             $item = '<input type="checkbox" name="ids[]" class="selectbox" value="' . $row->id . '">

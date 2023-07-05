@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -15,8 +16,10 @@ class HomeController extends Controller
 
     public function index(): RedirectResponse
     {
-        //Redirecting the users on the basis of their roles
-        $userRole = Auth::user()->getRoleNames()->first();
+        /** @var User $user */
+        $user = Auth::user();
+
+        $userRole = $user->getRoleNames()->first();
 
         return match ($userRole) {
             'admin' => Redirect::route('admin.dashboard'),

@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\View as ViewFactory;
 
 class MyOrderController extends Controller
 {
@@ -14,15 +16,19 @@ class MyOrderController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
+    public function index(): View
     {
-        $orders = auth()->user()->orders()->with('product.productImage')->latest()->paginate(5);
-        return view('my-order.index', compact('orders'));
+        $orders = Auth::user()
+            ->orders()
+            ->with('product.productImage')
+            ->latest()
+            ->paginate(5);
+
+        return ViewFactory::make('my-order.index', compact('orders'));
     }
 
     public function destroy(Order $id): RedirectResponse
     {
-        //soft delete of the order
         $id->delete();
 
         return Redirect::route('myOrder.index');

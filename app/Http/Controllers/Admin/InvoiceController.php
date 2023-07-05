@@ -12,18 +12,18 @@ class InvoiceController extends Controller
     {
         $this->middleware('role:admin|shipper')->except(['loginView']);
     }
-    public function index(Order $order)
+
+    public function index(Order $order): string
     {
         //change order printed status
         $order->update([
-            'printed' => true
+            'printed' => true,
         ]);
 
         $user = $order->user()->with('userInfo')->first();
         $product = $order->product()->with('productImage')->first();
 
-        $invoice = $this->makeInvoice($user, $product, $order);
-        return $invoice;
+        return $this->makeInvoice($user, $product, $order);
     }
 
     private function makeInvoice($user, $product, $order)

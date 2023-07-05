@@ -12,6 +12,7 @@ class ReadyToShipAPiController extends Controller
     public function all()
     {
         $orders = Order::where('status', 'READY TO SHIP')->latest()->get();
+
         return DataTables::of($orders)
         ->setRowId('id')
         ->addColumn('select', function ($row) {

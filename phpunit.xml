@@ -15,8 +15,9 @@
     </testsuites>
     <coverage>
         <report>
-            <clover outputFile="build/logs/clover.xml"/>
-            <html outputDirectory="build/coverage"/>
+            <clover outputFile="build/coverage/clover.xml"/>
+            <cobertura outputFile="build/coverage/cobertura.xml"/>
+            <html outputDirectory="build/coverage/html"/>
         </report>
     </coverage>
     <logging>

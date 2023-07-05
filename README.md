@@ -1,7 +1,6 @@
-[Laravel Mart Example Live](http://mart-laravel.herokuapp.com)
-
 # Mart Laravel
-  laravel 8 and vue js
+
+Laravel and Vue
 
 Install locally for full access.
 Fully functional backend.

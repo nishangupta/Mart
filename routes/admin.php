@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\OrderController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\InvoiceController;
@@ -24,7 +25,7 @@ Route::get('/admin/login', [AdminLoginController::class, 'login'])->name('adminL
 Route::group(['middleware' => ['web', 'role:admin']], function () {
 
   Route::get('/admin', [AdminController::class, 'dashboard'])->name('admin.dashboard');
-  
+
   Route::resource('/product', ProductController::class);
   Route::get('/product/get/image/{id}', [ProductImageController::class, 'index'])->name('productImage.index');
   Route::get('/product/{id}/image', [ProductImageController::class, 'show'])->name('productImage.show');

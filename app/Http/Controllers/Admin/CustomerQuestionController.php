@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\CustomerQuestion;
 use Illuminate\Http\Request;
 use App\Models\Product;
+use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class CustomerQuestionController extends Controller
@@ -40,14 +41,16 @@ class CustomerQuestionController extends Controller
         foreach ($questions as $order) {
             $order->delete();
         }
+
         Alert::toast('Removed', 'success');
+
         return redirect(route('customerQuestion.adminView'));
     }
 
     //for users
     public function index()
     {
-        $questions = auth()->user()->questions()->with('product')->paginate(20);
+        $questions = Auth::user()->questions()->with('product')->paginate(20);
         return view('admin.customer-question.index')->with([
             'questions' => $questions
         ]);
