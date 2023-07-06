@@ -94,9 +94,6 @@
         <a class="collapse-item" href="{{route('category.index')}}">
           <span>Manage Categories</span>
         </a>
-        <a class="collapse-item" href="{{route('carousel.index')}}">
-          <span>Manage Carousel</span>
-        </a>
       </div>
     </div>
   </li>

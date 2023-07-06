@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AdminLoginController;
-use App\Http\Controllers\Admin\CarouselController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DeliveredController;
 use App\Http\Controllers\Admin\FlashSaleController;
@@ -55,8 +54,6 @@ Route::group(['middleware' => ['web', 'role:admin']], function () {
         ->name('userManagement.destroy');
     Route::get('/user-management/get-all-users', [UserManagementController::class, 'getAllUsers'])
         ->name('userManagement.getAllUsers');
-
-    Route::resource('/carousel', CarouselController::class);
 
     Route::get('/category', [CategoryController::class, 'index'])
         ->name('category.index');
