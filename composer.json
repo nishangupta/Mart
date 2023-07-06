@@ -13,6 +13,7 @@
         "intervention/image": "^2.5",
         "laravel/fortify": "^1.6",
         "laravel/framework": "^10.14",
+        "laravel/pennant": "^1.3",
         "laravel/tinker": "^2.8",
         "realrashid/sweet-alert": "^7.0",
         "spatie/laravel-open-telemetry": "^0.0.7",
