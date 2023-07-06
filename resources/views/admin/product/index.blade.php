@@ -1,8 +1,11 @@
+<?php
+/** @var \App\Models\Product $product */
+?>
 @extends('layouts.admin')
 
 @section('content')
 <div class="container-fluid">
-  <a href="{{route('product.create')}}" class="btn btn-primary mb-4">Add a Product</a>
+  <a href="{{ route('product.create') }}" class="btn btn-primary mb-4">Add a Product</a>
 
   <div class="card shadow mb-4">
     <div class="card-header py-3">
@@ -28,11 +31,15 @@
             @if($products->count() > 0)
               @foreach($products as $product)
               <tr>
-                <td>{{$product->id}}</td>
-                <td>{{$product->title}}</td>
-                <td>{{$product->code}}</td>
-                <td>{{$product->price}}</td>
-                
+                <td>{{ $product->id }}</td>
+                <td>{{ $product->title }}</td>
+                <td>{{ $product->product_code }}</td>
+                <td>{{ $product->price }}</td>
+                <td>{{ $product->sale_price }}</td>
+                <td>{{ $product->onSale ? 'Yes' : 'No' }}</td>
+                <td>{{ $product->stock }}</td>
+                <td>{{ $product->live ? 'Yes' : 'No' }}</td>
+
               </tr>
               @endforeach
             @else

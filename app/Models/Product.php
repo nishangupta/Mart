@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Str;
 
@@ -29,6 +30,8 @@ use Illuminate\Support\Str;
  * @property string size
  * @property Carbon created_at
  * @property Carbon updated_at
+ * @property Collection productImage
+ * @property ProductImage firstImage
  */
 class Product extends Model
 {
@@ -38,7 +41,7 @@ class Product extends Model
 
     public function productImage(): HasMany
     {
-        return $this->hasMany('App\Models\ProductImage');
+        return $this->hasMany(ProductImage::class);
     }
 
     public function firstImage(): HasMany

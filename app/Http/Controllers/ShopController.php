@@ -41,11 +41,11 @@ class ShopController extends Controller
     }
     public function show($id): View
     {
-        $product = Product::where('id', $id)
+        /** @var Product $product */
+        $product = (new Product())->newQuery()
+            ->where('id', $id)
             ->with('productImage')
             ->first();
-
-        $product->image = $product->productImage->first();
 
         $questions = $product
             ->getQuestions()

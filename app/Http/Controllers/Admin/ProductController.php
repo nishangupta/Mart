@@ -6,31 +6,42 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\SubCategory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\View as ViewFactory;
 use Illuminate\Support\Str;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class ProductController extends Controller
 {
-    public function index()
+    public function index(Product $productModel): View
     {
-        $products = Product::latest()->get();
-        return view('admin.product.index', compact('products'));
+        return ViewFactory::make('admin.product.index', [
+            'products' => $productModel->newQuery()->latest()->get(),
+        ]);
     }
 
-    public function create()
+    public function create(Category $categoryModel, SubCategory $subCategoryModel): View
     {
-        $categories = Category::get(['id', 'category_name']);
-        $subCategories = SubCategory::get(['id', 'subCategory_name', 'category_id']);
-        return view('admin.product.create')->with(
+        return ViewFactory::make('admin.product.create')->with(
             [
-                'categories' => $categories,
-                'subCategories' => $subCategories
-            ]
+                'categories' => $categoryModel->newQuery()->get([
+                    'id',
+                    'category_name',
+                ]),
+                'subCategories' => $subCategoryModel->newQuery()->get([
+                    'id',
+                    'subCategory_name',
+                    'category_id',
+                ]),
+            ],
         );
     }
 
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         $this->requestValidate($request);
 
@@ -41,21 +52,23 @@ class ProductController extends Controller
         } else {
             Alert::toast('Something went wrong', 'error');
         }
-        return redirect(route('product.index'));
+
+        return Redirect::route('product.index');
     }
 
-    public function edit(Product $product)
+    public function edit(Product $product): View
     {
         $categories = Category::get(['id', 'category_name']);
         $subCategories = SubCategory::get(['id', 'subCategory_name', 'category_id']);
-        return view('admin.product.edit')->with([
+
+        return ViewFactory::make('admin.product.edit')->with([
             'product' => $product,
             'categories' => $categories,
-            'subCategories' => $subCategories
+            'subCategories' => $subCategories,
         ]);
     }
 
-    public function update(Request $request, Product $product)
+    public function update(Request $request, Product $product): RedirectResponse
     {
         $request->validate([
             'title' => 'required|min:4',
@@ -73,14 +86,14 @@ class ProductController extends Controller
         } else {
             Alert::toast('Something went wrong', 'error');
         }
-        return redirect(route('product.index'));
+        return Redirect::route('product.index');
     }
 
-    public function destroy(Product $product)
+    public function destroy(Product $product): RedirectResponse
     {
         $product->delete();
         Alert::toast('Product Deleted Successfully!', 'success');
-        return redirect()->route('product.index');
+        return Redirect::route('product.index');
     }
 
     private function requestValidate($request)
@@ -94,9 +107,9 @@ class ProductController extends Controller
         ]);
     }
 
-    private function productSave($product, $request)
+    private function productSave(Product $product, Request $request): bool
     {
-        $product->user_id = auth()->user()->id;
+        $product->user_id = Auth::user()->id;
         $product->title = $request->title;
         $product->slug = Str::slug($request->title);
         $product->subCategory = $request->subCategory;
@@ -121,13 +134,10 @@ class ProductController extends Controller
         $product->onSale = $request->onSale ? 1 : 0;
         $product->live = $request->live ? 1 : 0;
 
-        if ($product->save()) {
-            return true;
-        }
-        return false;
+        return $product->save();
     }
 
-    private function productUpdate($product, $request)
+    private function productUpdate(Product $product, Request $request): bool
     {
         $product->title = $request->title;
         $product->slug = Str::slug($request->title);
@@ -153,9 +163,6 @@ class ProductController extends Controller
         $product->onSale = $request->onSale ? 1 : 0;
         $product->live = $request->live ? 1 : 0;
 
-        if ($product->save()) {
-            return true;
-        }
-        return false;
+        return $product->save();
     }
 }
