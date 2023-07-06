@@ -14,11 +14,11 @@
       <i class="fas fa-fw fa-tachometer-alt"></i>
       <span>Dashboard</span></a>
   </li>
-
+  
   <!-- Divider -->
   <hr class="sidebar-divider">
   @endrole
-
+  
 
   @role('shipper')
   <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('order.index')}}">
@@ -97,6 +97,25 @@
         <a class="collapse-item" href="{{route('carousel.index')}}">
           <span>Manage Carousel</span>
         </a>
+      </div>
+    </div>
+  </li>
+
+  <!-- Divider -->
+  <hr class="sidebar-divider">
+  <!-- Heading -->
+  <div class="sidebar-heading">
+    Customer Information
+  </div>
+
+  <li class="nav-item">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#customerCollapse" aria-expanded="true" aria-controls="customerCollapse">
+      <i class="fas fa-fw fa-users"></i>
+      <span>Customers</span>
+    </a>
+    <div id="customerCollapse" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+      <div class="bg-white py-2 collapse-inner rounded">
+        <a class="collapse-item" href="{{route('customerQuestion.adminView')}}">Customer questions</a>
       </div>
     </div>
   </li>

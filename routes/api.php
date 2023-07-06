@@ -26,6 +26,9 @@ Route::get('/product/live/invert/{id}', [ProductApiController::class, 'liveInver
 //campaign flash sale
 Route::get('/flash-sale/all', [FlashSaleApiController::class, 'all'])->name('flashSale.all');
 
+//customer question
+Route::get('/customer-question/all', [CustomerQuestionApiController::class, 'all'])->name('customerQuestion.all');
+
 //orders api
 Route::get('/order/all', [OrderApiController::class, 'all'])->name('order.all');
 
