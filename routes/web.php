@@ -1,28 +1,33 @@
 <?php
 
 use App\Http\Controllers\AccountController;
-use App\Http\Controllers\Admin\CustomerQuestionController;
 use App\Http\Controllers\Admin\MyCancellationController;
 use App\Http\Controllers\CartController;
-use App\Http\Controllers\DirectBuy;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MyOrderController;
-use App\Http\Controllers\ShopController;
+use App\Http\Controllers\User\Catalog;
+use App\Http\Controllers\User\CustomerQuestion\Destroy as DestroyCustomerQuestion;
+use App\Http\Controllers\User\CustomerQuestion\Index as IndexCustomerQuestion;
+use App\Http\Controllers\User\CustomerQuestion\Store as StoreCustomerQuestion;
+use App\Http\Controllers\User\DirectBuy;
+use App\Http\Controllers\User\Shop;
+use App\Http\Controllers\User\ShowProduct;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 // Public routes
 Route::group(['middleware' => ['web']], function () {
-    Route::get('/', [ShopController::class, 'index'])->name('shop.index');
-    Route::get('/shop/{id}-{slug}', [ShopController::class, 'show'])->name('shop.show');
-    Route::get('/catalog', [ShopController::class, 'catalog'])->name('shop.catalog');
-    Route::permanentRedirect('/shop', '/'); //same routes
+    Route::get('/', Shop::class)
+        ->name('shop.index');
+    Route::get('/shop/{id}-{slug}', ShowProduct::class)
+        ->name('shop.show');
+    Route::get('/catalog', Catalog::class)
+        ->name('shop.catalog');
+    Route::permanentRedirect('/shop', '/');
 });
 
-
-//Redirecting users, admin to dashboard and users to their accounts
+// Redirecting users, admin to dashboard and users to their accounts
 Route::get('/home', [HomeController::class, 'index'])->name('home.index');
-
 
 //Account management
 Route::group(['middleware' => ['web', 'auth']], function () {
@@ -41,7 +46,7 @@ Route::group(['middleware' => ['web', 'role:user|admin']], function () {
     Route::post('/direct-buy', DirectBuy::class)->name('directBuy.order');
 
     // user cart
-    Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+    Route::view('/cart', 'user.my-cart')->name('cart.index');
     Route::post('/cart', [CartController::class, 'store'])->name('cart.store');
     Route::get('/cart/api/all', [CartController::class, 'all']);
     Route::post('/cart/destroy/selected', [CartController::class, 'destroySelected']);
@@ -55,10 +60,11 @@ Route::group(['middleware' => ['web', 'role:user|admin']], function () {
     Route::get('/user', [UserController::class, 'index'])->name('user.index');
     Route::post('/user/address', [UserController::class, 'address'])->name('user.address');
 
-    //customer queries
-    Route::get('/customer-question', [CustomerQuestionController::class, 'index'])->name('customerQuestion.index');
-    Route::middleware('auth')->post('/customer-question',
-        [CustomerQuestionController::class, 'store'])->name('customerQuestion.store');
-    Route::middleware('auth')->delete('/customer-question/{id}',
-        [CustomerQuestionController::class, 'destroy'])->name('customerQuestion.destroy');
+    // Customer Question functions
+    Route::get('/customer-question', IndexCustomerQuestion::class)
+        ->name('customerQuestion.index');
+    Route::post('/customer-question', StoreCustomerQuestion::class)
+        ->name('customerQuestion.store');
+    Route::delete('/customer-question/{id}', DestroyCustomerQuestion::class)
+        ->name('customerQuestion.destroy');
 });

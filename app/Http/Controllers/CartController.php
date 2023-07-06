@@ -18,11 +18,6 @@ class CartController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
-    {
-        return view('user.my-cart');
-    }
-
     public function store(Request $request): RedirectResponse
     {
         /** @var User $user */

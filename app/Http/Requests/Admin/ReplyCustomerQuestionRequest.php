@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
 /**
- * @property int id
+ * @property string reply
  */
-class DirectBuyRequest extends FormRequest
+class ReplyCustomerQuestionRequest extends FormRequest
 {
     public function authorize(): bool
     {
@@ -17,7 +17,7 @@ class DirectBuyRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'id' => 'integer',
+            'reply' => 'required|max:255',
         ];
     }
 }

@@ -6,22 +6,18 @@ use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\CustomerQuestion;
+use Illuminate\Contracts\View\View;
+use Illuminate\Support\Facades\View as ViewFactory;
 
 class AdminController extends Controller
 {
-    public function dashboard()
+    public function dashboard(): View
     {
-        $productsCount = Product::count();
-        $ordersCount = Order::where('status', 'PENDING')->count();
-        $readyToShipCount  = Order::where('status', 'READY TO SHIP')->count();
-        $customerQueryCount  = CustomerQuestion::whereNUll('reply')->count();
-        return view('admin.dashboard', compact([
-            'productsCount', 'ordersCount', 'readyToShipCount', 'customerQueryCount'
-        ]));
-    }
-
-    public function profile()
-    {
-        return view('admin.profile');
+        return ViewFactory::make('admin.dashboard', [
+            'productsCount' => Product::count(),
+            'ordersCount' => Order::where('status', 'PENDING')->count(),
+            'readyToShipCount' => Order::where('status', 'READY TO SHIP')->count(),
+            'customerQueryCount' => CustomerQuestion::whereNUll('reply')->count(),
+        ]);
     }
 }
