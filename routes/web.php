@@ -39,9 +39,6 @@ Route::group(['middleware' => ['web', 'auth']], function () {
 // User routes
 // needs auth middleware
 Route::group(['middleware' => ['web', 'role:user|admin']], function () {
-    // flash-sale products directly added to order
-    Route::post('/direct-buy', DirectBuy::class)->name('directBuy.order');
-
     // user cart
     Route::view('/cart', 'user.my-cart')->name('cart.index');
     Route::post('/cart', [CartController::class, 'store'])->name('cart.store');

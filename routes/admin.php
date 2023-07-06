@@ -4,7 +4,6 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DeliveredController;
-use App\Http\Controllers\Admin\FlashSaleController;
 use App\Http\Controllers\Admin\InvoiceController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductController;
@@ -32,19 +31,6 @@ Route::group(['middleware' => ['web', 'role:admin']], function () {
         ->name('productImage.show');
     Route::delete('/product/{id}/image', [ProductImageController::class, 'destroy'])
         ->name('productImage.destroy');
-
-    Route::get('/flash-sale', [FlashSaleController::class, 'index'])
-        ->name('flashSale.index');
-    Route::get('/flash-sale/create', [FlashSaleController::class, 'create'])
-        ->name('flashSale.create');
-    Route::post('/flash-sale', [FlashSaleController::class, 'store'])
-        ->name('flashSale.store');
-    Route::get('/flash-sale/{id}/edit', [FlashSaleController::class, 'edit'])
-        ->name('flashSale.edit');
-    Route::put('/flash-sale/{id}', [FlashSaleController::class, 'update'])
-        ->name('flashSale.update');
-    Route::delete('/flash-sale', [FlashSaleController::class, 'destroy'])
-        ->name('flashSale.destroy');
 
     Route::get('/user-management', [UserManagementController::class, 'index'])
         ->name('userManagement.index');

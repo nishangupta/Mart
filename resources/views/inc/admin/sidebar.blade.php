@@ -70,18 +70,6 @@
 
   @role('admin')
   <!-- Nav Item - Utilities Collapse Menu -->
-  <li class="nav-item {{ request()->segment(1) == 'flash-sale' ? 'active': ''}}">
-    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#promotionsCollapse" aria-expanded="true" aria-controls="promotionsCollapse">
-      <i class="fas fa-fw fa-play"></i>
-      <span>Promotions</span>
-    </a>
-    <div id="promotionsCollapse" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-      <div class="bg-white py-2 collapse-inner rounded">
-        <h6 class="collapse-header">Promotion information:</h6>
-        <a class="collapse-item" href="{{route('flashSale.index')}}">Flash sale</a>
-      </div>
-    </div>
-  </li>
 
   <li class="nav-item {{ request()->segment(1) == 'category' ? 'active': ''}}" >
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#shopCollapse" aria-expanded="true" aria-controls="shopCollapse">
