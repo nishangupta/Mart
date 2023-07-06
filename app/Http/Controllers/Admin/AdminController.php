@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Models\Product;
-use App\Models\CustomerQuestion;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\View as ViewFactory;
 
@@ -17,7 +16,6 @@ class AdminController extends Controller
             'productsCount' => Product::count(),
             'ordersCount' => Order::where('status', 'PENDING')->count(),
             'readyToShipCount' => Order::where('status', 'READY TO SHIP')->count(),
-            'customerQueryCount' => CustomerQuestion::whereNUll('reply')->count(),
         ]);
     }
 }

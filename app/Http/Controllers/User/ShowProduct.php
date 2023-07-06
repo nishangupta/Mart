@@ -20,11 +20,6 @@ class ShowProduct extends Controller
             ->with('productImage')
             ->first();
 
-        $questions = $product
-            ->getQuestions()
-            ->with('user')
-            ->paginate(6);
-
         $mightAlsoLike = Product::where('id', '!=', $product->id)
             ->inRandomOrder()
             ->with('productImage')
@@ -33,7 +28,6 @@ class ShowProduct extends Controller
 
         return ViewFactory::make('shop.show')->with([
             'product' => $product,
-            'questions' => $questions,
             'mightAlsoLike' => $mightAlsoLike
         ]);
     }

@@ -4,9 +4,6 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\CarouselController;
 use App\Http\Controllers\Admin\CategoryController;
-use App\Http\Controllers\Admin\CustomerQuestion\MessDelete;
-use App\Http\Controllers\Admin\CustomerQuestion\Reply;
-use App\Http\Controllers\Admin\CustomerQuestion\ReplyView;
 use App\Http\Controllers\Admin\DeliveredController;
 use App\Http\Controllers\Admin\FlashSaleController;
 use App\Http\Controllers\Admin\InvoiceController;
@@ -36,16 +33,6 @@ Route::group(['middleware' => ['web', 'role:admin']], function () {
         ->name('productImage.show');
     Route::delete('/product/{id}/image', [ProductImageController::class, 'destroy'])
         ->name('productImage.destroy');
-
-    // Customer Question functions
-    Route::view('/admin/customer-question', 'admin.customer.customer-question')
-        ->name('customerQuestion.adminView');
-    Route::get('/admin/customer-question/{id}/reply', ReplyView::class)
-        ->name('customerQuestion.adminReply');
-    Route::post('/admin/customer-question', MessDelete::class)
-        ->name('customerQuestion.massDelete');
-    Route::put('/admin/customer-question/{question}/reply', Reply::class)
-        ->name('customerQuestion.reply');
 
     Route::get('/flash-sale', [FlashSaleController::class, 'index'])
         ->name('flashSale.index');
