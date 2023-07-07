@@ -19,12 +19,13 @@ class AdminTest extends TestCase
         Artisan::call('db:seed');
         // login as admin
         $response = $this->from('/login')->post('/login', [
-            'email' => 'admin@admin.com',
-            'password' => 'password'
+            'email' => 'admin@2023.laravelconf.tw',
+            'password' => 'password',
         ]);
 
         $this->assertTrue(Auth::check());
-        $response->assertStatus(302);
-        $response->assertRedirect('/home');
+
+        $response->assertStatus(302)
+            ->assertRedirect('/home');
     }
 }

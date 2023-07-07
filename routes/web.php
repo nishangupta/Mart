@@ -6,7 +6,6 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MyOrderController;
 use App\Http\Controllers\User\Catalog;
-use App\Http\Controllers\User\DirectBuy;
 use App\Http\Controllers\User\Shop;
 use App\Http\Controllers\User\ShowProduct;
 use App\Http\Controllers\UserController;
