@@ -1,45 +1,53 @@
 # Mart Laravel
 
-Laravel and Vue
+## 環境需求
 
-Install locally for full access.
-Fully functional backend.
-Installations at the bottom
+- PHP 8.1+
+- Laravel 10+
 
-![ezgif com-gif-maker](https://user-images.githubusercontent.com/47269591/98431883-87064e80-20e1-11eb-9f84-7b769185e8ee.gif)
+## 安裝
 
+Clone 到本地後，執行 Composer 安裝套件
 
-### Admin panel Dashboard
-<a href="https://i.ibb.co/k8BQ6HV/Screenshot-100.png"><img src="https://i.ibb.co/k8BQ6HV/Screenshot-100.png"  width="70%" target="_blank" alt="Screenshot-23"
-border="0" /></a>
-<br />
+```
+composer install
+```
 
-### Order Management
-<a href="https://i.ibb.co/CQ3Frbm/Screenshot-102.png"><img src="https://i.ibb.co/CQ3Frbm/Screenshot-102.png"  width="70%" target="_blank" alt="Screenshot-23"
-border="0" /></a>
-<br />
+複製 `.env` 並產生 key
 
-### Product Management
-<a href="https://i.ibb.co/vH5qT0R/Screenshot-99.png"><img src="https://i.ibb.co/vH5qT0R/Screenshot-99.png"  width="70%" target="_blank" alt="Screenshot-23"
-border="0" /></a>
-<br />
+```
+cp .env.example .env
+php artisan key:generate
+```
 
+設定資料庫，已有設定好 Docker Compose，可以直接透過指令啟動：
 
-## Installation
+```
+docker-compose up -d
+```
 
-1. Clone the repo and `cd` into it
-2. `composer install`
-3. Rename or copy `.env.example` file to `.env`
-4. `php artisan key:generate`
-5. Set your database credentials in your `.env` file
-6. `php artisan migrate:fresh --seed `
-7. `npm install`
-8. `npm run dev`
-9. `php artisan serve`
-10. Visit `localhost:8000` in your browser
-11. Visit `/admin/login` for admin login,  
+執行 Migration
 
-Admin User: `admin@admin.com` <br/>
-Admin Password: `password`
+```
+php artisan migrate:fresh --seed
+```
 
-Add your necessary packages, modify, optimize for seo, Test components and Push to production with ease.
+執行 PHP built-in 伺服器
+
+```
+php artisan serve
+```
+
+打開 http://localhost:8000 即可看到首頁。打開 http://localhost:8000/admin/login 可登入後台 
+
+預設帳號如下，密碼統一為 `password`
+
+```
+# 管理員
+admin@2023.laravelconf.tw
+
+# 一般帳號
+miles@2023.laravelconf.tw
+nathan@2023.laravelconf.tw
+ban@2023.laravelconf.tw
+```

@@ -9,24 +9,33 @@ class UserSeeder extends Seeder
 {
     public function run(): void
     {
+        // `password`
+        $password = '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi';
+
         $factoryUsers = [
             [
                 'name' => 'Admin',
-                'email' => 'admin@admin.com',
-                'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+                'email' => 'admin@2023.laravelconf.tw',
+                'password' => $password,
                 'role' => 'admin'
             ],
             [
-                'name' => 'Nishant',
-                'email' => 'nishant@nishant.com',
-                'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+                'name' => 'Miles',
+                'email' => 'miles@2023.laravelconf.tw',
+                'password' => $password,
                 'role' => 'user'
             ],
             [
-                'name' => 'Shreya',
-                'email' => 'shreya@shreya.com',
-                'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+                'name' => 'Nathan',
+                'email' => 'nathan@2023.laravelconf.tw',
+                'password' => $password,
                 'role' => 'shipper'
+            ],
+            [
+                'name' => 'Ban',
+                'email' => 'ban@2023.laravelconf.tw',
+                'password' => $password,
+                'role' => 'user'
             ],
         ];
 
