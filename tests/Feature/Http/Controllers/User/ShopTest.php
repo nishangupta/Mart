@@ -14,7 +14,7 @@ class ShopTest extends TestCase
     public function seeBasicTitle()
     {
         $this->get('/')
-            ->assertSee('Categories')
-            ->assertSee('Just For You');
+            ->assertSeeText('Categories')
+            ->assertSeeText('Just For You');
     }
 }

@@ -14,7 +14,7 @@ class CatalogPageTest extends TestCase
     public function seeBasicItem()
     {
         $this->get('/catalog')
-            ->assertSee('Categories')
-            ->assertSee('Price');
+            ->assertSeeText('Categories')
+            ->assertSeeText('Price');
     }
 }
