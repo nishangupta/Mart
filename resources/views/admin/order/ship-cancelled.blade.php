@@ -3,7 +3,7 @@
 @section('content')
 <div class="container-fluid">
   @include('inc.admin.order-management-pages')
-  
+
   <div class="card shadow mb-4">
     <div class="card-header py-3">
       <h6 class="m-0 font-weight-bold text-primary">Cancelled Orders</h6>
@@ -16,12 +16,12 @@
             <input type="checkbox" class="selectall">
           </div>
           <button id="showSelected" class="btn btn-sm btn-danger float-left">Delete</button>
-          <form action="{{route('shipCancelled.cleanUp')}}" method="POST" class="float-left mb-2">
+          <form action="{{ route('shipCancelled.cleanUp') }}" method="POST" class="float-left mb-2">
             @csrf @method('delete')
             <button type="submit" class="btn btn-sm btn-info">Clean up older than 3 months</button>
           </form>
       </div>
-      <form action="{{route('order.destroy',['order'=>'true'])}}" method="POST" id="selectorForm">
+      <form action="{{ route('order.destroy',['order'=>'true'] )}}" method="POST" id="selectorForm">
         @csrf
         @method('delete')
         <div class="table-responsive">
@@ -54,7 +54,7 @@ $(document).ready(function(){
   $('#dataTable').dataTable({
   processing:true,
   serverSide:true,
-  ajax:"{{route('shipCancelled.all')}}",
+  ajax:"{{ route('shipCancelled.all') }}",
     columns:[
       {data:'select',orderable:false,searchable:false},
       {data:'order_number'},

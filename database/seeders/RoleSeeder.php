@@ -29,9 +29,12 @@ class RoleSeeder extends Seeder
 
         $permissions = [
             'dashboard',
-            'create-products', 'edit-products', 'delete-products',
+            'create-products',
+            'edit-products',
+            'delete-products',
             'manage-users',
         ];
+
         foreach ($permissions as $permission) {
             DB::table('permissions')->insert([
                 'name' => $permission,
@@ -42,7 +45,9 @@ class RoleSeeder extends Seeder
         }
 
         $role = Role::findByName('admin');
-        $permissions = Permission::all()->pluck('name');
+        $permissions = Permission::all()
+            ->pluck('name');
+
         foreach ($permissions as $permission) {
             $getPermission = Permission::findByName($permission);
             $role->givePermissionTo($getPermission);

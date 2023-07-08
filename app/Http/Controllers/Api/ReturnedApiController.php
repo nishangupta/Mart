@@ -21,7 +21,7 @@ class ReturnedApiController extends Controller
             return date('d/m/Y h:i A', strtotime($row->created_at));
         })
         ->addColumn('order_number', function ($row) {
-            return '<a href="order/' . $row->id . '" class="">' . $row->order_number . '</a>';
+            return '<a href="' . route('order.show', [$row->id]) . '" class="">' . $row->order_number . '</a>';
         })
         ->addColumn('printed', function ($row) {
             $val = $row->printed ? 'Printed' : 'Not printed';

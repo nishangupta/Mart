@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\Admin\MyCancellationController;
+use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MyOrderController;
@@ -43,6 +44,8 @@ Route::group(['middleware' => ['web', 'role:user|admin']], function () {
     Route::post('/cart', [CartController::class, 'store'])->name('cart.store');
     Route::get('/cart/api/all', [CartController::class, 'all']);
     Route::post('/cart/destroy/selected', [CartController::class, 'destroySelected']);
+
+    Route::post('/order', [OrderController::class, 'store']);
 
     Route::get('/my-order', [MyOrderController::class, 'index'])->name('myOrder.index');
     Route::delete('/my-order/{id}', [MyOrderController::class, 'destroy'])->name('myOrder.destroy');

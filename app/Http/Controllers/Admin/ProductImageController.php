@@ -2,21 +2,20 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\ProductImage;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
-use Image;
 
 class ProductImageController extends Controller
 {
     //product id
     public function index($id)
     {
-        $products = ProductImage::where('product_id', $id)->get();
-        return $products;
+        return ProductImage::where('product_id', $id)->get();
     }
 
     public function store(Request $request, $id)
@@ -32,7 +31,7 @@ class ProductImageController extends Controller
             $original = $basename . '.' . $image->getClientOriginalExtension();
             $thumbnail = $basename . '_thumb.' . $image->getClientOriginalExtension();
 
-            Image::make($image)
+            \Image::make($image)
                 ->fit(250, 250)
                 ->save(public_path('/images/products/' . $thumbnail));
 

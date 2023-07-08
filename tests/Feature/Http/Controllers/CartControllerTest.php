@@ -18,36 +18,34 @@ class CartControllerTest extends TestCase
     public function userCanManageCart()
     {
         Artisan::call('db:seed');
-        Auth::loginUsingId(2); //user according to the seeder
-        $response = $this->post(route('cart.store'), [
+        Auth::loginUsingId(3); //user according to the seeder
+        $this->post(route('cart.store'), [
             'product_id' => 1,
             'quantity' => 2,
         ]);
 
-        $this->assertCount(1, Cart::all()); //successfully added to the cart
+        // successfully added to the cart
+        $this->assertDatabaseCount(Cart::class, 1);
 
-        //removing cart items
-        $newResponse = $this->post('/cart/destroy/selected', [
-            'cart' => [1]
-        ]);
-
-        $newResponse->assertJson(['delete' => 'success']);
+        // removing cart items
+        $this->post('/cart/destroy/selected', ['cart' => [1]])
+            ->assertJson(['delete' => 'success']);
     }
 
     #[Test]
     public function userGetsHisCartItemsOnly()
     {
         Artisan::call('db:seed');
-        Auth::loginUsingId(2); //user according to the seeder
+        Auth::loginUsingId(3); //user according to the seeder
 
-        $response = $this->post(route('cart.store'), [
+        $this->post(route('cart.store'), [
             'product_id' => 1,
             'quantity' => 2,
         ]);
 
-        $response = $this->get('/cart/api/all');
-        $response->assertJson([
-            ['user_id' => '2'] //same as the auth user id
-        ]);
+        $this->get('/cart/api/all')
+            ->assertJson([
+                ['user_id' => '3'], //same as the auth user id
+            ]);
     }
 }

@@ -23,13 +23,13 @@ class UserSeeder extends Seeder
                 'name' => 'Miles',
                 'email' => 'miles@2023.laravelconf.tw',
                 'password' => $password,
-                'role' => 'user'
+                'role' => 'shipper'
             ],
             [
                 'name' => 'Nathan',
                 'email' => 'nathan@2023.laravelconf.tw',
                 'password' => $password,
-                'role' => 'shipper'
+                'role' => 'user'
             ],
             [
                 'name' => 'Ban',

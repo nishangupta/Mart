@@ -22,7 +22,7 @@ class ShippedApiController extends Controller
             return date('d/m/Y h:i A', strtotime($row->created_at));
         })
         ->addColumn('order_number', function ($row) {
-            $item = '<a href="order/' . $row->id . '" class="">' . $row->order_number . '</a>';
+            $item = '<a href="' . route('order.show', [$row->id]) . '" class="">' . $row->order_number . '</a>';
             return $item;
         })
         ->addColumn('printed', function ($row) {

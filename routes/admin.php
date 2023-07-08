@@ -62,7 +62,8 @@ Route::group(['middleware' => ['web', 'role:admin|shipper']], function () {
     Route::view('/admin/profile', 'admin.profile')
         ->name('admin.profile');
 
-    Route::resource('/order', OrderController::class);
+    Route::resource('/admin/order', OrderController::class)
+        ->except('store');
 
     Route::get('/invoice/{order}', [InvoiceController::class, 'index'])
         ->name('invoice.index');
