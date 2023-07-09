@@ -326,6 +326,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "my-cart",
@@ -1309,6 +1313,17 @@ var render = function() {
                             ])
                           ]),
                           _vm._v(" "),
+                          _c("h6", [
+                            _vm._v(
+                              "\n              VIP Discount:\n              "
+                            ),
+                            _c("span", { staticClass: "text-orange" }, [
+                              _vm._v(
+                                "Rs. -" + _vm._s(_vm.modalProduct.price * 0.1)
+                              )
+                            ])
+                          ]),
+                          _vm._v(" "),
                           _vm._m(3),
                           _vm._v(" "),
                           _c("h6", [
@@ -1318,7 +1333,9 @@ var render = function() {
                             _c("span", { staticClass: "text-orange" }, [
                               _vm._v(
                                 "Rs. " +
-                                  _vm._s(Number(_vm.modalProduct.price) + 100)
+                                  _vm._s(
+                                    Number(_vm.modalProduct.price * 0.9) + 100
+                                  )
                               )
                             ])
                           ])

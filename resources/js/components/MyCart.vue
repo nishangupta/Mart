@@ -171,13 +171,17 @@
                 <span class="text-orange">Rs. {{ modalProduct.price }}</span>
               </h6>
               <h6>
+                VIP Discount:
+                <span class="text-orange">Rs. -{{ modalProduct.price * 0.1 }}</span>
+              </h6>
+              <h6>
                 Shipping cost:
                 <span class="text-orange">Rs. 100</span>
               </h6>
               <h6>
                 Total shipping fee:
                 <span class="text-orange"
-                  >Rs. {{ Number(modalProduct.price) + 100 }}</span
+                  >Rs. {{ Number(modalProduct.price * 0.9) + 100 }}</span
                 >
               </h6>
             </div>

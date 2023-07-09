@@ -7,6 +7,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MyOrderController;
 use App\Http\Controllers\User\Catalog;
+use App\Http\Controllers\User\Order;
 use App\Http\Controllers\User\Shop;
 use App\Http\Controllers\User\ShowProduct;
 use App\Http\Controllers\UserController;
@@ -45,7 +46,7 @@ Route::group(['middleware' => ['web', 'role:user|admin']], function () {
     Route::get('/cart/api/all', [CartController::class, 'all']);
     Route::post('/cart/destroy/selected', [CartController::class, 'destroySelected']);
 
-    Route::post('/order', [OrderController::class, 'store']);
+    Route::post('/order', Order::class);
 
     Route::get('/my-order', [MyOrderController::class, 'index'])->name('myOrder.index');
     Route::delete('/my-order/{id}', [MyOrderController::class, 'destroy'])->name('myOrder.destroy');
